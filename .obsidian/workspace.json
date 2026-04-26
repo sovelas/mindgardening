@@ -1,0 +1,322 @@
+{
+  "main": {
+    "id": "afe3d2943172ece5",
+    "type": "split",
+    "children": [
+      {
+        "id": "3b6c5fd5578d8d46",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bc0795acf3a3cffc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "macintyre/moores-principia-ethica.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "moores-principia-ethica"
+            }
+          },
+          {
+            "id": "7f3724241a5b48af",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "dostoevsky/the-unsolvable-as-productive-only-from-outside.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "the-unsolvable-as-productive-only-from-outside"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d9aed6ea10f6d9b0",
+    "type": "split",
+    "children": [
+      {
+        "id": "a4fcb73623256f39",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "920dab1761c02687",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "da3858a5601885e8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "rev",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "d4fbe7d491c03f25",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "4ca58be9a4d7d9ec",
+    "type": "split",
+    "children": [
+      {
+        "id": "e584b1716c405543",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fcb80719569a8654",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "_folder-index-master.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for _folder-index-master"
+            }
+          },
+          {
+            "id": "d59dde5cd2e7c3c7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "dostoevsky/the-unsolvable-as-productive-only-from-outside.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": false
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from the-unsolvable-as-productive-only-from-outside"
+            }
+          },
+          {
+            "id": "dd0c824abd022b56",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "c38f82b0e3ada6ba",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "alphabetical",
+                "showSearch": true,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "c6b4a271aa6a29fc",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          },
+          {
+            "id": "119062bb0610a5f3",
+            "type": "leaf",
+            "state": {
+              "type": "juggl_nodes",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "juggl_nodes"
+            }
+          },
+          {
+            "id": "65c810f0152fe770",
+            "type": "leaf",
+            "state": {
+              "type": "juggl_style",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "juggl_style"
+            }
+          },
+          {
+            "id": "fe193ffc60c10fd7",
+            "type": "leaf",
+            "state": {
+              "type": "juggl_nodes",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "juggl_nodes"
+            }
+          },
+          {
+            "id": "a5a09ba087d04dad",
+            "type": "leaf",
+            "state": {
+              "type": "juggl_style",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "juggl_style"
+            }
+          },
+          {
+            "id": "1351152d6671f5f9",
+            "type": "leaf",
+            "state": {
+              "type": "juggl_nodes",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "juggl_nodes"
+            }
+          },
+          {
+            "id": "3d009c0a204178e4",
+            "type": "leaf",
+            "state": {
+              "type": "juggl_style",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "juggl_style"
+            }
+          },
+          {
+            "id": "d6d5b5983a7c7156",
+            "type": "leaf",
+            "state": {
+              "type": "juggl_nodes",
+              "state": {},
+              "icon": "ag-node-list",
+              "title": "Juggl nodes"
+            }
+          },
+          {
+            "id": "dd712f7e9eaa3167",
+            "type": "leaf",
+            "state": {
+              "type": "juggl_style",
+              "state": {},
+              "icon": "ag-style",
+              "title": "Juggl style"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "random-note:Open random note": false,
+      "juggl:Juggl global graph": false
+    }
+  },
+  "active": "7f3724241a5b48af",
+  "lastOpenFiles": [
+    "propaganda/rootedness-not-introspection-against-shaped-preference.md",
+    "_folder-index-master.md",
+    "religion/ideology-replaces-religion.md",
+    "Helping prompts used.md",
+    "_deleted_unreviewed_20260426_082514/wallace/unconscious-worship-eats-you-alive.md",
+    "_deleted_unreviewed_20260426_082514/wallace/the-alaskan-bar-story.md",
+    "_deleted_unreviewed_20260426_082514/wallace/this-is-water-overview.md",
+    "_deleted_unreviewed_20260426_082514/wallace/the-mind-as-terrible-master.md",
+    "_deleted_unreviewed_20260426_082514/wallace/the-supermarket-as-existential-arena.md",
+    "_deleted_unreviewed_20260426_082514/wallace/the-fish-story.md",
+    "_deleted_unreviewed_20260426_082514/wallace/everybody-worships.md",
+    "_deleted_unreviewed_20260426_082514/wallace/real-freedom-as-attention-and-discipline.md",
+    "_deleted_unreviewed_20260426_082514/wallace/choosing-to-imagine-others-inner-lives.md",
+    "_deleted_unreviewed_20260426_082514/wallace/liberal-arts-as-choosing-what-to-think-about.md",
+    "_deleted_unreviewed_20260426_082514/wallace/blind-certainty-as-imprisonment.md",
+    "_deleted_unreviewed_20260426_082514/wallace/default-self-centeredness.md",
+    "_deleted_unreviewed_20260426_082514/wallace/capital-t-truth-is-about-life-before-death.md",
+    "_deleted_unreviewed_20260426_082514/wallace/adjusting-the-default-setting.md",
+    "_deleted_unreviewed_20260426_082514/wallace",
+    "_deleted_unreviewed_20260426_082514/simone-weil/what-constitutes-a-nation.md",
+    "_deleted_unreviewed_20260426_082514/simone-weil/weils-food-analogy-is-too-generous.md",
+    "_deleted_unreviewed_20260426_082514/simone-weil/weil-vs-de-beauvoir-on-hunger.md",
+    "_deleted_unreviewed_20260426_082514/simone-weil/weil-teaching-method.md",
+    "_deleted_unreviewed_20260426_082514/simone-weil/weil-in-the-spanish-civil-war.md",
+    "_deleted_unreviewed_20260426_082514/simone-weil/weil-in-the-factory.md",
+    "_deleted_unreviewed_20260426_082514/simone-weil/weil-critique-of-marx-on-workers.md",
+    "_deleted_unreviewed_20260426_082514/simone-weil/weil-critique-of-education.md",
+    "_deleted_unreviewed_20260426_082514/simone-weil",
+    "_deleted_unreviewed_20260426_082514/community",
+    "_deleted_unreviewed_20260426_082514/zizek",
+    "_deleted_unreviewed_20260426_082514/schelling",
+    "_deleted_unreviewed_20260426_082514/violence-and-aesthetics",
+    "_deleted_unreviewed_20260426_082514/beauvoir",
+    "_deleted_unreviewed_20260426_082514/religion",
+    "_deleted_unreviewed_20260426_082514/ethics",
+    "_deleted_unreviewed_20260426_082514/kundera",
+    "Untitled.canvas"
+  ]
+}

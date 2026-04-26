@@ -1,0 +1,9 @@
+{
+  "types": {
+    "aliases": "aliases",
+    "cssclasses": "multitext",
+    "tags": "tags",
+    "reviewed?": "checkbox",
+    "where'd I learned this from": "multitext"
+  }
+}

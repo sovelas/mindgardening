@@ -1,0 +1,6 @@
+{
+  "alterProp": "append",
+  "recursive": true,
+  "delimiter": ",",
+  "defaultPropPath": ""
+}
