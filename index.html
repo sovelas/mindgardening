@@ -1087,17 +1087,29 @@ function hashCode(str) {
   return Math.abs(h);
 }
 
+// Monochrome palette + selection accent.
+// All notes share one cream tone; folders a darker cream; unresolved keeps
+// its dashed-border tone. The only color in the graph comes from the current
+// selection (terracotta) and its 1-hop neighbors (warm earth) — applied at
+// click time in applySelectionPalette() below.
+const PALETTE = {
+  noteRest:        '#cdbf9f',
+  noteRestBorder:  '#9a8a6c',
+  folderRest:      '#b8a984',
+  folderBorder:    '#7a6c52',
+  unresolved:      '#e5d9bd',
+  unresolvedBorder:'#a89976',
+  selected:        '#b85a2a',
+  selectedBorder:  '#7a3a18',
+  neighbor:        '#6b5b49',
+  neighborBorder:  '#3e3325',
+  fadeOpacity:     0.35
+};
+
 function colorForGroup(group, kind) {
-  if (kind === 'unresolved-wikilink') return '#d8cdb8';
-
-  if (group === '.' || group === 'root') {
-    return kind === 'folder' ? '#d8c6a5' : '#eadfc4';
-  }
-
-  const h = hashCode(group || 'root') % 360;
-
-  if (kind === 'folder') return `hsl(${h} 42% 72%)`;
-  return `hsl(${h} 50% 82%)`;
+  if (kind === 'unresolved-wikilink') return PALETTE.unresolved;
+  if (kind === 'folder') return PALETTE.folderRest;
+  return PALETTE.noteRest;
 }
 
 
@@ -1450,7 +1462,7 @@ function buildState(graph) {
       color: {
         background: nodeBackground,
         border: nodeBorder,
-        highlight: { background: nodeBackground, border: '#3c3328' },
+        highlight: { background: PALETTE.selected, border: PALETTE.selectedBorder },
         hover: { background: nodeBackground, border: '#3c3328' }
       },
       borderWidth: isSummary ? 1.6 : (meta.kind === 'folder' ? 1.8 : 1),
@@ -1887,12 +1899,79 @@ function clearFocus() {
   if (network) network.fit({ animation: true });
 }
 
+function applySelectionPalette(nodeId) {
+  if (!network || !nodesDS || !edgesDS || !graphState) return;
+
+  const SUMMARY_NOTE_ID = '_folder-index-master';
+  const isSummary = (meta) => meta?.kind === 'note' && meta.id === SUMMARY_NOTE_ID;
+
+  // Build the highlighted set: selection + all 1-hop neighbors (both directions).
+  const hot = new Set();
+  if (nodeId) {
+    hot.add(nodeId);
+    for (const n of (graphState.adjacency.get(nodeId) || [])) hot.add(n);
+    for (const n of (graphState.reverseAdjacency.get(nodeId) || [])) hot.add(n);
+  }
+
+  const nodeUpdates = [];
+  nodesDS.forEach((node) => {
+    const meta = graphState.nodeMeta.get(node.id);
+    if (!meta) return;
+
+    let bg, br;
+    if (nodeId && node.id === nodeId) {
+      bg = PALETTE.selected; br = PALETTE.selectedBorder;
+    } else if (hot.has(node.id)) {
+      bg = PALETTE.neighbor; br = PALETTE.neighborBorder;
+    } else if (meta.kind === 'unresolved-wikilink') {
+      bg = PALETTE.unresolved; br = PALETTE.unresolvedBorder;
+    } else if (meta.kind === 'folder') {
+      bg = PALETTE.folderRest; br = PALETTE.folderBorder;
+    } else if (isSummary(meta)) {
+      bg = '#ece4cf'; br = '#9f947f';
+    } else {
+      bg = PALETTE.noteRest; br = PALETTE.noteRestBorder;
+    }
+
+    const faded = nodeId && !hot.has(node.id);
+    nodeUpdates.push({
+      id: node.id,
+      color: {
+        background: bg,
+        border: br,
+        highlight: { background: PALETTE.selected, border: PALETTE.selectedBorder },
+        hover: { background: bg, border: '#3c3328' }
+      },
+      opacity: faded ? PALETTE.fadeOpacity : 1
+    });
+  });
+  nodesDS.update(nodeUpdates);
+
+  const edgeUpdates = [];
+  edgesDS.forEach((edge) => {
+    const touchesSelection = nodeId && (edge.from === nodeId || edge.to === nodeId);
+    const baseColor = edge.relation === 'links_to'
+      ? { color: 'rgba(118,101,78,.22)', highlight: 'rgba(118,101,78,.50)' }
+      : { color: 'rgba(171,145,109,.44)', highlight: 'rgba(171,145,109,.76)' };
+    edgeUpdates.push({
+      id: edge.id,
+      color: touchesSelection
+        ? { color: 'rgba(184,90,42,0.55)', highlight: 'rgba(184,90,42,0.75)' }
+        : (nodeId
+          ? { color: 'rgba(40,30,15,0.08)', highlight: baseColor.highlight }
+          : baseColor)
+    });
+  });
+  edgesDS.update(edgeUpdates);
+}
+
 function selectNodeById(nodeId) {
   selectedNodeId = nodeId;
   if (network) {
     network.selectNodes([nodeId]);
     network.focus(nodeId, { scale: 1.15, animation: true });
   }
+  applySelectionPalette(nodeId);
   renderSelection(nodeId);
 }
 
@@ -1934,6 +2013,10 @@ async function loadGraph(graph) {
     if (params.nodes.length) {
       selectedNodeId = params.nodes[0];
       renderSelection(selectedNodeId);
+      applySelectionPalette(selectedNodeId);
+    } else {
+      selectedNodeId = null;
+      applySelectionPalette(null);
     }
   });
 
@@ -1941,6 +2024,7 @@ async function loadGraph(graph) {
     if (params.nodes.length) {
       selectedNodeId = params.nodes[0];
       renderSelection(selectedNodeId);
+      applySelectionPalette(selectedNodeId);
       focusNeighborhood();
     }
   });
