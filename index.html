@@ -621,22 +621,9 @@ function getGithubContext() {
   return githubContext;
 }
 
-function githubApiTreeUrl(ctx) {
-  return `https://api.github.com/repos/${encodeURIComponent(ctx.owner)}/${encodeURIComponent(ctx.repo)}/git/trees/${encodeURIComponent(ctx.branch)}?recursive=1`;
-}
-
 function githubRawUrlFromRepoPath(ctx, repoPath) {
   const normalized = String(repoPath || '').replace(/^\/+/, '');
   return `https://raw.githubusercontent.com/${encodeURIComponent(ctx.owner)}/${encodeURIComponent(ctx.repo)}/${encodeURIComponent(ctx.branch)}/${normalized}`;
-}
-
-function pathWithinBase(repoPath, basePath) {
-  const cleanRepoPath = String(repoPath || '').replace(/^\/+|\/+$/g, '');
-  const cleanBasePath = String(basePath || '').replace(/^\/+|\/+$/g, '');
-  if (!cleanBasePath) return cleanRepoPath;
-  if (cleanRepoPath === cleanBasePath) return '';
-  if (!cleanRepoPath.startsWith(cleanBasePath + '/')) return null;
-  return cleanRepoPath.slice(cleanBasePath.length + 1);
 }
 
 function noteBasename(notePath) {
@@ -922,48 +909,6 @@ async function fetchGraphFromLocalIndex() {
   return graph;
 }
 
-function readCachedGithubGraph(cacheKey) {
-  try {
-    const raw = localStorage.getItem(cacheKey);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw);
-    if (!parsed || !Array.isArray(parsed.nodes) || !Array.isArray(parsed.edges)) return null;
-    return parsed;
-  } catch (err) {
-    console.warn('Could not read cached graph:', err);
-    return null;
-  }
-}
-
-function writeCachedGithubGraph(cacheKey, graph) {
-  try {
-    localStorage.setItem(cacheKey, JSON.stringify(graph));
-  } catch (err) {
-    console.warn('Could not cache graph:', err);
-  }
-}
-
-function readCachedNoteIndex(cacheKey) {
-  try {
-    const raw = localStorage.getItem(cacheKey);
-    if (!raw) return {};
-    const parsed = JSON.parse(raw);
-    if (!parsed || typeof parsed !== 'object') return {};
-    return parsed;
-  } catch (err) {
-    console.warn('Could not read cached note index:', err);
-    return {};
-  }
-}
-
-function writeCachedNoteIndex(cacheKey, data) {
-  try {
-    localStorage.setItem(cacheKey, JSON.stringify(data));
-  } catch (err) {
-    console.warn('Could not cache note index:', err);
-  }
-}
-
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -1028,143 +973,6 @@ async function fetchTextFromCandidatesWithRetry(urls, label, options = {}) {
   }
 
   throw lastError || new Error(`Could not read ${label}`);
-}
-
-function summarizeFetchError(err, fallbackLabel) {
-  const message = String(err && err.message ? err.message : err || fallbackLabel || 'Unknown error');
-  return message.replace(/^Error:\s*/, '');
-}
-
-function indexNoteFromMarkdown(file, content) {
-  return {
-    repoPath: file.repoPath,
-    vaultPath: file.vaultPath,
-    sha: file.sha,
-    reviewed: hasReviewedFrontmatter(content),
-    targets: extractNoteTargetsFromMarkdown(content || '')
-  };
-}
-
-async function mapWithConcurrency(items, limit, worker) {
-  const results = new Array(items.length);
-  let cursor = 0;
-
-  async function runOne() {
-    while (cursor < items.length) {
-      const index = cursor++;
-      results[index] = await worker(items[index], index);
-    }
-  }
-
-  const workers = Array.from({ length: Math.min(limit, items.length || 1) }, () => runOne());
-  await Promise.all(workers);
-  return results;
-}
-
-async function fetchGraphFromGithubFolders() {
-  const ctx = getGithubContext();
-  const baseLabel = ctx.url || 'local notes index';
-  setStatus(`Loading ${baseLabel}…`);
-
-  const treeRes = await fetch(githubApiTreeUrl(ctx), {
-    headers: { Accept: 'application/vnd.github+json' },
-    cache: 'no-store'
-  });
-
-  if (!treeRes.ok) {
-    throw new Error(`GitHub tree request failed (${treeRes.status})`);
-  }
-
-  const tree = await treeRes.json();
-  const graphCacheKey = `vault-graph:${ctx.owner}:${ctx.repo}:${ctx.branch}:${ctx.notesBasePath || '.'}:${tree.sha || 'no-sha'}:v10`;
-  const cachedGraph = readCachedGithubGraph(graphCacheKey);
-  if (cachedGraph) return cachedGraph;
-
-  const markdownFiles = (tree.tree || [])
-    .filter(item => item && item.type === 'blob' && /\.md$/i.test(item.path || ''))
-    .map(item => {
-      const relativePath = pathWithinBase(item.path, ctx.notesBasePath);
-      return relativePath == null ? null : { repoPath: item.path, vaultPath: relativePath, sha: item.sha };
-    })
-    .filter(Boolean);
-
-  if (!markdownFiles.length) {
-    throw new Error('No Markdown files were found in the GitHub folder for this page');
-  }
-
-  const noteIndexCacheKey = `vault-note-index:${ctx.owner}:${ctx.repo}:${ctx.branch}:${ctx.notesBasePath || '.'}:${tree.sha || 'no-sha'}:v2`;
-  const cachedIndex = readCachedNoteIndex(noteIndexCacheKey);
-  const indexedNotes = new Array(markdownFiles.length);
-  const toFetch = [];
-  let restoredFromCache = 0;
-
-  markdownFiles.forEach((file, index) => {
-    const cached = cachedIndex[file.repoPath];
-    if (cached && cached.sha === file.sha && Array.isArray(cached.targets) && typeof cached.reviewed === 'boolean') {
-      indexedNotes[index] = {
-        repoPath: file.repoPath,
-        vaultPath: file.vaultPath,
-        sha: file.sha,
-        reviewed: !!cached.reviewed,
-        targets: cached.targets
-      };
-      restoredFromCache += 1;
-    } else {
-      toFetch.push({ file, index });
-    }
-  });
-
-  if (restoredFromCache) {
-    setStatus(`Using cached note index… ${restoredFromCache}/${markdownFiles.length}`);
-  } else {
-    setStatus(`First sync: scanning ${markdownFiles.length} notes for reviewed? and links…`);
-  }
-
-  let completed = 0;
-  const failures = [];
-
-  await mapWithConcurrency(toFetch, 2, async ({ file, index }) => {
-    try {
-      const content = await fetchTextFromCandidatesWithRetry(markdownCandidateUrlsForRepoPath(ctx, file.repoPath), file.repoPath, { maxAttempts: 7 });
-      const entry = indexNoteFromMarkdown(file, content);
-      indexedNotes[index] = entry;
-      cachedIndex[file.repoPath] = {
-        sha: entry.sha,
-        reviewed: entry.reviewed,
-        targets: entry.targets
-      };
-    } catch (err) {
-      failures.push({ file, error: summarizeFetchError(err, file.repoPath) });
-    } finally {
-      completed += 1;
-      const done = restoredFromCache + completed;
-      if (done === markdownFiles.length || done % 20 === 0) {
-        writeCachedNoteIndex(noteIndexCacheKey, cachedIndex);
-        setStatus(`Scanning notes… ${done}/${markdownFiles.length}`);
-      }
-      await sleep(120);
-    }
-  });
-
-  writeCachedNoteIndex(noteIndexCacheKey, cachedIndex);
-
-  const successfulNotes = indexedNotes.filter(Boolean);
-  if (!successfulNotes.length) {
-    throw new Error('Could not index any Markdown notes from GitHub.');
-  }
-
-  const graph = buildGraphFromMarkdownFiles(successfulNotes, ctx);
-
-  if (failures.length) {
-    graph.warning = `Loaded ${successfulNotes.length}/${markdownFiles.length} notes. ${failures.length} notes were skipped after retrying, most likely due to throttling.`;
-    graph.fetchFailures = failures.slice(0, 5).map(item => `${item.file.repoPath}: ${item.error}`);
-    setStatus(graph.warning);
-    return graph;
-  }
-
-  writeCachedGithubGraph(graphCacheKey, graph);
-  setStatus(`Loaded ${successfulNotes.length} notes from ${baseLabel}.`);
-  return graph;
 }
 
 function joinPathParts(...parts) {
