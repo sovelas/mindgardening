@@ -25,12 +25,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "zizek/the-gap-between-symbols-and-the-real.md",
+                "file": "dostoevsky/obsessive-desire-as-self-destruction.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "the-gap-between-symbols-and-the-real"
+              "title": "obsessive-desire-as-self-destruction"
             }
           }
         ],
@@ -126,12 +126,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "zizek/the-gap-between-symbols-and-the-real.md",
+                "file": "dostoevsky/obsessive-desire-as-self-destruction.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from the-gap-between-symbols-and-the-real"
+              "title": "Outgoing links from obsessive-desire-as-self-destruction"
             }
           },
           {
@@ -169,13 +169,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "zizek/the-gap-between-symbols-and-the-real.md",
+                "file": "dostoevsky/obsessive-desire-as-self-destruction.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of the-gap-between-symbols-and-the-real"
+              "title": "Outline of obsessive-desire-as-self-destruction"
             }
           },
           {
@@ -300,8 +300,9 @@
   },
   "active": "e9d30efaf27033b9",
   "lastOpenFiles": [
-    "voltaire/will-to-live-as-irrational-compulsion.md",
+    "schelling/schelling-absolute-nothingness.md",
     "zizek/the-gap-between-symbols-and-the-real.md",
+    "voltaire/will-to-live-as-irrational-compulsion.md",
     "voltaire/optimism-and-pessimism-as-twin-inadequacies.md",
     "voltaire/freedom-as-commodity-in-candide.md",
     "voltaire/auto-da-fe-as-governance-by-superstition.md",
@@ -310,7 +311,6 @@
     "simone-weil/empathy-as-exploit-inverts-attention-as-sacrament.md",
     "simone-weil/affliction.md",
     "selfhood/individuality-within-culture.md",
-    "schelling/schelling-absolute-nothingness.md",
     "religion/sacred-and-profane-duality.md",
     "religion/ideology-replaces-religion.md",
     "propaganda/rootedness-not-introspection-against-shaped-preference.md",
