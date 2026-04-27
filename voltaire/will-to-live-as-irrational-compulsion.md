@@ -1,7 +1,8 @@
 ---
-source: Voltaire/Candide
+prompted by: Voltaire/Candide
 type: question
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 An old woman meditates on why humans "detest existence and yet cling to one's existence". She has observed countless people who curse their lives yet almost none who end them: only "three negroes, four Englishmen, and a German professor." Her conclusion is that the attachment to life is not courage, hope. It is an irrational compulsion, a "ridiculous foible". [[Something that operates below the level of deliberation]].
 

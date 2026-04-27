@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Stephen West/Philosophize This! podcast
 type: definition
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 Affliction (*malheur*) is [[simone-weil]]'s term for a state of spiritual malaise, hopelessness, and dehumanization that some people can come to accept as the permanent condition of their existence. Not like ordinary suffering or unhappiness. A deeper condition in which people internalize the belief that they are at best a means to an end, not ends in themselves. They are trapped.
 

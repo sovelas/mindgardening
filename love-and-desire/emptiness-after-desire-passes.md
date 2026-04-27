@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Unsolicited advice (YT channel)
+prompted by: Unsolicited advice (YT channel)
 type: concept
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[Stendhal on Love|Stendhal]] observes that when we give up on a powerful desire, there is often relief but also emptiness. The will has been raging through the psyche, consuming attention and energy, and when it suddenly stops, it leaves a vacuum behind. 
 

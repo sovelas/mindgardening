@@ -1,13 +1,14 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Stephen West/Philosophize This! podcast
 type: argument
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[Murray Bookchin]] used the term "[[futurism]]" to describe a common strategy for deflecting environmental responsibility: 
 we put trust in the belief that some future [[technology]] will save us, so acting now doesn't feel urgent or necessary. 
 This argument can be applied to a wide range of crises: no matter how bad things get, the solution is always deferred to a future technical breakthrough. This not only delays action but normalizes the damage. 
 
-As early as the 1970s, Bookchin noted that futurists were already talking about colonizing the Moon or Mars, treating Earth as a giant spaceship, imagining jumping ship as a solution to ecological problems. Talking about how whatever-amplified-versions-of-current-technology would eliminate environmental damage. 
+Bookchin was already noting in the 1970s that much of what passed for ecological thinking was really just the present moment scaled up: Moon bases, Mars missions, Earth reimagined as machinery to be piloted, technologies that would supposedly grow their way out of the harm they caused... The structural questions went unasked; only the size of the operation changed.
 
 The futurist becomes just another [[conservationist-of-the-status-quo|conservationist of the status quo]] that has given up advocating for social change. 
 

@@ -1,7 +1,8 @@
 ---
-source: Dostoevsky/The Idiot
+prompted by: Dostoevsky/The Idiot
 type: question
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[myshkin-as-holy-fool|Prince Myshkin]] offers [[nastasia-philipovnas-transformation|Nastasia Philipovna]] everything: marriage, respect, refusal to judge her past, a fortune. 
 

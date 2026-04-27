@@ -1,7 +1,8 @@
 ---
-source: Voltaire/Candide
+prompted by: Voltaire/Candide
 type: worldbuilding
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 The novel's final act is a sequence of purchase orders. Candide buys Cacambo's freedom, then Pangloss's and the Baron's from the galley, then Cunegonde's and the old woman's. Each transaction negotiatiated with a different intermediary: Turkish skipper, Levantine captain, Jewish diamond buyers. Freedom is a commodity with fluctuating market prices.
 

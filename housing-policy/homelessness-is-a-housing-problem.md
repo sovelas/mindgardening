@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Ezra Klein & Derek Thompson/Abundance
+prompted by: Ezra Klein & Derek Thompson/Abundance
 type: argument
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 In their book *Homelessness Is a Housing Problem*, [[Gregg Colburn]] and [[Clayton Page Aldern]] systematically test the standard explanations for why [[homelessness]] varies across American cities. Their idea is to identify whether a commonly cited driver of individual homelessness actually predicts *where* homelessness is prevalent.
 

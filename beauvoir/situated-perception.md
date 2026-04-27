@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Stephen West/Philosophize This! podcast
 type: concept
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[Simone de Beauvoir]] rejects the idea that perception can ever come from nowhere. Every act of seeing is shaped by a particular perspective, formed by one's body, history, experience, etc.
 

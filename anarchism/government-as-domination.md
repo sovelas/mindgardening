@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Stephen West/Philosophize This! podcast
 type: argument
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 A common defense of [[government]] is that it mediates between all the conflicting interests that make up a society, and so it is what allows people with differing opinions to coexist. Some anarchists would argue that the government does not mediate; it dominates. It is the entity that holds a gun to your head while passing laws that restrict your freedoms, and will lock you in a concrete cell if you fail to comply with whoever is currently in [[power]]. (Putting it dramatically...)
 

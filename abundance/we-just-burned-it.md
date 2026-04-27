@@ -2,6 +2,7 @@
 where'd I hear about this?: Ezra Klein & Derek Thompson/Abundance
 type: metaphor
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[Melissa Lott]], former director of research at [[Columbia University]]'s Center on Global Energy Policy, offers a reframe of our current energy paradigm. In 100 or 200 years, she suggests, people will look back and be astonished by how we used energy today.
 

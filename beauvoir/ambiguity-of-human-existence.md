@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Simone de Beauvoir/The Ethics of Ambiguity
 type: concept
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 Human existence is fundamentally ambiguous. 
 

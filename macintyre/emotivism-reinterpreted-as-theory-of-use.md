@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: MacIntyre/After Virtue
+prompted by: MacIntyre/After Virtue
 type: argument
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[MacIntyre]] tries to rescue [[emotivism-as-theory-of-meaning|emotivism]] by recasting it. Even if he believes the *meaning* of "This is good" is not only equivalent to "I approve of this; do so as well," it might still be the case that in *using* such sentences, speakers are in fact doing nothing other than expressing feelings and attempting to manipulate others' attitudes. 
 

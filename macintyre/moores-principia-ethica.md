@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: MacIntyre/After Virtue
+prompted by: MacIntyre/After Virtue
 type: concept
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[G.E. Moore]]'s *Principia Ethica* (1903) makes three claims. 
 

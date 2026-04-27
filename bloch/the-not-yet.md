@@ -1,11 +1,10 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Stephen West/Philosophize This! podcast
 type: concept
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 The Not-Yet is [[Ernst Bloch]]'s term for the domain of unrealized possibilities that both human [[consciousness]] and the world itself are perpetually oriented toward. It is the horizon of what *could be* but has not yet come into being.
-
-For Bloch, the Not-Yet is a real dimension of reality. The world itself is always incomplete, always in a state of becoming.
 
 "Even a stone is becoming world." 
 

@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Stephen West/Philosophize This! podcast
 type: concept
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 A Christian duality. What is *sacred*? What is *profane*? 
 *This* world is the realm of the profane, a fallen place in need of saving. The sacred is transcendent and separate; the profane is where we live in.

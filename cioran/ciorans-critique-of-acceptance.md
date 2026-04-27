@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Emil Cioran/On The Heights Of Despair
 type: argument
 reviewed?: true
+last reviewd: 2026-04-27
 ---
  [[acceptance|Acceptance]]: the approach found in [[Stoicism]], many [[Buddhism|Eastern traditions]], and various philosophies of equanimity. The promise is that if we learn to accept what is ultimately out of our control, those painful realities will lose their power over us. [[emil-cioran|Cioran]] was deeply skeptical of it on two fronts.
 

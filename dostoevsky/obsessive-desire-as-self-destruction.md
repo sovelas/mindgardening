@@ -1,7 +1,8 @@
 ---
-source: Dostoevsky/The Idiot
+prompted by: Dostoevsky/The Idiot
 type: theme
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 Rogojin's account of his first encounter with [[nastasia-philipovnas-transformation|Nastasia Philipovna]]. He sees her step into a carriage and is "all of a blaze at once." He embezzles his father's money for diamond earrings, stands mute and shaking in her drawing room, contemplates the Neva, collapses with fever in Pskoff. 
 

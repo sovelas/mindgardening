@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Hoog (YT channel)
+prompted by: Hoog (YT channel)
 type: framework
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 Amsterdam has one of Europe's worst housing crises despite historically being a world leader in public housing. 
 

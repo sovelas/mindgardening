@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Hoog (YT channel)
+prompted by: Hoog (YT channel)
 type: concept
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 The *vereveningsfonds* (equalizing fund) is Amsterdam's primary mechanism for funding affordable housing construction. Because the municipal government owns most of the city's land, it can charge companies and developers for land use. Revenue from expensive, profitable projects flows into the fund, which then subsidizes land for rent-controlled construction. It replicates at the city level what the national government once did with direct subsidies: extract [[land rent]] from high-value uses and redirect it toward affordable housing.
 

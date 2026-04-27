@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Stephen West/Philosophize This! podcast
 type: concept
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 Free association: instead of being forced to participate in the society you happen to be born into, the only communities you belong to are ones you voluntarily choose. These are groups of like-minded people with similar goals, where your cooperation genuinely benefits you and their cooperation genuinely benefits them.
 What anarchists call [[solidarity]].

@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Ben Tarnoff and Quinn Slobodian/The Guardian Weekly
+prompted by: Ben Tarnoff and Quinn Slobodian/The Guardian Weekly
 type: argument
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 DOGE's logical endpoint was governance by [[artificial intelligence]].
 The state reimagined not as a space of [[deliberation]] but as lines of executable code. 

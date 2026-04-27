@@ -1,7 +1,8 @@
 ---
-source: Dostoevsky/The Idiot
+prompted by: Dostoevsky/The Idiot
 type: theme
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 In Chapter V of [[the-idiot|The Idiot]], [[myshkin-as-holy-fool|Prince Myshkin]] describes his Swiss convalescence as a period of increasing happiness. Not caused by events. Caused by attention. 
 

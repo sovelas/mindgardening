@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Simone de Beauvoir/The Ethics of Ambiguity
 type: concept
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 The aesthetic attitude is the attempt to encounter a work of art in a detached and disinterested way. In the history of [[aesthetics]] and [[philosophy of art]], this often means trying to suspend personal preferences, practical concerns, and prior assumptions in order to see the work "as it is."  
   

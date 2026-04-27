@@ -1,9 +1,10 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Stephen West/Philosophize This! podcast
 type: metaphor
 reviewed?: true
+last reviewd: 2026-04-27
 ---
-In [[the-grand-inquisitor|The Grand Inquisitor]], after the Inquisitor finishes his speech against divine freedom, Jesus says nothing. He stands up, walks over, kisses the Inquisitor on the mouth, and leaves. This is a startling counter-perspective to everything the Inquisitor had argued.
+In [[the-grand-inquisitor|The Grand Inquisitor]], after the Inquisitor finishes his speech against divine freedom, Jesus says nothing. He just kisses the Inquisitor on the mouth, and goes. This is a startling counter-perspective to everything the Inquisitor had argued.
 
 The silence is not evasion or politeness. Jesus does not argue back because argument itself is the problem! It is limited to the [[rational-vs-phenomenological-framing|theoretical-abstract framing]] of events, which is by itself incapable of receiving the kind of response Jesus offers. The kiss is pre-theoretical. It is an act of [[active-love-in-dostoevsky|active love]] that models what the Inquisitor's framework cannot access.
 

@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Simone de Beauvoir/The Ethics of Ambiguity
 type: argument
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[Simone de Beauvoir]] argues that [[the-adventurer]] ultimately fails because they deny one side of a fundamental duality: the fact that you are simultaneously an individual with personal projects *and* a member of society at large. The adventurer lives as though their life is self-contained. They create meaning, work on projects, and when they die, those projects die with them. 
 

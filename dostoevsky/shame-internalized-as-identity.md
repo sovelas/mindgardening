@@ -1,7 +1,8 @@
 ---
-source: Dostoevsky/The Idiot
+prompted by: Dostoevsky/The Idiot
 type: concept
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[the-marie-parable|Marie]] "thought it quite right and fitting" that she was treated as the lowest creature. She accepted abuse from her dying mother "without a word," nursed her tormentor faithfully, and never protested the pastor's public humiliation. 
 

@@ -4,6 +4,8 @@
     "cssclasses": "multitext",
     "tags": "tags",
     "reviewed?": "checkbox",
-    "where'd I learned this from": "multitext"
+    "where'd I learned this from": "multitext",
+    "prompted by": "text",
+    "last reviewd": "date"
   }
 }

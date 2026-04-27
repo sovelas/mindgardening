@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Simone de Beauvoir/The Ethics of Ambiguity
 type: principle
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[Simone de Beauvoir]]'s ethical conclusion from [[The Ethics of Ambiguity]] is that we should move in the direction of behaviors that maximize [[freedom]] rather shy away from them (since [[freedom-as-foundation-of-ethics|morality depends on freedom]] and [[moral-obligation-scales-with-freedom|moral responsibility scales with the freedom available]]).
 

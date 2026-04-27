@@ -2,6 +2,7 @@
 where'd I hear about this?: Ezra Klein & Derek Thompson/Abundance
 type: concept
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 In 1965, lawyer [[Ralph Nader]] published *Unsafe at Any Speed*, exposing automakers who resisted safety improvements while blaming drivers for rising fatalities. Teams of young activists known as "Nader's Raiders" who pursued government and big business on behalf of consumers, contributing to laws like the [[Clean Water Act]]. As historian [[Paul Sabin]] documents in *Public Citizens*, the reformers were right to focus on government failure (strip mines, oil refineries dumping toxins into low-income communities, coal miners suffering from black lung, etc).
 

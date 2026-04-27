@@ -112,6 +112,20 @@
     .intro-host p:last-child { margin-bottom: 0; }
     .intro-host a.fake-link { color: var(--link); text-decoration: underline; cursor: pointer; }
 
+    .frontmatter {
+      background: rgba(98, 83, 58, 0.06);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 8px 10px;
+      margin: 0 0 12px;
+      font-size: 11px;
+      display: grid;
+      gap: 3px;
+    }
+    .fm-row { display: grid; grid-template-columns: 110px 1fr; gap: 8px; }
+    .fm-key { color: var(--muted); text-transform: lowercase; }
+    .fm-val { color: var(--ink); word-break: break-word; }
+
     .legend {
       display: flex;
       flex-wrap: wrap;
@@ -1320,13 +1334,24 @@ function sanitizeFetchedContent(root) {
 }
 
 let noteLoadToken = 0;
+function renderFrontmatterBlock(md) {
+  const fm = parseSimpleFrontmatter(md);
+  if (!fm) return '';
+  const entries = Object.entries(fm).filter(([k, v]) => v != null && String(v).trim() !== '');
+  if (!entries.length) return '';
+  const rows = entries.map(([k, v]) => {
+    return `<div class="fm-row"><span class="fm-key">${escapeHtml(k)}</span><span class="fm-val">${escapeHtml(String(v))}</span></div>`;
+  }).join('');
+  return `<div class="frontmatter">${rows}</div>`;
+}
+
 async function loadPublishedNoteIntoHost(meta, pageUrl) {
   const token = ++noteLoadToken;
   const host = notePanelEl.querySelector('.note-host');
   if (!host) return;
 
   if (meta && meta.content) {
-    host.innerHTML = renderMarkdownLite(stripFrontmatter(meta.content));
+    host.innerHTML = renderFrontmatterBlock(meta.content) + renderMarkdownLite(stripFrontmatter(meta.content));
     enhanceContainerWikilinks(host);
     return;
   }
@@ -1342,7 +1367,7 @@ async function loadPublishedNoteIntoHost(meta, pageUrl) {
     try {
       const md = await fetchTextFromCandidatesWithRetry(rawCandidates, meta && meta.repoPath ? meta.repoPath : 'selected note', { maxAttempts: 4 });
       if (token !== noteLoadToken) return;
-      host.innerHTML = renderMarkdownLite(stripFrontmatter(md));
+      host.innerHTML = renderFrontmatterBlock(md) + renderMarkdownLite(stripFrontmatter(md));
       absolutizeContentUrls(host, rawCandidates[0]);
       enhanceContainerWikilinks(host);
       return;
@@ -2078,18 +2103,31 @@ function initIntroLinkDelegation() {
     const a = ev.target.closest('a[data-noteid]');
     if (!a) return;
     ev.preventDefault();
-    const id = a.dataset.noteid;
+    ev.stopPropagation();
+    const wanted = String(a.dataset.noteid || '').toLowerCase();
+    const wantedBasename = wanted.split('/').pop();
     if (!graphState) { console.warn('graphState not ready'); return; }
-    const meta = [...graphState.nodeMeta.values()].find(m =>
-      m.id === id ||
-      m.fullLabel === id ||
-      (m.label && m.label.toLowerCase() === id.toLowerCase())
-    );
+
+    const allMetas = [...graphState.nodeMeta.values()];
+    // Try a series of progressively-looser matches
+    let meta =
+      allMetas.find(m => String(m.id || '').toLowerCase() === wanted) ||
+      allMetas.find(m => String(m.fullLabel || '').toLowerCase() === wanted) ||
+      allMetas.find(m => String(m.id || '').toLowerCase().split('/').pop() === wantedBasename) ||
+      allMetas.find(m => String(m.fullLabel || '').toLowerCase().split('/').pop() === wantedBasename) ||
+      allMetas.find(m => String(m.label || '').toLowerCase() === wantedBasename) ||
+      // finally: any note whose id/path contains the basename as a substring
+      allMetas.find(m => m.kind === 'note' && (
+        String(m.id || '').toLowerCase().includes(wantedBasename) ||
+        String(m.fullLabel || '').toLowerCase().includes(wantedBasename)
+      ));
+
     if (meta) {
       selectNodeById(meta.iid);
     } else {
-      console.warn('Could not find note for id:', id, 'available ids:',
-        [...graphState.nodeMeta.values()].slice(0,5).map(m => ({id: m.id, kind: m.kind})));
+      console.warn('Could not find note for id:', wanted,
+        '— available note ids:', allMetas.filter(m => m.kind === 'note').slice(0, 20).map(m => m.id));
+      alert('Could not find that note. Open the browser console — the available note ids are listed there so we can fix the lookup.');
     }
   });
 }

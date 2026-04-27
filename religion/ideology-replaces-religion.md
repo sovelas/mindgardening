@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Stephen West/Philosophize This! podcast
 type: argument
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 20th century history contains plenty competing [[ideology|ideologies]] living in the wake of the [[god-is-dead-as-regretful-warning|death of God]]. When [[religion]] could no longer serve as the primary source of [[meaning]], [[identity]], and moral certainty, [[ideology]] stepped in to fill the same psychological functions: belonging, purpose, an enemy to oppose, a narrative that makes sense of the world.
 

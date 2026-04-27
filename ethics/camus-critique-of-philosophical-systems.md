@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Albert Camus/The Mith of Sisyphus, The Rebel, Letters to a Germain Friend
 type: argument
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[Albert Camus]] sees the entire tradition of philosophical system-building as rooted in the avoidance of personal suffering [[nietzsche-suffering-is-not-something-to-be-avoided-just-is]]. Philosophers and religious thinkers encounter [[the-absurd-in-camus|the absurd]] and then create systems of theoretical abstractions or grand unifying narratives to escape that discomfort. Oh, make it make sense! They treat the absurd as a [[seeing-things-as-puzzles-to-be-solved|problem to be solved]] rather than a condition to be inhabited.
 

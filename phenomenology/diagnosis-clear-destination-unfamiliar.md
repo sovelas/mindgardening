@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Husserl/The Crisis of European Sciences
+prompted by: Husserl/The Crisis of European Sciences
 type: argument
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[Husserl]]'s late diagnosis in [[the-crisis-of-european-sciences|*The Crisis of European Sciences*]]: [[Galileo]], [[Descartes]], [[Bacon]], [[Newton]] [[self-conscious-bracketing|self-consciously bracketed]] purposes, qualities, and consciousness to make quantifiable scientific progress possible. Over centuries the bracket hardened into a metaphysical claim. That, in a way, whatever was bracketed must not really exist. The methodological move drifted into [[ontological-cover|ontological cover]] for what it made invisible.
 

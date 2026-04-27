@@ -1,7 +1,8 @@
 ---
-source: Herman & Chomsky/Manufacturing Consent
+prompted by: Herman & Chomsky/Manufacturing Consent
 type: argument
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[Edward Herman]] and [[Chomsky]]'s [[the-propaganda-model|propaganda model]] in *Manufacturing Consent*: by construction capitalism will make it so that scaling up and being able to reach more people, instead of giving power to those same people, actually concentrates power on the ones reaching out — since they become able to more easily [[positive-power-vs-negative-power|shape what people want]] rather than the opposite. So big corporations become this giant subtle propaganda machine.
 

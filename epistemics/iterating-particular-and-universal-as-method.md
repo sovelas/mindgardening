@@ -1,7 +1,8 @@
 ---
-where'd I learned this from: Erasmus/The Education of a Christian Prince
+prompted by: Erasmus/The Education of a Christian Prince
 type: principle
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[humanism|Humanism]]  treats *the human as such* as a free-standing object of inquiry, against the [[scholastic-merger|scholastic merger]] of philosophy and theology. Doing so it sets up a trap. The universal "human" abstracts away from the particular, and your [[rootedness-not-introspection-against-shaped-preference|rooted, particular life]] is gets hollowed out. So it seems all the time you have to pick a side to you stand on, the universal or the particular?
 

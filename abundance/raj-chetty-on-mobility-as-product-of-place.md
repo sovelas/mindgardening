@@ -2,6 +2,7 @@
 where'd I hear about this?: Ezra Klein & Derek Thompson/Abundance
 type: argument
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[Raj Chetty]] (economist) and his research team have documented that upward [[economic mobility]] is in structural decline in the United States. A child born into an American household in 1940 had a 92 percent chance of earning more than their parents. A child born in the 1980s (just 40 years later) has just a 50 percent chance.
 

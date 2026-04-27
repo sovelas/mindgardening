@@ -1,10 +1,11 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Stephen West/Philosophize This! podcast
 type: concept
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[Alasdair MacIntyre]] argues that when [[moral discourse]] becomes [[emotivism-as-cultural-condition|emotivist]] (when rational argument can no longer settle moral questions) certain social roles start
-gaining influence. Stephen West mentions three: the manager, the therapist, and the protester.
+gaining influence. Stephen mentions three: the manager, the therapist, and the protester.
 
 **The manager** translates moral conflicts into the technical language of efficiency and process. Their posture is explicitly value-neutral. They never question what the operation is for or whether it is worth pursuing. They are not wonderers. The manager's art is converting questions about what matters into questions about what works, and this skill becomes valuable when nobody can rationally settle questions about ends.
 

@@ -1,7 +1,8 @@
 ---
-where'd I learned this from: Voltaire/Candide
+prompted by: Voltaire/Candide
 type: argument
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 The novel seems to argue that optimism and pessimism are not opposites but twins with the same flaw.
 

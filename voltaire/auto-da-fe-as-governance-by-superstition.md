@@ -1,7 +1,8 @@
 ---
-source: Voltaire/Candide
+prompted by: Voltaire/Candide
 type: worldbuilding
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 Universidade de Coimbra decides that burning people alive is "an infallible secret to hinder the earth from quaking." The earthquake returns the same day. Voltaire constructs a world where the state's response to natural disaster is ritualized human sacrifice, endorsed by a credentialed institution. It is not mob violence but bureaucratic, ceremonial, university-sanctioned killing. The earthquake treated as a policy problem with a theological solution, so to say.
 

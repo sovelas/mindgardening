@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Unsolicited advice (YT channel)
+prompted by: Unsolicited advice (YT channel)
 type: concept
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[Jacques Lacan|Lacan]] observes that for many people, the primary aim in love is not to love but to *be desired*. What is sought is an ideal version of oneself reflected, accepted, and affirmed in the eyes of someone admirable. In this configuration, the beloved is less of an end in themselves and more of a mirror in which a flattering self-image can appear.
 

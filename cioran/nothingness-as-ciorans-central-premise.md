@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Stephen West/Philosophize This! podcast
 type: concept
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 According to [[emil-cioran|Cioran]] when every conventional reason for living (moral, aesthetic, religious, social, etc) is stripped away, what remains is the void: [[nothingness]]. 
 

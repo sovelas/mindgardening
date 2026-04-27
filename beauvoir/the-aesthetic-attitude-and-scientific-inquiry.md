@@ -1,6 +1,7 @@
 ---
-type: synthesis
+prompted by: synthesis
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 The [[The Aesthetic Attitude|aesthetic attitude]] resembles [[scientific inquiry]]. Both seem to ask a person to suspend bias and approach things "as they are." Both value distance from immediate impulse and distrust purely subjective reaction.
 

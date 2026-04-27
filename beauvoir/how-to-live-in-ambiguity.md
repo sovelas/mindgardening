@@ -1,8 +1,8 @@
 ---
+prompted by: Simone de Beauvoir/The Ethics of Ambiguity
 type: argument
-where'd I hear about this?:
-  - Simone de Beauvoir/The Ethics of Ambiguity
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 Accepting finitude, risk, uncertainty, and responsibility instead of seeking refuge in a system that promises final reassurance. 
 

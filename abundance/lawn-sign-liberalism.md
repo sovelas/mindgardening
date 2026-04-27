@@ -2,6 +2,7 @@
 where'd I hear about this?: Ezra Klein & Derek Thompson/Abundance
 type: concept
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 In [[political science]] it is known that some people are "symbolically conservative but operationally liberal”. Meaning they talk like conservatives but want to be governed like liberals. 
 

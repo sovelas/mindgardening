@@ -1,7 +1,8 @@
 ---
-where'd I learned this from: Husserl/The Crisis of European Sciences
+prompted by: Husserl/The Crisis of European Sciences
 type: principle
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 The step back of not only trying to study the scientific methods but understanding *where they come from* shows how much of our "default settings" are hidden. [[Husserl]]'s move in [[the-crisis-of-european-sciences|*Crisis*]] isn't just to point at the [[bracket-drifts-into-metaphysics|bracket-drift]] in modern science; it's to trace it historically. Through [[Galileo]], [[Descartes]], the long arc of post-medieval thought... until you can see when the choice was made and what got chosen against.
 

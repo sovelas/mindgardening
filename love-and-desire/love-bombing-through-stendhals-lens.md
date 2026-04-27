@@ -1,7 +1,8 @@
 ---
-where'd I hear about this?: Unsolicited advice (YT channel)
+prompted by: Unsolicited advice (YT channel)
 type: argument
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[Stendhal on Love|Stendhal's]] framework of [[second-crystallization]] (where a mixture of hope and deprivation cements attachment) illuminates the cruelty of love bombing. When someone overwhelms another person with affection at the start of a relationship and then withdraws it, they generate exactly the emotional cocktail Stendhal describes.
 

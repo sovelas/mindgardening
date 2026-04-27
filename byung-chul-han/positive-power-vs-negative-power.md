@@ -1,17 +1,18 @@
 ---
-where'd I hear about this?: Stephen West/Philosophize This! podcast
+prompted by: Byung-chul Han/Burnout Society
 type: framework
 reviewed?: true
+last reviewd: 2026-04-27
 ---
 [[Byung-chul Han]] distinguishes two modes through which [[power]] operates on people. 
 
 [[Negative power]] controls through prohibition and limitation. 
-Telling people "No, you can't do that" or "You shouldn't do that." 
+"No, you can't/shouldn't".
 This is the dominant form of control in [[disciplinary society]] and in most human societies throughout history. 
 It works through force, rules, punishment.
 
 [[Positive power]], by contrast, controls through affirmation and possibility. 
-Telling people "You can be whatever you want to be." 
+Telling people "You can be whatever you want to be if you try hard enough." 
 Rather than restricting behavior, it motivates us by presenting an infinite horizon of self-improvement. 
 
 Turns out "can" can be far more effective than "should".
