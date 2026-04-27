@@ -4,39 +4,38 @@
     "type": "split",
     "children": [
       {
-        "id": "3b6c5fd5578d8d46",
+        "id": "7083bb9c0b301bad",
         "type": "tabs",
         "children": [
           {
-            "id": "bc0795acf3a3cffc",
+            "id": "592df8a3d1f717b8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "macintyre/moores-principia-ethica.md",
+                "file": "phenomenology/diagnosis-clear-destination-unfamiliar.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "moores-principia-ethica"
+              "title": "diagnosis-clear-destination-unfamiliar"
             }
           },
           {
-            "id": "7f3724241a5b48af",
+            "id": "e9d30efaf27033b9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dostoevsky/the-unsolvable-as-productive-only-from-outside.md",
+                "file": "beauvoir/situated-perception.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "the-unsolvable-as-productive-only-from-outside"
+              "title": "situated-perception"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -68,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "rev",
+                "query": "[reviewed?:]",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -128,12 +127,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "dostoevsky/the-unsolvable-as-productive-only-from-outside.md",
+                "file": "phenomenology/diagnosis-clear-destination-unfamiliar.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from the-unsolvable-as-productive-only-from-outside"
+              "title": "Outgoing links from diagnosis-clear-destination-unfamiliar"
             }
           },
           {
@@ -245,12 +244,32 @@
             "state": {
               "type": "juggl_nodes",
               "state": {},
+              "icon": "lucide-ghost",
+              "title": "juggl_nodes"
+            }
+          },
+          {
+            "id": "dd712f7e9eaa3167",
+            "type": "leaf",
+            "state": {
+              "type": "juggl_style",
+              "state": {},
+              "icon": "lucide-ghost",
+              "title": "juggl_style"
+            }
+          },
+          {
+            "id": "15bb4fa00ad7d11d",
+            "type": "leaf",
+            "state": {
+              "type": "juggl_nodes",
+              "state": {},
               "icon": "ag-node-list",
               "title": "Juggl nodes"
             }
           },
           {
-            "id": "dd712f7e9eaa3167",
+            "id": "d3cbc5ee01ed2a40",
             "type": "leaf",
             "state": {
               "type": "juggl_style",
@@ -279,10 +298,20 @@
       "juggl:Juggl global graph": false
     }
   },
-  "active": "7f3724241a5b48af",
+  "active": "592df8a3d1f717b8",
   "lastOpenFiles": [
-    "propaganda/rootedness-not-introspection-against-shaped-preference.md",
+    "phenomenology/default-settings-have-history.md",
+    "phenomenology/diagnosis-clear-destination-unfamiliar.md",
+    "beauvoir/situated-perception.md",
     "_folder-index-master.md",
+    "epistemics/iterating-particular-and-universal-as-method.md",
+    "phenomenology/Untitled.md",
+    "phenomenology",
+    "housing-policy/amsterdam-housing-crisis-overview.md",
+    "macintyre/moores-principia-ethica.md",
+    "housing-policy/homelessness-is-a-housing-problem.md",
+    "propaganda/rootedness-not-introspection-against-shaped-preference.md",
+    "dostoevsky/the-unsolvable-as-productive-only-from-outside.md",
     "religion/ideology-replaces-religion.md",
     "Helping prompts used.md",
     "_deleted_unreviewed_20260426_082514/wallace/unconscious-worship-eats-you-alive.md",
@@ -298,16 +327,7 @@
     "_deleted_unreviewed_20260426_082514/wallace/blind-certainty-as-imprisonment.md",
     "_deleted_unreviewed_20260426_082514/wallace/default-self-centeredness.md",
     "_deleted_unreviewed_20260426_082514/wallace/capital-t-truth-is-about-life-before-death.md",
-    "_deleted_unreviewed_20260426_082514/wallace/adjusting-the-default-setting.md",
     "_deleted_unreviewed_20260426_082514/wallace",
-    "_deleted_unreviewed_20260426_082514/simone-weil/what-constitutes-a-nation.md",
-    "_deleted_unreviewed_20260426_082514/simone-weil/weils-food-analogy-is-too-generous.md",
-    "_deleted_unreviewed_20260426_082514/simone-weil/weil-vs-de-beauvoir-on-hunger.md",
-    "_deleted_unreviewed_20260426_082514/simone-weil/weil-teaching-method.md",
-    "_deleted_unreviewed_20260426_082514/simone-weil/weil-in-the-spanish-civil-war.md",
-    "_deleted_unreviewed_20260426_082514/simone-weil/weil-in-the-factory.md",
-    "_deleted_unreviewed_20260426_082514/simone-weil/weil-critique-of-marx-on-workers.md",
-    "_deleted_unreviewed_20260426_082514/simone-weil/weil-critique-of-education.md",
     "_deleted_unreviewed_20260426_082514/simone-weil",
     "_deleted_unreviewed_20260426_082514/community",
     "_deleted_unreviewed_20260426_082514/zizek",
@@ -316,7 +336,6 @@
     "_deleted_unreviewed_20260426_082514/beauvoir",
     "_deleted_unreviewed_20260426_082514/religion",
     "_deleted_unreviewed_20260426_082514/ethics",
-    "_deleted_unreviewed_20260426_082514/kundera",
     "Untitled.canvas"
   ]
 }

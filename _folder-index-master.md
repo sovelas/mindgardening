@@ -171,3 +171,9 @@ dv.paragraph(
 - [[optimism-and-pessimism-as-twin-inadequacies]] — Both philosophical systems unfalsifiable, both useless for action
 ## `propaganda/` 
 - [[rootedness-not-introspection-against-shaped-preference]] — Against the propaganda model, introspection is recursive; thickening the rootedness the apparatus erodes is the partial counter available
+
+## `epistemics/` 
+- [[iterating-particular-and-universal-as-method]] — Against picking either pole, the trustworthy picture of the world emerges from the oscillation between myself/other, particular/universal, inside/outside, is/ought
+## `phenomenology/` 
+- [[diagnosis-clear-destination-unfamiliar]] — Husserl's bracket-drift diagnosis is compelling; the proposed exit through the epoché is so unfamiliar that even he seems to struggle, so I take the diagnosis and bracket the destination 
+- [[default-settings-have-history]] — Husserl's historical detective work as method: defaults become visible as choices only by walking back the multi-era trajectory that produced them
