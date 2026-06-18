@@ -2273,6 +2273,366 @@ showUnresolvedEl.addEventListener('change', applyVisibility);
 showLabelsEl.addEventListener('change', applyVisibility);
 
 boot();
+
+  (function gardenSkin () {
+  if (window.__gardenSkin) return;
+  window.__gardenSkin = true;
+ 
+  const STEM = '#5E8C3A', LEAF = '#6FA043', LEAF2 = '#7DB852';
+  const SOIL = '#7A5230', SOIL_DK = '#5A3D22';
+  const SEL = '#b85a2a', SEL_DK = '#7a3a18';
+  const WOOD = '#C9A06A', WOOD_DK = '#8A5A33', INK = '#3A2410';
+  const CENTER = '#F2C84B';
+  const CREAM = 'rgba(250,246,232,0.96)';
+  const BLOOMS = ['#E8895C', '#E58AAD', '#9B86D6', '#F2B33B', '#D4537E',
+                  '#7E6BB0', '#5FA0D6', '#E0A82E', '#5DCAA5', '#EB7DA0',
+                  '#C98BD0', '#88B04B'];
+ 
+  const WC = new Map();
+  let maxDeg = 1, hubT = 6;
+  let gardenSel = { id: null, hot: new Set() };
+ 
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+ 
+  function topFolder (meta) {
+    if (!meta) return null;
+    if (meta.kind === 'folder') return String(meta.id || '').split('/')[0] || 'root';
+    if (meta.kind === 'note') return meta.fullLabel.includes('/') ? meta.fullLabel.split('/')[0] : 'root';
+    return null;
+  }
+  function bedColor (meta) {
+    const t = topFolder(meta);
+    if (!t) return null;
+    return BLOOMS[hashCode(t) % BLOOMS.length];
+  }
+  function degOf (iid) { return (graphState && graphState.degree.get(iid)) || 0; }
+  function wcOf (meta) { return WC.get(normalizeVaultPath(meta.fullLabel)) || 0; }
+ 
+  function radiusFor (iid) {
+    const x = maxDeg > 0 ? degOf(iid) / maxDeg : 0;
+    const minR = clamp(layoutSettings.minNoteSize, 3, 8);
+    const maxR = clamp(6 + layoutSettings.maxNoteSize * 0.30, 12, 24);
+    return minR + (maxR - minR) * Math.pow(x, layoutSettings.sizeExponent || 1);
+  }
+  function stageFor (meta) {
+    const deg = degOf(meta.iid), wc = wcOf(meta);
+    if (deg >= hubT && wc > 0) return 'tree';
+    if (wc >= 200) return 'bloom';
+    if (wc >= 120) return 'bud';
+    if (wc > 0)    return 'sprout';
+    return deg >= 2 ? 'bud' : 'sprout';
+  }
+ 
+  function roundRect (ctx, x, y, w, h, rad) {
+    const r = Math.min(rad, w / 2, h / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+  function drawLeaf (ctx, cx, cy, r, ang) {
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(ang);
+    ctx.fillStyle = LEAF;
+    ctx.beginPath();
+    ctx.ellipse(r * 0.5, 0, r * 0.5, r * 0.26, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+  function flower (ctx, cx, cy, r, color) {
+    for (let i = 0; i < 6; i++) {
+      const a = i * Math.PI / 3;
+      ctx.save();
+      ctx.translate(cx + Math.cos(a) * r * 0.62, cy + Math.sin(a) * r * 0.62);
+      ctx.rotate(a);
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.ellipse(0, 0, r * 0.5, r * 0.34, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+    ctx.fillStyle = CENTER;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r * 0.42, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  function budHead (ctx, x, y, r, color) {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.ellipse(x, y, r * 0.5, r * 0.8, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = STEM;
+    ctx.beginPath();
+    ctx.moveTo(x - r * 0.45, y + r * 0.45);
+    ctx.quadraticCurveTo(x, y + r * 0.1, x + r * 0.45, y + r * 0.45);
+    ctx.lineTo(x, y + r * 0.85);
+    ctx.closePath();
+    ctx.fill();
+  }
+  function drawPlant (ctx, x, y, r, color, stage, isSel, hover) {
+    const sw = Math.max(1.4, r * 0.2);
+    if (stage === 'tree') {
+      ctx.strokeStyle = WOOD_DK;
+      ctx.lineWidth = Math.max(2, r * 0.32);
+      ctx.beginPath();
+      ctx.moveTo(x, y + r * 1.0);
+      ctx.lineTo(x, y + r * 2.1);
+      ctx.stroke();
+      ctx.fillStyle = LEAF;
+      [[0, 0, r], [-r * 0.72, r * 0.28, r * 0.78], [r * 0.72, r * 0.28, r * 0.78], [0, -r * 0.62, r * 0.74]]
+        .forEach(c => { ctx.beginPath(); ctx.arc(x + c[0], y + c[1], c[2], 0, Math.PI * 2); ctx.fill(); });
+      ctx.fillStyle = color;
+      [[-r * 0.35, -r * 0.05], [r * 0.4, r * 0.1], [0, -r * 0.5], [r * 0.1, r * 0.4], [-r * 0.1, r * 0.18]]
+        .forEach(c => { ctx.beginPath(); ctx.arc(x + c[0], y + c[1], r * 0.2, 0, Math.PI * 2); ctx.fill(); });
+    } else {
+      const botY = y + (stage === 'sprout' ? r * 1.5 : r * 2.0);
+      ctx.strokeStyle = STEM;
+      ctx.lineWidth = sw;
+      ctx.beginPath();
+      ctx.moveTo(x, botY);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+      drawLeaf(ctx, x, y + (botY - y) * 0.45, r * 0.95, -0.6);
+      drawLeaf(ctx, x, y + (botY - y) * 0.72, r * 0.95, Math.PI + 0.6);
+      if (stage === 'bloom') flower(ctx, x, y, r, color);
+      else if (stage === 'bud') budHead(ctx, x, y, r, color);
+      else {
+        drawLeaf(ctx, x, y + 1, r * 0.9, -0.95);
+        drawLeaf(ctx, x, y + 1, r * 0.9, Math.PI + 0.95);
+        ctx.fillStyle = LEAF2;
+        ctx.beginPath();
+        ctx.arc(x, y - 1, Math.max(1.4, r * 0.18), 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    if (isSel || hover) {
+      ctx.strokeStyle = isSel ? SEL : 'rgba(184,90,42,0.45)';
+      ctx.lineWidth = isSel ? 2.4 : 1.6;
+      ctx.beginPath();
+      ctx.arc(x, y, r * 1.7 + 2, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+  }
+  function drawSeed (ctx, x, y, isSel, hover) {
+    ctx.fillStyle = SOIL_DK;
+    ctx.beginPath(); ctx.ellipse(x, y + 2, 6.6, 3.4, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = SOIL;
+    ctx.beginPath(); ctx.ellipse(x, y, 6.2, 3.6, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = 'rgba(255,255,255,0.18)';
+    ctx.beginPath(); ctx.ellipse(x - 1.5, y - 1, 2.4, 1.2, 0, 0, Math.PI * 2); ctx.fill();
+    if (isSel || hover) {
+      ctx.strokeStyle = isSel ? SEL : 'rgba(184,90,42,0.5)';
+      ctx.lineWidth = isSel ? 2 : 1.4;
+      ctx.setLineDash([3, 3]);
+      ctx.beginPath(); ctx.arc(x, y, 11, 0, Math.PI * 2); ctx.stroke();
+      ctx.setLineDash([]);
+    }
+  }
+  function drawSign (ctx, x, y, w, h, text, color, isSel) {
+    const left = x - w / 2, top = y - h / 2;
+    ctx.strokeStyle = WOOD_DK; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(x, top + h); ctx.lineTo(x, top + h + 7); ctx.stroke();
+    roundRect(ctx, left, top, w, h, 5);
+    ctx.fillStyle = isSel ? '#E6C091' : WOOD; ctx.fill();
+    ctx.lineWidth = isSel ? 2 : 1.4; ctx.strokeStyle = isSel ? SEL : WOOD_DK; ctx.stroke();
+    if (color) { ctx.fillStyle = color; ctx.beginPath(); ctx.arc(left + 10, y, 3.4, 0, Math.PI * 2); ctx.fill(); }
+    ctx.font = "12px 'Courier New', monospace";
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = INK; ctx.fillText(text, left + (color ? 17 : 9), y + 0.5);
+  }
+  function drawGate (ctx, x, y, isSel) {
+    const pw = 6, ph = 30, span = 16;
+    ctx.fillStyle = WOOD_DK;
+    roundRect(ctx, x - span - pw / 2, y - ph / 2, pw, ph, 2); ctx.fill();
+    roundRect(ctx, x + span - pw / 2, y - ph / 2, pw, ph, 2); ctx.fill();
+    ctx.strokeStyle = WOOD_DK; ctx.lineWidth = 5;
+    ctx.beginPath();
+    ctx.moveTo(x - span - pw / 2, y - ph / 2 + 2);
+    ctx.quadraticCurveTo(x, y - ph / 2 - 9, x + span + pw / 2, y - ph / 2 + 2);
+    ctx.stroke();
+    roundRect(ctx, x - 15, y - 6, 30, 16, 3);
+    ctx.fillStyle = isSel ? '#E6C091' : WOOD; ctx.fill();
+    ctx.lineWidth = isSel ? 2 : 1.3; ctx.strokeStyle = isSel ? SEL : WOOD_DK; ctx.stroke();
+    ctx.font = "9px 'Courier New', monospace";
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = INK; ctx.fillText('index', x, y + 2.5);
+  }
+  function drawLabel (ctx, x, y, text) {
+    ctx.save();
+    ctx.font = "11px 'Courier New', monospace";
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    ctx.lineJoin = 'round'; ctx.lineWidth = 3.5; ctx.strokeStyle = CREAM;
+    ctx.strokeText(text, x, y);
+    ctx.fillStyle = '#1a1408';
+    ctx.fillText(text, x, y);
+    ctx.restore();
+  }
+ 
+  function makeRenderer (iid) {
+    return function ({ ctx, x, y, state, label }) {
+      const meta = (graphState && graphState.nodeMeta.get(iid)) ||
+                   { kind: 'note', fullLabel: iid, id: iid, iid };
+      const hover = state && state.hover;
+      const selFlag = state && state.selected;
+      const hasSel = !!gardenSel.id;
+      const isSel = selFlag || iid === gardenSel.id;
+      const isHot = gardenSel.hot.has(iid);
+      const faded = hasSel && !isHot && !isSel;
+ 
+      const kind = meta.kind;
+      const isGate = kind === 'note' && meta.id === '_folder-index-master';
+      let r = 0, w = 18, h = 18;
+ 
+      if (kind === 'unresolved-wikilink') { w = h = 14; }
+      else if (kind === 'folder') {
+        ctx.save(); ctx.font = "12px 'Courier New', monospace";
+        const tw = ctx.measureText(label || meta.label || '').width;
+        ctx.restore();
+        w = Math.max(46, tw + 26); h = 20;
+      } else if (isGate) { w = 56; h = 46; }
+      else { r = radiusFor(iid); w = h = Math.max(18, r * 2.4); }
+ 
+      function draw () {
+        ctx.save();
+        ctx.globalAlpha = faded ? 0.28 : 1;
+        ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+        if (kind === 'unresolved-wikilink') {
+          drawSeed(ctx, x, y, isSel, hover);
+          if (label) drawLabel(ctx, x, y + 9, label);
+        } else if (kind === 'folder') {
+          drawSign(ctx, x, y, w, h, label || meta.label || '', bedColor(meta), isSel);
+        } else if (isGate) {
+          drawGate(ctx, x, y, isSel);
+          drawLabel(ctx, x, y + 26, 'master index');
+        } else {
+          drawPlant(ctx, x, y, r, bedColor(meta) || '#E58AAD', stageFor(meta), isSel, hover);
+          if (label) drawLabel(ctx, x, y + r * 2.0 + 5, label);
+        }
+        ctx.restore();
+      }
+      return { drawNode: draw, nodeDimensions: { width: w, height: h } };
+    };
+  }
+ 
+  function recomputeDegrees () {
+    maxDeg = 1;
+    if (!graphState) return;
+    graphState.degree.forEach((d, iid) => {
+      const m = graphState.nodeMeta.get(iid);
+      if (m && m.kind === 'note' && d > maxDeg) maxDeg = d;
+    });
+    hubT = Math.max(5, Math.round(maxDeg * 0.65));
+  }
+  function skinAllNodes () {
+    if (!nodesDS || !graphState) return;
+    recomputeDegrees();
+    const updates = [];
+    nodesDS.forEach(n => updates.push({ id: n.id, shape: 'custom', ctxRenderer: makeRenderer(n.id) }));
+    nodesDS.update(updates);
+    if (network) network.redraw();
+  }
+ 
+  /* Re-point edge colours on selection and drive the plant fade/highlight.
+     Replaces the body of applySelectionPalette without touching its callers. */
+  applySelectionPalette = function (nodeId) {
+    if (!graphState) return;
+    const hot = new Set();
+    if (nodeId) {
+      hot.add(nodeId);
+      (graphState.adjacency.get(nodeId) || new Set()).forEach(n => hot.add(n));
+      (graphState.reverseAdjacency.get(nodeId) || new Set()).forEach(n => hot.add(n));
+    }
+    gardenSel = { id: nodeId || null, hot };
+    if (edgesDS) {
+      const eu = [];
+      edgesDS.forEach(e => {
+        const touches = nodeId && (e.from === nodeId || e.to === nodeId);
+        const base = e.relation === 'links_to'
+          ? { color: 'rgba(118,101,78,.22)', highlight: 'rgba(118,101,78,.50)' }
+          : { color: 'rgba(171,145,109,.44)', highlight: 'rgba(171,145,109,.76)' };
+        eu.push({
+          id: e.id,
+          color: touches
+            ? { color: 'rgba(184,90,42,0.55)', highlight: 'rgba(184,90,42,0.75)' }
+            : (nodeId ? { color: 'rgba(40,30,15,0.08)', highlight: base.highlight } : base)
+        });
+      });
+      edgesDS.update(eu);
+    }
+    if (network) network.redraw();
+  };
+ 
+  /* Re-skin automatically after any rebuild (re-layout, size sliders, etc.). */
+  if (typeof loadGraph === 'function') {
+    const _origLoadGraph = loadGraph;
+    loadGraph = async function (g) {
+      await _origLoadGraph(g);
+      skinAllNodes();
+      applySelectionPalette(typeof selectedNodeId !== 'undefined' ? selectedNodeId : null);
+    };
+  }
+ 
+  function injectLegend () {
+    if (document.getElementById('gardenLegend')) return;
+    const card = document.getElementById('overviewCard');
+    if (!card) return;
+    const G = {
+      seed:   '<svg width="14" height="14" viewBox="0 0 14 14"><ellipse cx="7" cy="9" rx="5" ry="2.6" fill="#7A5230"/></svg>',
+      sprout: '<svg width="14" height="16" viewBox="0 0 14 16"><line x1="7" y1="15" x2="7" y2="6" stroke="#5E8C3A" stroke-width="1.6"/><ellipse cx="4" cy="7" rx="3" ry="1.5" fill="#6FA043"/><ellipse cx="10" cy="6" rx="3" ry="1.5" fill="#6FA043"/></svg>',
+      bud:    '<svg width="14" height="16" viewBox="0 0 14 16"><line x1="7" y1="15" x2="7" y2="6" stroke="#5E8C3A" stroke-width="1.6"/><ellipse cx="7" cy="5" rx="2.4" ry="3.6" fill="#9B86D6"/></svg>',
+      bloom:  '<svg width="14" height="16" viewBox="0 0 14 16"><line x1="7" y1="15" x2="7" y2="7" stroke="#5E8C3A" stroke-width="1.6"/><g fill="#E58AAD"><circle cx="7" cy="3" r="2.2"/><circle cx="4" cy="5" r="2.2"/><circle cx="10" cy="5" r="2.2"/><circle cx="7" cy="6.5" r="2.2"/></g><circle cx="7" cy="4.7" r="1.5" fill="#F2C84B"/></svg>',
+      tree:   '<svg width="14" height="16" viewBox="0 0 14 16"><rect x="6" y="9" width="2" height="6" fill="#8A5A33"/><circle cx="7" cy="6" r="4.2" fill="#6FA043"/><circle cx="4" cy="8" r="3" fill="#6FA043"/><circle cx="10" cy="8" r="3" fill="#6FA043"/></svg>'
+    };
+    const wrap = document.createElement('div');
+    wrap.id = 'gardenLegend';
+    wrap.className = 'legend';
+    wrap.style.marginTop = '4px';
+    [['seed', 'unwritten link', G.seed],
+     ['sprout', 'a stub', G.sprout],
+     ['bud', 'a draft', G.bud],
+     ['bloom', 'developed note', G.bloom],
+     ['tree', 'a hub', G.tree]].forEach(([t, d, g]) => {
+      const el = document.createElement('span');
+      el.className = 'legend-item';
+      el.innerHTML = g + '<span>' + t + ' — ' + d + '</span>';
+      wrap.appendChild(el);
+    });
+    const note = document.createElement('span');
+    note.className = 'legend-item';
+    note.innerHTML = '<span>colour = its folder (bed)</span>';
+    wrap.appendChild(note);
+    card.appendChild(wrap);
+  }
+ 
+  /* Pull word counts from the same index the graph already loads. */
+  function loadWordCounts () {
+    return fetch('./notes-index.json', { cache: 'force-cache' })
+      .then(r => r.json())
+      .then(data => {
+        (data.notes || []).forEach(n => {
+          const p = normalizeVaultPath(String(n.path || n.vaultPath || n.id || ''));
+          if (p) WC.set(p, Number(n.word_count) || 0);
+        });
+      })
+      .catch(() => {});
+  }
+ 
+  /* Boot: skin once the network exists, then again once word counts arrive. */
+  loadWordCounts().then(skinAllNodes);
+  (function waitForNetwork () {
+    if (typeof nodesDS !== 'undefined' && nodesDS && typeof network !== 'undefined' && network && graphState) {
+      skinAllNodes();
+      injectLegend();
+    } else {
+      setTimeout(waitForNetwork, 150);
+    }
+  })();
+})();
+  
 </script>
 </body>
 </html>
