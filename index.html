@@ -2273,26 +2273,46 @@ showUnresolvedEl.addEventListener('change', applyVisibility);
 showLabelsEl.addEventListener('change', applyVisibility);
 
 boot();
-
-  (function gardenSkin () {
+(function gardenSkin () {
   if (window.__gardenSkin) return;
   window.__gardenSkin = true;
  
-  const STEM = '#5E8C3A', LEAF = '#6FA043', LEAF2 = '#7DB852';
-  const SOIL = '#7A5230', SOIL_DK = '#5A3D22';
-  const SEL = '#b85a2a', SEL_DK = '#7a3a18';
-  const WOOD = '#C9A06A', WOOD_DK = '#8A5A33', INK = '#3A2410';
-  const CENTER = '#F2C84B';
+  const STEMC = '#6B8455', LEAFC = '#7E9466', WOODC = '#9E7B4F';
+  const SOIL = '#806044', SOIL_DK = '#5C432C';
+  const SEL = '#b85a2a';
+  const WOOD = '#C29A63', WOOD_DK = '#7E5C36', INK = '#3A2A16';
+  const STAMEN = '#E6C36A';
   const CREAM = 'rgba(250,246,232,0.96)';
-  const BLOOMS = ['#E8895C', '#E58AAD', '#9B86D6', '#F2B33B', '#D4537E',
-                  '#7E6BB0', '#5FA0D6', '#E0A82E', '#5DCAA5', '#EB7DA0',
-                  '#C98BD0', '#88B04B'];
+  const SHADOW = 'rgba(60,50,30,0.07)';
+  // muted, herbarium-ish bloom tones (no bright primaries)
+  const BLOOMS = ['#C77B86', '#C2923F', '#6E9E84', '#8C6A9E', '#BD6B4A',
+                  '#6E8CA8', '#B0974A', '#A87C93', '#CC8466', '#7E924B',
+                  '#7B6E9E', '#A85C46'];
  
   const WC = new Map();
   let maxDeg = 1, hubT = 6;
   let gardenSel = { id: null, hot: new Set() };
  
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+ 
+  function rng (seed) {
+    let s = (seed >>> 0) || 1;
+    return function () {
+      s = (s + 0x6D2B79F5) >>> 0;
+      let t = Math.imul(s ^ (s >>> 15), 1 | s);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function hexToRgb (h) {
+    h = h.replace('#', '');
+    return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
+  }
+  function shade (hex, f) {
+    const [r, g, b] = hexToRgb(hex);
+    const mix = c => f < 1 ? Math.round(c * f) : Math.round(c + (255 - c) * (f - 1));
+    return 'rgb(' + mix(r) + ',' + mix(g) + ',' + mix(b) + ')';
+  }
  
   function topFolder (meta) {
     if (!meta) return null;
@@ -2302,8 +2322,7 @@ boot();
   }
   function bedColor (meta) {
     const t = topFolder(meta);
-    if (!t) return null;
-    return BLOOMS[hashCode(t) % BLOOMS.length];
+    return t ? BLOOMS[hashCode(t) % BLOOMS.length] : null;
   }
   function degOf (iid) { return (graphState && graphState.degree.get(iid)) || 0; }
   function wcOf (meta) { return WC.get(normalizeVaultPath(meta.fullLabel)) || 0; }
@@ -2319,147 +2338,218 @@ boot();
     if (deg >= hubT && wc > 0) return 'tree';
     if (wc >= 200) return 'bloom';
     if (wc >= 120) return 'bud';
-    if (wc > 0)    return 'sprout';
+    if (wc > 0) return 'sprout';
     return deg >= 2 ? 'bud' : 'sprout';
   }
  
-  function roundRect (ctx, x, y, w, h, rad) {
-    const r = Math.min(rad, w / 2, h / 2);
-    ctx.beginPath();
-    ctx.moveTo(x + r, y);
-    ctx.arcTo(x + w, y, x + w, y + h, r);
-    ctx.arcTo(x + w, y + h, x, y + h, r);
-    ctx.arcTo(x, y + h, x, y, r);
-    ctx.arcTo(x, y, x + w, y, r);
-    ctx.closePath();
+  /* ---- geometry helpers ---- */
+  function qpoint (p0, p1, p2, t) {
+    const u = 1 - t;
+    return [u * u * p0[0] + 2 * u * t * p1[0] + t * t * p2[0],
+            u * u * p0[1] + 2 * u * t * p1[1] + t * t * p2[1]];
   }
-  function drawLeaf (ctx, cx, cy, r, ang) {
-    ctx.save();
-    ctx.translate(cx, cy);
-    ctx.rotate(ang);
-    ctx.fillStyle = LEAF;
+  function qtangent (p0, p1, p2, t) {
+    const u = 1 - t;
+    return [2 * u * (p1[0] - p0[0]) + 2 * t * (p2[0] - p1[0]),
+            2 * u * (p1[1] - p0[1]) + 2 * t * (p2[1] - p1[1])];
+  }
+  function stemFill (ctx, p0, p1, p2, baseW, color) {
+    const N = 10, L = [], R = [];
+    for (let i = 0; i <= N; i++) {
+      const t = i / N, p = qpoint(p0, p1, p2, t), d = qtangent(p0, p1, p2, t);
+      const len = Math.hypot(d[0], d[1]) || 1;
+      const nx = -d[1] / len, ny = d[0] / len;
+      const w = baseW * (1 - t) * 0.5 + 0.4;
+      L.push([p[0] + nx * w, p[1] + ny * w]);
+      R.push([p[0] - nx * w, p[1] - ny * w]);
+    }
     ctx.beginPath();
-    ctx.ellipse(r * 0.5, 0, r * 0.5, r * 0.26, 0, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.moveTo(L[0][0], L[0][1]);
+    for (let i = 1; i < L.length; i++) ctx.lineTo(L[i][0], L[i][1]);
+    for (let i = R.length - 1; i >= 0; i--) ctx.lineTo(R[i][0], R[i][1]);
+    ctx.closePath();
+    ctx.fillStyle = color; ctx.fill();
+  }
+  function leaf (ctx, x, y, len, ang, color) {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(ang);
+    const w = len * 0.4;
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.quadraticCurveTo(len * 0.4, -w, len, 0);
+    ctx.quadraticCurveTo(len * 0.4, w, 0, 0);
+    ctx.closePath();
+    ctx.fillStyle = color; ctx.fill();
+    ctx.strokeStyle = shade(color, 0.7); ctx.lineWidth = Math.max(0.4, len * 0.05); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(len * 0.06, 0); ctx.lineTo(len * 0.9, 0);
+    ctx.strokeStyle = shade(color, 0.72); ctx.lineWidth = Math.max(0.35, len * 0.04); ctx.stroke();
     ctx.restore();
   }
-  function flower (ctx, cx, cy, r, color) {
-    for (let i = 0; i < 6; i++) {
-      const a = i * Math.PI / 3;
-      ctx.save();
-      ctx.translate(cx + Math.cos(a) * r * 0.62, cy + Math.sin(a) * r * 0.62);
-      ctx.rotate(a);
-      ctx.fillStyle = color;
-      ctx.beginPath();
-      ctx.ellipse(0, 0, r * 0.5, r * 0.34, 0, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-    }
-    ctx.fillStyle = CENTER;
-    ctx.beginPath();
-    ctx.arc(cx, cy, r * 0.42, 0, Math.PI * 2);
-    ctx.fill();
+  function leafOnStem (ctx, p0, p1, p2, t, len, side, color) {
+    const p = qpoint(p0, p1, p2, t), d = qtangent(p0, p1, p2, t);
+    const ta = Math.atan2(d[1], d[0]);
+    leaf(ctx, p[0], p[1], len, ta + side * 1.0, color);
   }
-  function budHead (ctx, x, y, r, color) {
-    ctx.fillStyle = color;
+  function petal (ctx, cx, cy, len, wid, ang, color, outline) {
+    ctx.save(); ctx.translate(cx, cy); ctx.rotate(ang);
     ctx.beginPath();
-    ctx.ellipse(x, y, r * 0.5, r * 0.8, 0, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = STEM;
-    ctx.beginPath();
-    ctx.moveTo(x - r * 0.45, y + r * 0.45);
-    ctx.quadraticCurveTo(x, y + r * 0.1, x + r * 0.45, y + r * 0.45);
-    ctx.lineTo(x, y + r * 0.85);
+    ctx.moveTo(0, 0);
+    ctx.bezierCurveTo(wid, -len * 0.3, wid * 0.6, -len * 0.92, 0, -len);
+    ctx.bezierCurveTo(-wid * 0.6, -len * 0.92, -wid, -len * 0.3, 0, 0);
     ctx.closePath();
-    ctx.fill();
+    ctx.fillStyle = color; ctx.fill();
+    if (outline) { ctx.strokeStyle = shade(color, 0.7); ctx.lineWidth = Math.max(0.35, len * 0.045); ctx.stroke(); }
+    ctx.restore();
   }
-  function drawPlant (ctx, x, y, r, color, stage, isSel, hover) {
-    const sw = Math.max(1.4, r * 0.2);
-    if (stage === 'tree') {
-      ctx.strokeStyle = WOOD_DK;
-      ctx.lineWidth = Math.max(2, r * 0.32);
+  function flower (ctx, cx, cy, r, color, rnd) {
+    const n = 5 + Math.floor(rnd() * 3);
+    const base = rnd() * Math.PI * 2;
+    const petL = r * 1.3, petW = r * 0.5;
+    for (let i = 0; i < n; i++) petal(ctx, cx, cy, petL * 0.9, petW * 0.9, base + i * 2 * Math.PI / n + 0.2, shade(color, 0.82), false);
+    for (let i = 0; i < n; i++) petal(ctx, cx, cy, petL * (0.9 + rnd() * 0.2), petW, base + i * 2 * Math.PI / n, color, true);
+    ctx.fillStyle = shade(color, 0.55);
+    ctx.beginPath(); ctx.arc(cx, cy, r * 0.34, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = STAMEN;
+    for (let i = 0; i < 7; i++) {
+      const a = rnd() * Math.PI * 2, rr = rnd() * r * 0.22;
+      ctx.beginPath(); ctx.arc(cx + Math.cos(a) * rr, cy + Math.sin(a) * rr, Math.max(0.5, r * 0.07), 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  function bud (ctx, x, y, r, color) {
+    ctx.save(); ctx.translate(x, y);
+    ctx.beginPath();
+    ctx.moveTo(0, r * 0.2);
+    ctx.bezierCurveTo(r * 0.55, r * 0.05, r * 0.4, -r, 0, -r * 1.15);
+    ctx.bezierCurveTo(-r * 0.4, -r, -r * 0.55, r * 0.05, 0, r * 0.2);
+    ctx.closePath();
+    ctx.fillStyle = color; ctx.fill();
+    ctx.strokeStyle = shade(color, 0.7); ctx.lineWidth = Math.max(0.4, r * 0.05); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, r * 0.1); ctx.quadraticCurveTo(r * 0.12, -r * 0.4, 0, -r); ctx.strokeStyle = shade(color, 0.72); ctx.lineWidth = Math.max(0.3, r * 0.04); ctx.stroke();
+    for (const s of [-1, 1]) {
       ctx.beginPath();
-      ctx.moveTo(x, y + r * 1.0);
-      ctx.lineTo(x, y + r * 2.1);
-      ctx.stroke();
-      ctx.fillStyle = LEAF;
-      [[0, 0, r], [-r * 0.72, r * 0.28, r * 0.78], [r * 0.72, r * 0.28, r * 0.78], [0, -r * 0.62, r * 0.74]]
-        .forEach(c => { ctx.beginPath(); ctx.arc(x + c[0], y + c[1], c[2], 0, Math.PI * 2); ctx.fill(); });
-      ctx.fillStyle = color;
-      [[-r * 0.35, -r * 0.05], [r * 0.4, r * 0.1], [0, -r * 0.5], [r * 0.1, r * 0.4], [-r * 0.1, r * 0.18]]
-        .forEach(c => { ctx.beginPath(); ctx.arc(x + c[0], y + c[1], r * 0.2, 0, Math.PI * 2); ctx.fill(); });
-    } else {
-      const botY = y + (stage === 'sprout' ? r * 1.5 : r * 2.0);
-      ctx.strokeStyle = STEM;
-      ctx.lineWidth = sw;
-      ctx.beginPath();
-      ctx.moveTo(x, botY);
-      ctx.lineTo(x, y);
-      ctx.stroke();
-      drawLeaf(ctx, x, y + (botY - y) * 0.45, r * 0.95, -0.6);
-      drawLeaf(ctx, x, y + (botY - y) * 0.72, r * 0.95, Math.PI + 0.6);
-      if (stage === 'bloom') flower(ctx, x, y, r, color);
-      else if (stage === 'bud') budHead(ctx, x, y, r, color);
+      ctx.moveTo(0, r * 0.2);
+      ctx.quadraticCurveTo(s * r * 0.5, -r * 0.05, s * r * 0.16, -r * 0.55);
+      ctx.quadraticCurveTo(s * r * 0.1, -r * 0.05, 0, r * 0.2);
+      ctx.closePath();
+      ctx.fillStyle = LEAFC; ctx.fill();
+      ctx.strokeStyle = shade(LEAFC, 0.72); ctx.lineWidth = Math.max(0.3, r * 0.04); ctx.stroke();
+    }
+    ctx.restore();
+  }
+  function blob (ctx, cx, cy, rad, color, rnd) {
+    const pts = 8;
+    ctx.beginPath();
+    for (let i = 0; i <= pts; i++) {
+      const a = i / pts * Math.PI * 2, rr = rad * (0.82 + rnd() * 0.3);
+      const px = cx + Math.cos(a) * rr, py = cy + Math.sin(a) * rr;
+      if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.fillStyle = color; ctx.fill();
+    ctx.strokeStyle = shade(color, 0.78); ctx.lineWidth = Math.max(0.4, rad * 0.05); ctx.stroke();
+  }
+  function tree (ctx, x, y, r, color, rnd, bx, by) {
+    const P0 = [bx, by], P2 = [x, y + r * 0.2], P1 = [(bx + x) / 2, (by + y) / 2];
+    stemFill(ctx, P0, P1, P2, Math.max(2.4, r * 0.5), WOODC);
+    const lobes = [[0, -r * 0.4, r], [-r * 0.7, -r * 0.05, r * 0.78], [r * 0.7, -r * 0.05, r * 0.78], [0, -r * 0.95, r * 0.7]];
+    lobes.forEach(l => blob(ctx, x + l[0] + r * 0.08, y + l[1] + r * 0.08, l[2], shade(LEAFC, 0.8), rnd));
+    lobes.forEach(l => blob(ctx, x + l[0], y + l[1], l[2], LEAFC, rnd));
+    ctx.fillStyle = color;
+    for (let i = 0; i < 6; i++) {
+      const a = rnd() * Math.PI * 2, rr = r * (0.3 + rnd() * 0.6);
+      ctx.beginPath(); ctx.arc(x + Math.cos(a) * rr, y - r * 0.4 + Math.sin(a) * rr * 0.7, Math.max(0.8, r * 0.12), 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  function drawPlant (ctx, x, y, r, color, stage, isSel, hover, rnd) {
+    const lean = (rnd() - 0.5) * r * 1.0;
+    const baseY = y + (stage === 'sprout' ? r * 1.8 : r * 2.3);
+    const bx = x - lean;
+    ctx.fillStyle = SHADOW;
+    ctx.beginPath(); ctx.ellipse(bx, baseY, r * 1.0, r * 0.3, 0, 0, Math.PI * 2); ctx.fill();
+    if (stage === 'tree') { tree(ctx, x, y, r, color, rnd, bx, baseY); }
+    else {
+      const P0 = [bx, baseY], P2 = [x, y], P1 = [(bx + x) / 2 + lean * 0.3, (baseY + y) / 2];
+      stemFill(ctx, P0, P1, P2, Math.max(1.6, r * 0.32), STEMC);
+      leafOnStem(ctx, P0, P1, P2, 0.42, r * 1.0, 1, LEAFC);
+      leafOnStem(ctx, P0, P1, P2, 0.66, r * 0.85, -1, LEAFC);
+      if (stage === 'bloom') { leafOnStem(ctx, P0, P1, P2, 0.24, r * 0.72, 1, LEAFC); flower(ctx, x, y, r, color, rnd); }
+      else if (stage === 'bud') { bud(ctx, x, y, r, color); }
       else {
-        drawLeaf(ctx, x, y + 1, r * 0.9, -0.95);
-        drawLeaf(ctx, x, y + 1, r * 0.9, Math.PI + 0.95);
-        ctx.fillStyle = LEAF2;
-        ctx.beginPath();
-        ctx.arc(x, y - 1, Math.max(1.4, r * 0.18), 0, Math.PI * 2);
-        ctx.fill();
+        leaf(ctx, x, y, r * 0.95, -1.05 + (rnd() - 0.5) * 0.2, LEAFC);
+        leaf(ctx, x, y, r * 0.95, -2.1 + (rnd() - 0.5) * 0.2, LEAFC);
+        leaf(ctx, x, y - r * 0.3, r * 0.7, -1.57 + (rnd() - 0.5) * 0.3, LEAFC);
       }
     }
     if (isSel || hover) {
-      ctx.strokeStyle = isSel ? SEL : 'rgba(184,90,42,0.45)';
-      ctx.lineWidth = isSel ? 2.4 : 1.6;
-      ctx.beginPath();
-      ctx.arc(x, y, r * 1.7 + 2, 0, Math.PI * 2);
-      ctx.stroke();
+      ctx.strokeStyle = isSel ? SEL : 'rgba(184,90,42,0.4)';
+      ctx.lineWidth = isSel ? 1.8 : 1.3;
+      ctx.beginPath(); ctx.arc(x, y, r * 1.85 + 2, 0, Math.PI * 2); ctx.stroke();
     }
   }
   function drawSeed (ctx, x, y, isSel, hover) {
-    ctx.fillStyle = SOIL_DK;
-    ctx.beginPath(); ctx.ellipse(x, y + 2, 6.6, 3.4, 0, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = SOIL;
-    ctx.beginPath(); ctx.ellipse(x, y, 6.2, 3.6, 0, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = 'rgba(255,255,255,0.18)';
-    ctx.beginPath(); ctx.ellipse(x - 1.5, y - 1, 2.4, 1.2, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.save(); ctx.translate(x, y);
+    ctx.fillStyle = SHADOW;
+    ctx.beginPath(); ctx.ellipse(0, 2.5, 7, 2.4, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.rotate(-0.5);
+    ctx.beginPath(); ctx.ellipse(0, 0, 5.4, 3.1, 0, 0, Math.PI * 2);
+    ctx.fillStyle = SOIL; ctx.fill();
+    ctx.strokeStyle = SOIL_DK; ctx.lineWidth = 0.8; ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(4, 0.4); ctx.quadraticCurveTo(8, 1, 9.5, 3);
+    ctx.strokeStyle = shade(LEAFC, 0.95); ctx.lineWidth = 1; ctx.stroke();
+    ctx.restore();
     if (isSel || hover) {
       ctx.strokeStyle = isSel ? SEL : 'rgba(184,90,42,0.5)';
-      ctx.lineWidth = isSel ? 2 : 1.4;
-      ctx.setLineDash([3, 3]);
-      ctx.beginPath(); ctx.arc(x, y, 11, 0, Math.PI * 2); ctx.stroke();
-      ctx.setLineDash([]);
+      ctx.lineWidth = isSel ? 1.8 : 1.3; ctx.setLineDash([3, 3]);
+      ctx.beginPath(); ctx.arc(x, y, 12, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
     }
   }
-  function drawSign (ctx, x, y, w, h, text, color, isSel) {
-    const left = x - w / 2, top = y - h / 2;
-    ctx.strokeStyle = WOOD_DK; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(x, top + h); ctx.lineTo(x, top + h + 7); ctx.stroke();
-    roundRect(ctx, left, top, w, h, 5);
-    ctx.fillStyle = isSel ? '#E6C091' : WOOD; ctx.fill();
-    ctx.lineWidth = isSel ? 2 : 1.4; ctx.strokeStyle = isSel ? SEL : WOOD_DK; ctx.stroke();
-    if (color) { ctx.fillStyle = color; ctx.beginPath(); ctx.arc(left + 10, y, 3.4, 0, Math.PI * 2); ctx.fill(); }
+  function drawMarker (ctx, x, y, w, h, text, color, isSel) {
+    const left = x - w / 2, top = y - h / 2, tip = top + h + 8;
+    ctx.strokeStyle = WOOD_DK; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.moveTo(x, top + h); ctx.lineTo(x, tip + 3); ctx.stroke();
+    const rad = 4;
+    ctx.beginPath();
+    ctx.moveTo(left + rad, top);
+    ctx.lineTo(left + w - rad, top);
+    ctx.arcTo(left + w, top, left + w, top + rad, rad);
+    ctx.lineTo(left + w, top + h - 3);
+    ctx.lineTo(x, tip);
+    ctx.lineTo(left, top + h - 3);
+    ctx.lineTo(left, top + rad);
+    ctx.arcTo(left, top, left + rad, top, rad);
+    ctx.closePath();
+    ctx.fillStyle = isSel ? '#DBB47E' : WOOD; ctx.fill();
+    ctx.lineWidth = isSel ? 1.8 : 1.2; ctx.strokeStyle = isSel ? SEL : WOOD_DK; ctx.stroke();
+    if (color) { ctx.fillStyle = color; ctx.beginPath(); ctx.arc(left + 10, top + h / 2, 3.2, 0, Math.PI * 2); ctx.fill(); }
     ctx.font = "12px 'Courier New', monospace";
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-    ctx.fillStyle = INK; ctx.fillText(text, left + (color ? 17 : 9), y + 0.5);
+    ctx.fillStyle = INK; ctx.fillText(text, left + (color ? 17 : 9), top + h / 2 + 0.5);
   }
   function drawGate (ctx, x, y, isSel) {
-    const pw = 6, ph = 30, span = 16;
+    const pw = 5, ph = 30, span = 16;
+    ctx.fillStyle = SHADOW;
+    ctx.beginPath(); ctx.ellipse(x, y + ph / 2 + 2, span + 6, 3, 0, 0, Math.PI * 2); ctx.fill();
     ctx.fillStyle = WOOD_DK;
-    roundRect(ctx, x - span - pw / 2, y - ph / 2, pw, ph, 2); ctx.fill();
-    roundRect(ctx, x + span - pw / 2, y - ph / 2, pw, ph, 2); ctx.fill();
-    ctx.strokeStyle = WOOD_DK; ctx.lineWidth = 5;
+    ctx.fillRect(x - span - pw / 2, y - ph / 2, pw, ph);
+    ctx.fillRect(x + span - pw / 2, y - ph / 2, pw, ph);
+    ctx.strokeStyle = WOOD_DK; ctx.lineWidth = 5; ctx.lineCap = 'round';
     ctx.beginPath();
     ctx.moveTo(x - span - pw / 2, y - ph / 2 + 2);
-    ctx.quadraticCurveTo(x, y - ph / 2 - 9, x + span + pw / 2, y - ph / 2 + 2);
+    ctx.quadraticCurveTo(x, y - ph / 2 - 10, x + span + pw / 2, y - ph / 2 + 2);
     ctx.stroke();
-    roundRect(ctx, x - 15, y - 6, 30, 16, 3);
-    ctx.fillStyle = isSel ? '#E6C091' : WOOD; ctx.fill();
-    ctx.lineWidth = isSel ? 2 : 1.3; ctx.strokeStyle = isSel ? SEL : WOOD_DK; ctx.stroke();
+    for (const s of [-1, 1]) {
+      ctx.strokeStyle = shade(LEAFC, 0.9); ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      ctx.moveTo(x + s * (span + pw / 2), y + ph / 4);
+      ctx.quadraticCurveTo(x + s * (span - 3), y - 2, x + s * (span + 2), y - ph / 3);
+      ctx.stroke();
+    }
+    const bw = 30, bh = 15;
+    ctx.beginPath(); ctx.rect(x - bw / 2, y - 4, bw, bh);
+    ctx.fillStyle = isSel ? '#DBB47E' : WOOD; ctx.fill();
+    ctx.lineWidth = isSel ? 1.8 : 1.2; ctx.strokeStyle = isSel ? SEL : WOOD_DK; ctx.stroke();
     ctx.font = "9px 'Courier New', monospace";
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillStyle = INK; ctx.fillText('index', x, y + 2.5);
+    ctx.fillStyle = INK; ctx.fillText('index', x, y + 3.5);
   }
   function drawLabel (ctx, x, y, text) {
     ctx.save();
@@ -2467,50 +2557,46 @@ boot();
     ctx.textAlign = 'center'; ctx.textBaseline = 'top';
     ctx.lineJoin = 'round'; ctx.lineWidth = 3.5; ctx.strokeStyle = CREAM;
     ctx.strokeText(text, x, y);
-    ctx.fillStyle = '#1a1408';
-    ctx.fillText(text, x, y);
+    ctx.fillStyle = '#1a1408'; ctx.fillText(text, x, y);
     ctx.restore();
   }
  
   function makeRenderer (iid) {
     return function ({ ctx, x, y, state, label }) {
-      const meta = (graphState && graphState.nodeMeta.get(iid)) ||
-                   { kind: 'note', fullLabel: iid, id: iid, iid };
+      const meta = (graphState && graphState.nodeMeta.get(iid)) || { kind: 'note', fullLabel: iid, id: iid, iid };
       const hover = state && state.hover;
-      const selFlag = state && state.selected;
-      const hasSel = !!gardenSel.id;
-      const isSel = selFlag || iid === gardenSel.id;
+      const isSel = (state && state.selected) || iid === gardenSel.id;
       const isHot = gardenSel.hot.has(iid);
-      const faded = hasSel && !isHot && !isSel;
+      const faded = !!gardenSel.id && !isHot && !isSel;
  
       const kind = meta.kind;
       const isGate = kind === 'note' && meta.id === '_folder-index-master';
       let r = 0, w = 18, h = 18;
  
-      if (kind === 'unresolved-wikilink') { w = h = 14; }
+      if (kind === 'unresolved-wikilink') { w = h = 16; }
       else if (kind === 'folder') {
         ctx.save(); ctx.font = "12px 'Courier New', monospace";
         const tw = ctx.measureText(label || meta.label || '').width;
         ctx.restore();
         w = Math.max(46, tw + 26); h = 20;
-      } else if (isGate) { w = 56; h = 46; }
+      } else if (isGate) { w = 56; h = 48; }
       else { r = radiusFor(iid); w = h = Math.max(18, r * 2.4); }
  
       function draw () {
         ctx.save();
-        ctx.globalAlpha = faded ? 0.28 : 1;
+        ctx.globalAlpha = faded ? 0.26 : 1;
         ctx.lineJoin = 'round'; ctx.lineCap = 'round';
         if (kind === 'unresolved-wikilink') {
           drawSeed(ctx, x, y, isSel, hover);
-          if (label) drawLabel(ctx, x, y + 9, label);
+          if (label) drawLabel(ctx, x, y + 10, label);
         } else if (kind === 'folder') {
-          drawSign(ctx, x, y, w, h, label || meta.label || '', bedColor(meta), isSel);
+          drawMarker(ctx, x, y, w, h, label || meta.label || '', bedColor(meta), isSel);
         } else if (isGate) {
           drawGate(ctx, x, y, isSel);
-          drawLabel(ctx, x, y + 26, 'master index');
+          drawLabel(ctx, x, y + 28, 'master index');
         } else {
-          drawPlant(ctx, x, y, r, bedColor(meta) || '#E58AAD', stageFor(meta), isSel, hover);
-          if (label) drawLabel(ctx, x, y + r * 2.0 + 5, label);
+          drawPlant(ctx, x, y, r, bedColor(meta) || '#C77B86', stageFor(meta), isSel, hover, rng(hashCode(iid)));
+          if (label) drawLabel(ctx, x, y + r * 2.4 + 4, label);
         }
         ctx.restore();
       }
@@ -2536,8 +2622,6 @@ boot();
     if (network) network.redraw();
   }
  
-  /* Re-point edge colours on selection and drive the plant fade/highlight.
-     Replaces the body of applySelectionPalette without touching its callers. */
   applySelectionPalette = function (nodeId) {
     if (!graphState) return;
     const hot = new Set();
@@ -2566,7 +2650,6 @@ boot();
     if (network) network.redraw();
   };
  
-  /* Re-skin automatically after any rebuild (re-layout, size sliders, etc.). */
   if (typeof loadGraph === 'function') {
     const _origLoadGraph = loadGraph;
     loadGraph = async function (g) {
@@ -2581,21 +2664,16 @@ boot();
     const card = document.getElementById('overviewCard');
     if (!card) return;
     const G = {
-      seed:   '<svg width="14" height="14" viewBox="0 0 14 14"><ellipse cx="7" cy="9" rx="5" ry="2.6" fill="#7A5230"/></svg>',
-      sprout: '<svg width="14" height="16" viewBox="0 0 14 16"><line x1="7" y1="15" x2="7" y2="6" stroke="#5E8C3A" stroke-width="1.6"/><ellipse cx="4" cy="7" rx="3" ry="1.5" fill="#6FA043"/><ellipse cx="10" cy="6" rx="3" ry="1.5" fill="#6FA043"/></svg>',
-      bud:    '<svg width="14" height="16" viewBox="0 0 14 16"><line x1="7" y1="15" x2="7" y2="6" stroke="#5E8C3A" stroke-width="1.6"/><ellipse cx="7" cy="5" rx="2.4" ry="3.6" fill="#9B86D6"/></svg>',
-      bloom:  '<svg width="14" height="16" viewBox="0 0 14 16"><line x1="7" y1="15" x2="7" y2="7" stroke="#5E8C3A" stroke-width="1.6"/><g fill="#E58AAD"><circle cx="7" cy="3" r="2.2"/><circle cx="4" cy="5" r="2.2"/><circle cx="10" cy="5" r="2.2"/><circle cx="7" cy="6.5" r="2.2"/></g><circle cx="7" cy="4.7" r="1.5" fill="#F2C84B"/></svg>',
-      tree:   '<svg width="14" height="16" viewBox="0 0 14 16"><rect x="6" y="9" width="2" height="6" fill="#8A5A33"/><circle cx="7" cy="6" r="4.2" fill="#6FA043"/><circle cx="4" cy="8" r="3" fill="#6FA043"/><circle cx="10" cy="8" r="3" fill="#6FA043"/></svg>'
+      seed:   '<svg width="15" height="15" viewBox="0 0 15 15"><ellipse cx="7" cy="9" rx="4.6" ry="2.6" fill="#806044" stroke="#5C432C" stroke-width="0.6"/><path d="M11 9 Q13 9.6 13.6 11" fill="none" stroke="#6E8456" stroke-width="0.9"/></svg>',
+      sprout: '<svg width="15" height="17" viewBox="0 0 15 17"><path d="M7.5 16 Q7 10 7.5 7" fill="none" stroke="#6B8455" stroke-width="1.4"/><path d="M7.5 7 Q11 6 12 3 Q9 4 7.5 7" fill="#7E9466" stroke="#566640" stroke-width="0.5"/><path d="M7.5 8 Q4 7 3 4 Q6 5 7.5 8" fill="#7E9466" stroke="#566640" stroke-width="0.5"/></svg>',
+      bud:    '<svg width="15" height="17" viewBox="0 0 15 17"><path d="M7.5 16 Q7 10 7.5 6" fill="none" stroke="#6B8455" stroke-width="1.4"/><path d="M7.5 6.4 Q9.8 5 7.5 1.5 Q5.2 5 7.5 6.4Z" fill="#C77B86" stroke="#8a5560" stroke-width="0.5"/></svg>',
+      bloom:  '<svg width="16" height="17" viewBox="0 0 16 17"><path d="M8 16 Q7.5 11 8 8" fill="none" stroke="#6B8455" stroke-width="1.4"/><g fill="#C77B86" stroke="#8a5560" stroke-width="0.4"><path d="M8 8 Q10.5 5 8 2 Q5.5 5 8 8Z"/><path d="M8 8 Q11.8 7 12.5 3.5 Q9 4.5 8 8Z"/><path d="M8 8 Q4.2 7 3.5 3.5 Q7 4.5 8 8Z"/><path d="M8 8 Q11 10.5 13 8.5 Q9.5 6.5 8 8Z"/><path d="M8 8 Q5 10.5 3 8.5 Q6.5 6.5 8 8Z"/></g><circle cx="8" cy="6.6" r="1.5" fill="#9c5560"/></svg>',
+      tree:   '<svg width="16" height="17" viewBox="0 0 16 17"><path d="M8 16 L8 9" stroke="#9E7B4F" stroke-width="2"/><circle cx="8" cy="6" r="4.4" fill="#7E9466" stroke="#566640" stroke-width="0.5"/><circle cx="4.5" cy="8" r="2.8" fill="#7E9466" stroke="#566640" stroke-width="0.5"/><circle cx="11.5" cy="8" r="2.8" fill="#7E9466" stroke="#566640" stroke-width="0.5"/><circle cx="9" cy="5" r="1" fill="#C77B86"/><circle cx="6.5" cy="7" r="1" fill="#C77B86"/></svg>'
     };
     const wrap = document.createElement('div');
-    wrap.id = 'gardenLegend';
-    wrap.className = 'legend';
-    wrap.style.marginTop = '4px';
-    [['seed', 'unwritten link', G.seed],
-     ['sprout', 'a stub', G.sprout],
-     ['bud', 'a draft', G.bud],
-     ['bloom', 'developed note', G.bloom],
-     ['tree', 'a hub', G.tree]].forEach(([t, d, g]) => {
+    wrap.id = 'gardenLegend'; wrap.className = 'legend'; wrap.style.marginTop = '4px';
+    [['seed', 'unwritten link', G.seed], ['sprout', 'a stub', G.sprout], ['bud', 'a draft', G.bud],
+     ['bloom', 'developed note', G.bloom], ['tree', 'a hub', G.tree]].forEach(([t, d, g]) => {
       const el = document.createElement('span');
       el.className = 'legend-item';
       el.innerHTML = g + '<span>' + t + ' — ' + d + '</span>';
@@ -2608,7 +2686,6 @@ boot();
     card.appendChild(wrap);
   }
  
-  /* Pull word counts from the same index the graph already loads. */
   function loadWordCounts () {
     return fetch('./notes-index.json', { cache: 'force-cache' })
       .then(r => r.json())
@@ -2621,7 +2698,6 @@ boot();
       .catch(() => {});
   }
  
-  /* Boot: skin once the network exists, then again once word counts arrive. */
   loadWordCounts().then(skinAllNodes);
   (function waitForNetwork () {
     if (typeof nodesDS !== 'undefined' && nodesDS && typeof network !== 'undefined' && network && graphState) {
