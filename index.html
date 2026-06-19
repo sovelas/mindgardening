@@ -711,7 +711,12 @@ function hasReviewedFrontmatter(md) {
   return ['true', 'yes', 'y', '1', 'on'].includes(String(raw).trim().toLowerCase());
 }
 function buildGraphFromMarkdownFiles(noteFiles, ctx) {
-  noteFiles = noteFiles.filter(file => file && (file.reviewed === true || (file.reviewed == null && hasReviewedFrontmatter(file.content || ''))));
+  noteFiles = noteFiles.filter(file => {
+    if (!file) return false;
+    const _id = normalizeVaultPath(file.vaultPath || file.id || '');
+    if (_id === '_folder-index-master' || _id.split('/').pop() === '_folder-index-master') return true;
+    return file.reviewed === true || (file.reviewed == null && hasReviewedFrontmatter(file.content || ''));
+  });
   const nodes = [];
   const edges = [];
   const folderSet = new Set();
