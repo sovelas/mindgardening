@@ -25,12 +25,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "nussbaum/the-bifurcation-of-duties.md",
+                "file": "selfhood/the-resistance-to-being-read.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "the-bifurcation-of-duties"
+              "title": "the-resistance-to-being-read"
             }
           }
         ],
@@ -66,7 +66,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "[where'd I hear about this?]",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -87,7 +87,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -300,32 +301,34 @@
   },
   "active": "e9d30efaf27033b9",
   "lastOpenFiles": [
-    "nussbaum/the-cosmopolitan-tradition.md",
-    "nussbaum/the-bifurcation-of-duties.md",
-    "epistemics/iterating-particular-and-universal-as-method.md",
     "phenomenology/default-settings-have-history.md",
-    "_folder-index-master.md",
-    "dostoevsky/obsessive-desire-as-self-destruction.md",
-    "schelling/schelling-absolute-nothingness.md",
-    "zizek/the-gap-between-symbols-and-the-real.md",
-    "voltaire/will-to-live-as-irrational-compulsion.md",
-    "voltaire/optimism-and-pessimism-as-twin-inadequacies.md",
-    "voltaire/freedom-as-commodity-in-candide.md",
-    "voltaire/auto-da-fe-as-governance-by-superstition.md",
-    "violence-and-aesthetics/jigsaw-as-strict-patriarch.md",
-    "techno-politics/governance-by-ai-doges-endpoint.md",
+    "anarchism/futurism-and-the-techno-savior-critique.md",
+    "dostoevsky/jesus-kiss-as-pre-theoretical-response.md",
     "simone-weil/empathy-as-exploit-inverts-attention-as-sacrament.md",
-    "simone-weil/affliction.md",
-    "selfhood/individuality-within-culture.md",
-    "religion/sacred-and-profane-duality.md",
-    "religion/ideology-replaces-religion.md",
-    "propaganda/rootedness-not-introspection-against-shaped-preference.md",
-    "phenomenology/diagnosis-clear-destination-unfamiliar.md",
-    "nihilism/philosophical-responses-to-the-void.md",
-    "macintyre/moores-principia-ethica.md",
-    "macintyre/emotivism-reinterpreted-as-theory-of-use.md",
-    "macintyre/characters-of-emotivist-culture.md",
-    "love-and-desire/vulnerability-to-manipulation-through-crushes.md",
+    "voltaire/will-to-live-as-irrational-compulsion.md",
+    "love-and-desire/a-cento-on-love-and-the-war-against-death.md",
+    "nihilism/the-war-against-death.md",
+    "love-and-desire/love-bombing-through-stendhals-lens.md",
+    "nussbaum/the-bifurcation-of-duties.md",
+    "bloch/the-not-yet.md",
+    "abundance/cuttings-are-free.md",
+    "techno-politics/we-do-more-because-we-can.md",
+    "attention/everything-is-the-same-is-about-attention.md",
+    "abundance/we-just-burned-it.md",
+    "anarchism/government-as-domination.md",
+    "selfhood/does-it-matter-who-decides-what-i-care-about.md",
+    "dostoevsky/rescue-refused-by-the-rescued.md",
+    "selfhood/from-feeling-to-synthesis.md",
+    "beauvoir/the-aesthetic-attitude.md",
+    "attention/the-illusion-of-control-over-attention.md",
+    "housing-policy/amsterdam-housing-crisis-overview.md",
+    "_folder-index-master.md",
+    "techno-politics/should-humanity-get-a-special-tag.md",
+    "techno-politics/scared-of-what-the-world-will-become.md",
+    "selfhood/the-resistance-to-being-read.md",
+    "selfhood/narrowing-vocabulary-into-adulthood.md",
+    "illich",
+    "attention",
     "Untitled.canvas",
     "index.html.sb-17ce30f0-4VdmZA",
     "phenomenology",
@@ -334,8 +337,6 @@
     "_deleted_unreviewed_20260426_082514/community",
     "_deleted_unreviewed_20260426_082514/zizek",
     "_deleted_unreviewed_20260426_082514/schelling",
-    "_deleted_unreviewed_20260426_082514/violence-and-aesthetics",
-    "_deleted_unreviewed_20260426_082514/beauvoir",
-    "_deleted_unreviewed_20260426_082514/religion"
+    "_deleted_unreviewed_20260426_082514/violence-and-aesthetics"
   ]
 }

@@ -10,22 +10,28 @@
 - [[happiness-as-attention]] — Myshkin's Swiss happiness as a skill of perception, not a product of circumstance
 - [[shame-internalized-as-identity]] — How social punishment produces internal collapse in the victim
 - [[rescue-refused-by-the-rescued]] — Why Nastasia rejects the prince's genuine offer of salvation
-
+- [[what-is-it-like-to-be-dostoevsky]] — Nagel's bat carried inside the species; the privacy of the inside, even through all his words
 ---
 
 ## `nihilism/` 
 - [[philosophical-responses-to-the-void]] — Existential thinkers differ less in whether they confront the void than in how they respond to it: through endurance, revolt, freedom, ethical reciprocity, or faith and active love.
+- [[the-war-against-death]] — beautiful and quixotic at once; meaning in the waging, not the winning
 
 ---
 
 ## `ethics/` 
 - [[camus-critique-of-philosophical-systems]] — Camus' argument that philosophical system-building is rooted in avoidance of suffering and proved helpless against fascism
-
+- [[keeping-your-values-in-a-game-that-punishes-them]] — where to draw the line before comfort inverts you; why "someone will do it anyway" is an anaesthetic
+- [[rights-as-a-moving-standard]] — is a "right" just a fight for a bit more than we have? Nussbaum's capabilities as an attempt to anchor the floor
+- [[effective-altruism-as-machine-morality]] — EA as the morality a bodiless mind would converge on: its strength and its unease
 ---
 
 ## `selfhood/` 
 - [[individuality-within-culture]] — True individuality as inhabiting and owning one's place in a culture
-
+- [[narrowing-vocabulary-into-adulthood]] — adulthood prunes the vocabulary childhood grew; I want neither to narrow nor to disintegrate
+- [[from-feeling-to-synthesis]] — I can't write from feeling anymore, only toward clarity; why the cramped musical forms do what loose prose can't
+- [[the-resistance-to-being-read]] — why I flinch from sharing; the flinch wears the shape of shame and calls itself modesty
+- [[does-it-matter-who-decides-what-i-care-about]] — shaped preference; judge a care by where it points, not where it came from
 ---
 
 ## `religion/` 
@@ -99,11 +105,15 @@
 - [[lawn-sign-liberalism]] — Symbolically liberal, operationally conservative: the blue-state housing hypocrisy
 - [[naders-raiders-and-environmental-law]] — How liberal reformers built an apparatus to sue the government — and its unintended consequences
 - [[we-just-burned-it]] — The barbarism of combustion-based civilization from the future's perspective
+- [[cuttings-are-free]] — buying what you could propagate; abundance is already to hand if you'll attend and wait
 
 ---
 
 ## `techno-politics/`
 - [[governance-by-ai-doges-endpoint]] — DOGE's logical terminus: replacing democratic deliberation with executable code
+- [[should-humanity-get-a-special-tag]] — the moral tag both protects and walls off; a useful fiction we can neither drop nor worship
+- [[we-do-more-because-we-can]] — the Game Boy memory jump; capacity outrunning need, and the slow creep past "enough"
+- [[scared-of-what-the-world-will-become]] — fear as loss of contact; puppet strings; how to teach the ones to come
 
 ---
 
@@ -117,6 +127,8 @@
 - [[love-bombing-through-stendhals-lens]] — How Stendhal's framework illuminates the cruelty of love bombing and withdrawal
 - [[desire-to-be-desired]] — Lacan's observation that the primary aim in love is often to be desired rather than to desire
 - [[vulnerability-to-manipulation-through-crushes]] — How the emotional dynamics of crushes create exploitable psychological vulnerabilities
+- [[a-cento-on-love-and-the-war-against-death]] — a passage assembled from six books: demons, love, death, beauty
+- [[love-as-the-highest-goal]] — Frankl in the camps: love as attention to the beloved, the thing that holds when all else is stripped
 
 ---
 
@@ -135,6 +147,9 @@
 
 ## `epistemics/` 
 - [[iterating-particular-and-universal-as-method]] — Against picking either pole, the trustworthy picture of the world emerges from the oscillation between myself/other, particular/universal, inside/outside, is/ought
+- [[conversation-as-an-art-exhibition]] — talking with Marina isn't agree/disagree, it's the aesthetic attitude turned on ideas
+- [[the-little-voice-and-judgement-as-shared-practice]] — the duty to keep the inner voice's worldview accurate; judgement grows from practice, not rules or dogma
+- [[nuance-versus-the-straight-answer]] — the push to drop nuance; flattening as amputation, the way minds and organisations narrow
 
 ---
 
@@ -146,3 +161,14 @@
 - [[the-bifurcation-of-duties]] — Cicero's split between universal duties of justice (mostly "don't harm") and weaker, local duties of material aid — the load-bearing flaw that lets you affirm equal worth while owing strangers almost nothing
 - [[dignity-needs-external-goods]] — how grounding dignity in reason alone curdles it into macho self-command and lets us ignore the destitute; the capabilities-approach correction that dignity is the dignity of a needy, embodied animal
 - [[cosmopolitan-through-the-local]] — her surprising landing on the nation-state, and the open question of whether the universal can only be reached *through* a rooted, particular home
+---
+## `illich/`
+- [[counterproductivity]] — past a threshold of institutionalisation, a good process turns against the goal it grew for
+
+---
+## `attention/`
+- [[everything-is-the-same-is-about-attention]] — "everything is the same thing" isn't about the world; it's a record of where I point my attention, and the patterns are real for the questions I keep asking
+- [[the-girl-on-the-train]] — a cabin of absent adults and one fully-present child; attention is what makes you actually *there*
+- [[the-illusion-of-control-over-attention]] — the wandering moments feel more mine than the 95% on rails; control and freedom come apart
+- [[attention-warps-time]] — four tended months can outweigh thirty half-watched years; autopilot is a different order of life, not a worse one
+- [[coincidence-as-a-dimension-of-beauty]] — reading life as signs, and Kundera's "laws of beauty": attend to coincidence as beauty, not as instruction
