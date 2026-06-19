@@ -503,9 +503,9 @@
 <body>
   <section class="top-section">
     <div class="card overview-card" id="overviewCard">
-      <h1>A mind that needs some gardening</h1>
-      <div class="help">One day it'll all be clear, maybe.</div>
-      <div id="overviewSummary" class="overview-summary">This mind garden includes: 0 nodes, 0 edges, 0 notes and 0 folders.</div>
+        <h1>Mind Gardening</h1>
+        <div class="help">We must cultivate our garden. <span style="opacity:.65">— Voltaire</span></div>
+      //<div id="overviewSummary" class="overview-summary">This mind garden includes: 0 nodes, 0 edges, 0 notes and 0 folders.</div>
     </div>
   </section>
 
@@ -513,10 +513,9 @@
     <div class="controlbar">
       <input id="searchInput" type="search" placeholder="Search notes, folders, or unresolved links…" />
       <button id="searchBtn">Find</button>
-      <button id="fitBtn">Fit graph</button>
+      <button id="fitBtn">Fit</button>
       <button id="stabilizeBtn">Re-layout</button>
-      <button id="neighborhoodBtn">Neighborhood</button>
-      <button id="clearBtn">Clear focus</button>
+      <button id="clearBtn">Clear</button>
       <span id="status" class="status">Ready.</span>
     </div>
   </section>
@@ -2262,7 +2261,7 @@ searchInput.addEventListener('keydown', (e) => {
 });
 document.getElementById('fitBtn').addEventListener('click', () => network && network.fit({ animation: true }));
 document.getElementById('clearBtn').addEventListener('click', clearFocus);
-document.getElementById('neighborhoodBtn').addEventListener('click', focusNeighborhood);
+document.getElementById('neighborhoodBtn')?.addEventListener('click', focusNeighborhood);
 document.getElementById('stabilizeBtn').addEventListener('click', () => {
   if (!network) return;
   network.setOptions({ physics: true });
