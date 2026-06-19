@@ -1375,7 +1375,7 @@ function buildState(graph) {
         strokeColor: 'rgba(250,246,232,.96)'
       },
       mass: isSummary ? 0.01 : (meta.kind === 'folder' ? 1.3 : (meta.kind === 'unresolved-wikilink' ? 0.9 : 1)),
-      physics: !isSummary,
+      physics: isSummary ? false : (meta.kind === 'unresolved-wikilink' ? showUnresolvedEl.checked : true),
       fixed: isSummary ? { x: true, y: true } : false,
       x: isSummary ? -420 : undefined,
       y: isSummary ? -260 : undefined
@@ -1410,6 +1410,7 @@ function buildState(graph) {
     if (!fromMeta || !toMeta) continue;
     if (isRootFolderMeta(fromMeta) || isRootFolderMeta(toMeta)) continue;
     const touchesSummary = isSummaryMeta(fromMeta) || isSummaryMeta(toMeta);
+    const touchesUnresolved = sourceKind === 'unresolved-wikilink' || targetKind === 'unresolved-wikilink';
     if (!touchesSummary) {
       visEdges.push({
         id: `${from}→${to}:${e.relation}`,
@@ -1422,7 +1423,8 @@ function buildState(graph) {
         width: e.relation === 'links_to' ? 0.9 : 1.35,
         dashes: e.relation !== 'links_to',
         smooth: false,
-        hidden: false
+        hidden: false,
+        physics: touchesUnresolved ? showUnresolvedEl.checked : true
       });
     }
     adjacency.get(from).add(to);
@@ -1491,11 +1493,13 @@ function applyVisibility() {
     if (meta.kind === 'folder' && !showFolders) hidden = true;
     if (meta.kind === 'unresolved-wikilink' && !showUnresolved) hidden = true;
     if (neighborhoodFilter && !neighborhoodFilter.has(meta.iid)) hidden = true;
-    nodeUpdates.push({
+    const upd = {
       id: meta.iid,
       hidden,
       label: showLabelsEl.checked ? (isSummary ? SUMMARY_NOTE_ID : meta.label) : ''
-    });
+    };
+    if (meta.kind === 'unresolved-wikilink') upd.physics = showUnresolved;
+    nodeUpdates.push(upd);
   }
   nodesDS.update(nodeUpdates);
   const hiddenById = new Map(nodeUpdates.map(n => [n.id, n.hidden]));
@@ -1504,9 +1508,17 @@ function applyVisibility() {
     const toHidden = hiddenById.get(e.to);
     let hidden = fromHidden || toHidden;
     if (!showFolders && (e.relation === 'in_folder' || e.relation === 'child_of')) hidden = true;
-    return { id: e.id, hidden };
+    const u = { id: e.id, hidden };
+    if (e.from.startsWith('unresolved:') || e.to.startsWith('unresolved:')) u.physics = showUnresolved;
+    return u;
   });
   edgesDS.update(edgeUpdates);
+}
+function restabilizeBriefly(ms) {
+  if (!network) return;
+  network.setOptions({ physics: true });
+  clearTimeout(window.__reflowT);
+  window.__reflowT = setTimeout(() => { if (network) network.setOptions({ physics: false }); }, ms || 1400);
 }
 function stripFrontmatter(md) {
   if (!md) return '';
@@ -2014,7 +2026,7 @@ document.getElementById('stabilizeBtn').addEventListener('click', () => {
   setTimeout(() => network.setOptions({ physics: false }), 180000);
 });
 showFoldersEl.addEventListener('change', applyVisibility);
-showUnresolvedEl.addEventListener('change', applyVisibility);
+showUnresolvedEl.addEventListener('change', () => { applyVisibility(); restabilizeBriefly(); });
 showLabelsEl.addEventListener('change', applyVisibility);
 boot();
 /* ============================================================================
@@ -2469,6 +2481,7 @@ boot();
         ic.addEventListener('click', () => {
           showUnresolvedEl.checked = !showUnresolvedEl.checked;
           applyVisibility();
+          restabilizeBriefly();
           sync();
         });
       } else {
