@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Mind gardening</title>
+  <title>Mind Gardening</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://unpkg.com/vis-network@9.1.9/dist/vis-network.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/vis-network@9.1.9/styles/vis-network.min.css" />
@@ -19,9 +19,7 @@
       --link: #5f4b35;
       --overlay: rgba(71, 58, 39, 0.16);
     }
-
     * { box-sizing: border-box; }
-
     html,
     body {
       height: 100%;
@@ -31,30 +29,25 @@
       font-family: 'Courier New', Courier, monospace;
       font-size: 12.075px;
     }
-
     body {
       display: grid;
       grid-template-rows: auto auto 1fr;
       min-height: 100vh;
     }
-
     button,
     input,
     textarea,
     select {
       font: inherit;
     }
-
     .top-section,
     .controlbar-wrap {
       padding: 14px 16px 0;
     }
-
     .controlbar-wrap {
       padding-top: 12px;
       padding-bottom: 14px;
     }
-
     .card {
       background: var(--panel);
       border: 1px solid var(--border);
@@ -62,7 +55,6 @@
       padding: 14px 16px;
       box-shadow: 0 8px 20px rgba(92, 77, 55, 0.05);
     }
-
     .overview-card h1,
     .card h2,
     .card h3,
@@ -70,12 +62,10 @@
       margin: 0 0 10px;
       color: var(--text);
     }
-
     .overview-card {
       display: grid;
       gap: 10px;
     }
-
     .help,
     .empty,
     .status,
@@ -89,20 +79,17 @@
     .label {
       color: var(--muted);
     }
-
     .help,
     .empty,
     .note-preview {
       line-height: 1.6;
       font-size: 11.5px;
     }
-
     .overview-summary {
       padding-top: 4px;
       border-top: 1px dashed var(--border);
       font-size: 11.5px;
     }
-
     .intro-host {
       font-size: 12.075px;
       line-height: 1.65;
@@ -111,7 +98,6 @@
     .intro-host p { margin: 0 0 10px; }
     .intro-host p:last-child { margin-bottom: 0; }
     .intro-host a.fake-link { color: var(--link); text-decoration: underline; cursor: pointer; }
-
     .frontmatter {
       background: rgba(98, 83, 58, 0.06);
       border: 1px solid var(--border);
@@ -125,13 +111,11 @@
     .fm-row { display: grid; grid-template-columns: 110px 1fr; gap: 8px; }
     .fm-key { color: var(--muted); text-transform: lowercase; }
     .fm-val { color: var(--ink); word-break: break-word; }
-
     .legend {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
-
     .legend-item,
     .badge,
     .mini-stat,
@@ -145,14 +129,12 @@
       background: var(--panel-2);
       font-size: 9.2px;
     }
-
     .dot {
       width: 10px;
       height: 10px;
       border-radius: 50%;
       display: inline-block;
     }
-
     .inline-link {
       border: 0;
       background: none;
@@ -162,7 +144,6 @@
       text-decoration: underline;
       text-underline-offset: 2px;
     }
-
     .controlbar {
       display: flex;
       flex-wrap: wrap;
@@ -174,7 +155,6 @@
       border-radius: 16px;
       box-shadow: 0 8px 20px rgba(92, 77, 55, 0.05);
     }
-
     input[type="search"] {
       flex: 1 1 280px;
       min-width: 220px;
@@ -185,7 +165,6 @@
       color: var(--text);
       outline: none;
     }
-
     button,
     .button-link {
       display: inline-flex;
@@ -200,32 +179,27 @@
       text-decoration: none;
       transition: transform 0.15s ease, background 0.15s ease;
     }
-
     button:hover,
     .button-link:hover,
     .panel-tab:hover {
       transform: translateY(-1px);
       background: var(--panel-3);
     }
-
     .status {
       margin-left: auto;
       font-size: 10.35px;
     }
-
     .layout {
       min-height: 0;
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       border-top: 1px solid var(--border);
     }
-
     #graph {
       min-height: 0;
       min-width: 0;
       background: #fffef9;
     }
-
     .sidebar {
       min-width: 0;
       border-left: 1px solid var(--border);
@@ -233,7 +207,6 @@
       padding: 14px;
       overflow: auto;
     }
-
     .panel-tabs {
       display: flex;
       gap: 8px;
@@ -244,37 +217,30 @@
       background: linear-gradient(var(--panel), var(--panel));
       z-index: 2;
     }
-
     .panel-tab {
       flex: 1;
       background: #fffef9;
     }
-
     .panel-tab.active {
       background: var(--panel-3);
       font-weight: 700;
     }
-
     .panel-view.hidden,
     .overlay.hidden {
       display: none;
     }
-
     .panel-view {
       display: block;
     }
-
     .selection-compact {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
       gap: 12px;
       align-items: start;
     }
-
     .selection-compact .title-wrap {
       min-width: 0;
     }
-
     .selection-actions,
     .inline-stats,
     .toggle-row {
@@ -282,11 +248,9 @@
       flex-wrap: wrap;
       gap: 8px;
     }
-
     .selection-actions {
       justify-content: flex-end;
     }
-
     .mono,
     .note-preview code,
     .note-preview pre,
@@ -295,82 +259,68 @@
       font-family: 'Courier New', Courier, monospace;
       word-break: break-word;
     }
-
     .note-preview {
       white-space: normal;
       color: var(--text);
     }
-
     .note-preview p {
       margin: 0 0 10px;
     }
-
     .note-preview h1,
     .note-preview h2,
     .note-preview h3 {
       margin: 14px 0 8px;
     }
-
     .note-preview code {
       background: var(--panel-2);
       padding: 1px 4px;
       border-radius: 6px;
     }
-
     .note-preview pre {
       background: #f7f1de;
       padding: 10px;
       border-radius: 10px;
       overflow: auto;
     }
-
     .note-host {
       min-height: 120px;
     }
-
     .note-host img {
       max-width: 100%;
       height: auto;
     }
-
     .note-host a,
     a.fake-link {
       color: var(--link);
       text-decoration: underline;
       text-underline-offset: 2px;
     }
-
     .note-host blockquote {
       border-left: 3px solid var(--border);
       margin: 0 0 10px;
       padding-left: 12px;
       color: var(--muted);
     }
-
     .layout-controls {
       display: grid;
       grid-template-columns: repeat(2, minmax(180px, 1fr));
       gap: 12px 14px;
       align-items: end;
     }
-
     .slider-control {
       display: grid;
       gap: 4px;
       min-width: 150px;
     }
-
     .slider-control label {
       display: flex;
       justify-content: space-between;
       gap: 10px;
       font-size: 9.2px;
     }
-
     .slider-control input[type="range"] {
       width: 100%;
     }
-
     .overlay {
       position: fixed;
       inset: 0;
@@ -381,7 +331,6 @@
       padding: 18px;
       z-index: 30;
     }
-
     .overlay-panel {
       width: min(460px, calc(100vw - 36px));
       max-height: calc(100vh - 36px);
@@ -393,7 +342,6 @@
       background: var(--panel);
       box-shadow: 0 22px 60px rgba(92, 77, 55, 0.22);
     }
-
     .overlay-head {
       display: flex;
       align-items: center;
@@ -403,24 +351,20 @@
       border-bottom: 1px solid var(--border);
       background: #fffef9;
     }
-
     .overlay-head h3 {
       margin: 0;
       font-size: 13.8px;
       color: var(--text);
     }
-
     .overlay-body {
       padding: 14px 16px 16px;
       overflow: auto;
     }
-
     .overlay-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
     }
-
     .neighbor-list {
       display: flex;
       flex-direction: column;
@@ -428,7 +372,6 @@
       max-height: 260px;
       overflow: auto;
     }
-
     .neighbor {
       display: flex;
       justify-content: space-between;
@@ -442,18 +385,15 @@
       color: var(--text);
       text-align: left;
     }
-
     .neighbor small {
       color: var(--muted);
     }
-
     .neighbor-meta {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       flex-wrap: wrap;
     }
-
     .relation-chip {
       display: inline-flex;
       align-items: center;
@@ -464,40 +404,39 @@
       color: var(--muted);
       background: var(--panel-2);
     }
-
     @media (max-width: 1100px) {
       .selection-compact,
       .overlay-grid,
       .layout-controls {
         grid-template-columns: 1fr;
       }
-
       .selection-actions {
         justify-content: flex-start;
       }
     }
-
     @media (max-width: 980px) {
       body {
         grid-template-rows: auto auto auto;
       }
-
       .layout {
         grid-template-columns: 1fr;
         grid-template-rows: minmax(48vh, 1fr) auto;
       }
-
       .sidebar {
         border-left: 0;
         border-top: 1px solid var(--border);
         max-height: 52vh;
       }
-
       .status {
         margin-left: 0;
         width: 100%;
       }
     }
+    /* compact controls, tabs, and header */
+    .controlbar button { padding: 6px 11px; font-size: 11px; border-radius: 8px; }
+    .panel-tab { padding: 6px 10px; font-size: 11.5px; }
+    .overview-card { gap: 5px; }
+    .overview-card h1 { margin: 0; }
   </style>
 </head>
 <body>
@@ -508,7 +447,6 @@
       <!-- <div id="overviewSummary" class="overview-summary">This mind garden includes: 0 nodes, 0 edges, 0 notes and 0 folders.</div> -->
     </div>
   </section>
-
   <section class="controlbar-wrap">
     <div class="controlbar">
       <input id="searchInput" type="search" placeholder="Search notes, folders, or unresolved links…" />
@@ -519,15 +457,13 @@
       <!-- <span id="status" class="status">Ready.</span> -->
     </div>
   </section>
-
   <div class="layout">
     <div id="graph"></div>
     <aside class="sidebar">
       <div class="panel-tabs">
         <button type="button" class="panel-tab active" id="noteTabBtn">Note</button>
-        <button type="button" class="panel-tab" id="optionsTabBtn">Graph and layout options</button>
+        <button type="button" class="panel-tab" id="optionsTabBtn">Options</button>
       </div>
-
       <section id="noteView" class="panel-view">
         <div class="card" id="selectionSummary">
           <h3>Selection</h3>
@@ -544,13 +480,11 @@
           </div>
         </div>
       </section>
-
       <section id="optionsView" class="panel-view hidden">
         <div class="card">
           <h2>Graph and layout options</h2>
           <div class="help">Use these controls to adjust what appears in the graph and how the layout settles.</div>
         </div>
-
         <div class="card">
           <h3>Graph</h3>
           <div class="toggle-row">
@@ -559,7 +493,6 @@
             <label class="toggle"><input id="showLabels" type="checkbox" checked /> labels</label>
           </div>
         </div>
-
         <div class="card">
           <h3>Layout</h3>
           <div class="layout-controls">
@@ -567,42 +500,34 @@
               <label for="gravSlider">repulsion <output id="gravValue"></output></label>
               <input id="gravSlider" type="range" min="-120" max="-10" step="1" value="-55" />
             </div>
-
             <div class="slider-control">
               <label for="centralSlider">center pull <output id="centralValue"></output></label>
               <input id="centralSlider" type="range" min="0" max="0.10" step="0.005" value="0.02" />
             </div>
-
             <div class="slider-control">
               <label for="springSlider">spring length <output id="springValue"></output></label>
               <input id="springSlider" type="range" min="30" max="180" step="1" value="85" />
             </div>
-
             <div class="slider-control">
               <label for="springKSlider">spring stiffness <output id="springKValue"></output></label>
               <input id="springKSlider" type="range" min="0.01" max="0.20" step="0.005" value="0.09" />
             </div>
-
             <div class="slider-control">
               <label for="dampingSlider">damping <output id="dampingValue"></output></label>
               <input id="dampingSlider" type="range" min="0.05" max="0.90" step="0.01" value="0.45" />
             </div>
-
             <div class="slider-control">
               <label for="overlapSlider">overlap <output id="overlapValue"></output></label>
               <input id="overlapSlider" type="range" min="0" max="1" step="0.01" value="0.65" />
             </div>
-
             <div class="slider-control">
               <label for="minSizeSlider">min size <output id="minSizeValue"></output></label>
               <input id="minSizeSlider" type="range" min="1" max="20" step="1" value="2" />
             </div>
-
             <div class="slider-control">
               <label for="maxSizeSlider">max size <output id="maxSizeValue"></output></label>
               <input id="maxSizeSlider" type="range" min="10" max="80" step="1" value="52" />
             </div>
-
             <div class="slider-control">
               <label for="expSlider">size exponent <output id="expValue"></output></label>
               <input id="expSlider" type="range" min="0.5" max="2.5" step="0.05" value="1.0" />
@@ -612,7 +537,6 @@
       </section>
     </aside>
   </div>
-
   <div id="connectionsOverlay" class="overlay hidden" onclick="if (event.target === this) closeConnectionsPanel()">
     <div class="overlay-panel">
       <div class="overlay-head">
@@ -624,52 +548,42 @@
       </div>
     </div>
   </div>
-
 <script>
 let rawGraph = null;
-
 const LOCAL_INDEX = {
   url: './notes-index.json'
 };
-
 let githubContext = null;
-
 function dirname(path) {
   const clean = String(path || '').replace(/^\/+|\/+$/g, '');
   if (!clean || !clean.includes('/')) return '';
   return clean.slice(0, clean.lastIndexOf('/'));
 }
-
 function resolveGithubContext() {
   return { ...LOCAL_INDEX };
 }
-
 function getGithubContext() {
   if (!githubContext) githubContext = resolveGithubContext();
   return githubContext;
 }
-
 function githubRawUrlFromRepoPath(ctx, repoPath) {
   const normalized = String(repoPath || '').replace(/^\/+/, '');
   return `https://raw.githubusercontent.com/${encodeURIComponent(ctx.owner)}/${encodeURIComponent(ctx.repo)}/${encodeURIComponent(ctx.branch)}/${normalized}`;
 }
-
 function noteBasename(notePath) {
   const clean = normalizeVaultPath(notePath);
   return clean.split('/').pop().toLowerCase();
 }
-
 function canonicalLookupKey(value) {
   return String(value || '')
     .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[̀-ͯ]/g, '')
     .toLowerCase()
     .replace(/[_\-\/]+/g, ' ')
     .replace(/[^a-z0-9 ]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
-
 function addLookupMatch(map, key, value) {
   const normalizedKey = String(key || '').trim().toLowerCase();
   if (!normalizedKey) return;
@@ -677,24 +591,20 @@ function addLookupMatch(map, key, value) {
   const list = map.get(normalizedKey);
   if (!list.includes(value)) list.push(value);
 }
-
 function shouldIgnoreLinkedAsset(target) {
   const clean = String(target || '').trim().toLowerCase();
   return /\.(png|jpe?g|gif|svg|webp|bmp|pdf|mp3|wav|m4a|mov|mp4)$/i.test(clean);
 }
-
 function extractNoteTargetsFromMarkdown(md) {
   const targets = new Set();
   const wikilinkRegex = /!?\[\[([^\]]+)\]\]/g;
   const markdownLinkRegex = /!?(?<!\!)\[[^\]]*\]\(([^)]+)\)/g;
-
   let match = null;
   while ((match = wikilinkRegex.exec(md || ''))) {
     const rawTarget = (match[1] || '').split('|')[0].split('#')[0].trim();
     if (!rawTarget || shouldIgnoreLinkedAsset(rawTarget)) continue;
     targets.add(rawTarget);
   }
-
   while ((match = markdownLinkRegex.exec(md || ''))) {
     const href = (match[1] || '').trim();
     if (!href || href.startsWith('#')) continue;
@@ -704,18 +614,14 @@ function extractNoteTargetsFromMarkdown(md) {
     if (!/\.md$/i.test(cleanHref) && cleanHref.includes('.')) continue;
     targets.add(cleanHref);
   }
-
   return Array.from(targets);
 }
-
 function resolveNoteTarget(target, currentNotePath, noteByPath, basenameMap, titleMap) {
   const cleanTarget = normalizeVaultPath(String(target || '').trim());
   if (!cleanTarget) return null;
-
   if (noteByPath.has(cleanTarget)) {
     return cleanTarget;
   }
-
   if (cleanTarget.includes('/')) {
     const relativeCandidate = joinPathParts(dirname(currentNotePath), cleanTarget);
     if (noteByPath.has(relativeCandidate)) return relativeCandidate;
@@ -723,14 +629,12 @@ function resolveNoteTarget(target, currentNotePath, noteByPath, basenameMap, tit
     const siblingCandidate = joinPathParts(dirname(currentNotePath), cleanTarget);
     if (noteByPath.has(siblingCandidate)) return siblingCandidate;
   }
-
   const lookupKeys = Array.from(new Set([
     cleanTarget.toLowerCase(),
     noteBasename(cleanTarget),
     canonicalLookupKey(cleanTarget),
     canonicalLookupKey(cleanTarget.split('/').pop())
   ].filter(Boolean)));
-
   const tryLookupMap = (map) => {
     for (const key of lookupKeys) {
       const matches = map.get(key) || [];
@@ -740,31 +644,25 @@ function resolveNoteTarget(target, currentNotePath, noteByPath, basenameMap, tit
     }
     return null;
   };
-
   return tryLookupMap(basenameMap) || tryLookupMap(titleMap) || null;
 }
-
 function parseSimpleFrontmatter(md) {
-  const source = String(md || '').replace(/^\uFEFF/, '').replace(/^\s+/, '');
+  const source = String(md || '').replace(/^﻿/, '').replace(/^\s+/, '');
   if (!source.startsWith('---')) return null;
   const match = source.match(/^---\s*\r?\n([\s\S]*?)\r?\n---(?:\s*\r?\n|$)/);
   if (!match) return null;
-
   const data = {};
   const lines = match[1].split(/\r?\n/);
   let currentKey = null;
   let listAccum = null;
-
   const flushList = () => {
     if (currentKey != null && listAccum) {
       data[currentKey] = listAccum.join(', ');
       listAccum = null;
     }
   };
-
   for (const rawLine of lines) {
     if (!rawLine.trim() || rawLine.trim().startsWith('#')) continue;
-
     // List item under the previous key: "  - value" or "- value"
     const listMatch = rawLine.match(/^\s*-\s+(.*)$/);
     if (listMatch && currentKey != null) {
@@ -772,7 +670,6 @@ function parseSimpleFrontmatter(md) {
       listAccum.push(listMatch[1].trim().replace(/^["']|["']$/g, ''));
       continue;
     }
-
     // key: value  OR  key:   (with empty value, list to follow)
     // Allow letters, digits, underscores, hyphens, spaces, ?, in keys.
     const m = rawLine.match(/^([^:]+?)\s*:\s*(.*)$/);
@@ -790,10 +687,8 @@ function parseSimpleFrontmatter(md) {
     currentKey = key;
   }
   flushList();
-
   return Object.keys(data).length ? data : null;
 }
-
 function hasReviewedFrontmatter(md) {
   const frontmatter = parseSimpleFrontmatter(md);
   if (!frontmatter) return false;
@@ -801,17 +696,14 @@ function hasReviewedFrontmatter(md) {
   if (raw == null) return false;
   return ['true', 'yes', 'y', '1', 'on'].includes(String(raw).trim().toLowerCase());
 }
-
 function buildGraphFromMarkdownFiles(noteFiles, ctx) {
   noteFiles = noteFiles.filter(file => file && (file.reviewed === true || (file.reviewed == null && hasReviewedFrontmatter(file.content || ''))));
-
   const nodes = [];
   const edges = [];
   const folderSet = new Set();
   const noteByPath = new Map();
   const basenameMap = new Map();
   const titleMap = new Map();
-
   for (const file of noteFiles) {
     const normalizedPath = normalizeVaultPath(file.vaultPath);
     noteByPath.set(normalizedPath, file);
@@ -821,7 +713,6 @@ function buildGraphFromMarkdownFiles(noteFiles, ctx) {
     addLookupMatch(titleMap, canonicalLookupKey(file.title || ''), normalizedPath);
     addLookupMatch(titleMap, canonicalLookupKey(normalizedPath), normalizedPath);
     addLookupMatch(titleMap, canonicalLookupKey(base.replace(/[-_]+/g, ' ')), normalizedPath);
-
     const parts = normalizedPath.split('/');
     if (parts.length > 1) {
       for (let i = 1; i < parts.length; i++) {
@@ -829,7 +720,6 @@ function buildGraphFromMarkdownFiles(noteFiles, ctx) {
       }
     }
   }
-
   const sortedFolders = Array.from(folderSet).sort((a, b) => a.localeCompare(b));
   for (const folder of sortedFolders) {
     nodes.push({ kind: 'folder', id: folder });
@@ -840,7 +730,6 @@ function buildGraphFromMarkdownFiles(noteFiles, ctx) {
       }
     }
   }
-
   for (const file of noteFiles) {
     const notePath = normalizeVaultPath(file.vaultPath);
     nodes.push({
@@ -859,16 +748,13 @@ function buildGraphFromMarkdownFiles(noteFiles, ctx) {
       edges.push({ source: notePath, relation: 'in_folder', target: folder });
     }
   }
-
   const unresolvedSet = new Set();
   const linkEdgeSet = new Set();
-
   for (const file of noteFiles) {
     const sourcePath = normalizeVaultPath(file.vaultPath);
     const targets = Array.isArray(file.targets)
       ? file.targets
       : extractNoteTargetsFromMarkdown(file.content || '');
-
     for (const rawTarget of targets) {
       const resolved = resolveNoteTarget(rawTarget, sourcePath, noteByPath, basenameMap, titleMap);
       if (resolved) {
@@ -887,38 +773,30 @@ function buildGraphFromMarkdownFiles(noteFiles, ctx) {
       }
     }
   }
-
   Array.from(unresolvedSet).sort((a, b) => a.localeCompare(b)).forEach(id => {
     nodes.push({ kind: 'unresolved-wikilink', id });
   });
-
   return {
     source: `GitHub folders in ${ctx.owner}/${ctx.repo}${ctx.notesBasePath ? '/' + ctx.notesBasePath : ''}`,
     nodes,
     edges
   };
 }
-
-
 function normalizeIndexNotePath(rawPath) {
   const clean = String(rawPath || '').trim().replace(/^\.\/+/, '').replace(/^\/+/, '');
   return normalizeVaultPath(clean);
 }
-
 function indexItemToGraphNote(item) {
   const vaultPath = normalizeIndexNotePath(item.path || item.vaultPath || item.id || '');
   if (!vaultPath) return null;
-
   const rawContent = item.content || item.text || item.markdown || null;
   const targets = Array.isArray(item.targets) && item.targets.length
     ? item.targets.map(target => normalizeVaultPath(String(target || '').trim())).filter(Boolean)
     : (rawContent ? extractNoteTargetsFromMarkdown(rawContent).map(target => normalizeVaultPath(String(target || '').trim())).filter(Boolean) : []);
-
   let reviewed = null;
   if (item.reviewed === true) reviewed = true;
   else if (item.reviewed === false) reviewed = false;
   else if (rawContent) reviewed = hasReviewedFrontmatter(rawContent);
-
   return {
     kind: 'note',
     id: vaultPath,
@@ -934,41 +812,33 @@ function indexItemToGraphNote(item) {
     headings: Array.isArray(item.headings) ? item.headings : []
   };
 }
-
 function buildGraphFromLocalIndex(indexData) {
   const notes = Array.isArray(indexData?.notes)
     ? indexData.notes.map(indexItemToGraphNote).filter(Boolean)
     : [];
-
   if (!notes.length) {
     throw new Error('The local notes-index.json file does not contain any notes.');
   }
-
   const graph = buildGraphFromMarkdownFiles(notes, { url: LOCAL_INDEX.url });
   graph.source = `local notes index (${LOCAL_INDEX.url})`;
   return graph;
 }
-
 async function fetchGraphFromLocalIndex() {
   const indexUrl = LOCAL_INDEX.url;
   setStatus(`Loading ${indexUrl}…`);
-
   const res = await fetch(indexUrl, { cache: 'no-store' });
   if (!res.ok) {
     throw new Error(`Could not load ${indexUrl} (${res.status})`);
   }
-
   const data = await res.json();
   const graph = buildGraphFromLocalIndex(data);
   const noteCount = Array.isArray(data?.notes) ? data.notes.length : graph.nodes.filter(node => node.kind === 'note').length;
   setStatus(`Loaded ${noteCount} notes from ${indexUrl}.`);
   return graph;
 }
-
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
-
 function parseRetryAfterMs(res) {
   try {
     const raw = res && res.headers ? res.headers.get('Retry-After') : '';
@@ -982,12 +852,10 @@ function parseRetryAfterMs(res) {
   }
   return 0;
 }
-
 function githubJsdelivrUrlFromRepoPath(ctx, repoPath) {
   const normalized = String(repoPath || '').replace(/^\/+/, '');
   return `https://cdn.jsdelivr.net/gh/${encodeURIComponent(ctx.owner)}/${encodeURIComponent(ctx.repo)}@${encodeURIComponent(ctx.branch)}/${normalized}`;
 }
-
 function markdownCandidateUrlsForRepoPath(ctx, repoPath) {
   const urls = [];
   const cdnUrl = githubJsdelivrUrlFromRepoPath(ctx, repoPath);
@@ -996,20 +864,16 @@ function markdownCandidateUrlsForRepoPath(ctx, repoPath) {
   if (rawUrl && rawUrl !== cdnUrl) urls.push(rawUrl);
   return urls;
 }
-
 async function fetchTextFromCandidatesWithRetry(urls, label, options = {}) {
   const maxAttempts = Math.max(1, Number(options.maxAttempts || 7));
   let lastError = null;
-
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     let sawRetryableStatus = false;
     let suggestedWait = 0;
-
     for (const url of urls) {
       try {
         const res = await fetch(url, { mode: 'cors', cache: 'force-cache' });
         if (res.ok) return await res.text();
-
         lastError = new Error(`Could not read ${label} (${res.status})`);
         if ([403, 408, 409, 425, 429, 500, 502, 503, 504].includes(res.status)) {
           sawRetryableStatus = true;
@@ -1019,18 +883,14 @@ async function fetchTextFromCandidatesWithRetry(urls, label, options = {}) {
         lastError = err;
       }
     }
-
     if (attempt >= maxAttempts - 1) break;
-
     const baseDelay = sawRetryableStatus ? 1200 : 250;
     const expDelay = sawRetryableStatus ? 1400 * Math.pow(2, attempt) : 200 * Math.pow(2, attempt);
     const delay = Math.min(30000, Math.max(suggestedWait, baseDelay + expDelay) + Math.floor(Math.random() * 250));
     await sleep(delay);
   }
-
   throw lastError || new Error(`Could not read ${label}`);
 }
-
 function joinPathParts(...parts) {
   return parts
     .filter(Boolean)
@@ -1038,7 +898,6 @@ function joinPathParts(...parts) {
     .filter(Boolean)
     .join('/');
 }
-
 function rawMarkdownUrlForMeta(meta) {
   const ctx = getGithubContext();
   if (!meta || !ctx.owner || !ctx.repo || !ctx.branch) return null;
@@ -1046,14 +905,12 @@ function rawMarkdownUrlForMeta(meta) {
   const rel = joinPathParts(ctx.notesBasePath, meta.fullLabel) + '.md';
   return `https://raw.githubusercontent.com/${encodeURIComponent(ctx.owner)}/${encodeURIComponent(ctx.repo)}/${encodeURIComponent(ctx.branch)}/${rel}`;
 }
-
 let graphState = null;
 let network = null;
 let nodesDS = null;
 let edgesDS = null;
 let selectedNodeId = null;
 let neighborhoodFilter = null;
-
 const showFoldersEl = document.getElementById('showFolders');
 const showUnresolvedEl = document.getElementById('showUnresolved');
 const showLabelsEl = document.getElementById('showLabels');
@@ -1070,7 +927,6 @@ const noteTabBtn = document.getElementById('noteTabBtn');
 const optionsTabBtn = document.getElementById('optionsTabBtn');
 const openOptionsLinkEl = document.getElementById('openOptionsLink');
 const overviewSummaryEl = document.getElementById('overviewSummary');
-
 const gravSlider = document.getElementById('gravSlider');
 const centralSlider = document.getElementById('centralSlider');
 const springSlider = document.getElementById('springSlider');
@@ -1080,7 +936,6 @@ const overlapSlider = document.getElementById('overlapSlider');
 const minSizeSlider = document.getElementById('minSizeSlider');
 const maxSizeSlider = document.getElementById('maxSizeSlider');
 const expSlider = document.getElementById('expSlider');
-
 const gravValue = document.getElementById('gravValue');
 const centralValue = document.getElementById('centralValue');
 const springValue = document.getElementById('springValue');
@@ -1090,9 +945,7 @@ const overlapValue = document.getElementById('overlapValue');
 const minSizeValue = document.getElementById('minSizeValue');
 const maxSizeValue = document.getElementById('maxSizeValue');
 const expValue = document.getElementById('expValue');
-
 let rawGraphData = null;
-
 const layoutSettings = {
   gravitationalConstant: -55,
   centralGravity: 0.02,
@@ -1104,7 +957,6 @@ const layoutSettings = {
   maxNoteSize: 52,
   sizeExponent: 1.0
 };
-
 function setActivePanel(panel) {
   const showOptions = panel === 'options';
   if (noteViewEl) noteViewEl.classList.toggle('hidden', showOptions);
@@ -1112,19 +964,15 @@ function setActivePanel(panel) {
   if (noteTabBtn) noteTabBtn.classList.toggle('active', !showOptions);
   if (optionsTabBtn) optionsTabBtn.classList.toggle('active', showOptions);
 }
-
 function showOptionsPanel() {
   setActivePanel('options');
 }
-
 function showNotePanel() {
   setActivePanel('note');
 }
-
 function setStatus(text) {
   if (statusEl) statusEl.textContent = text;
 }
-
 function escapeHtml(str) {
   return (str || '').replace(/[&<>"]/g, (m) => ({
     '&': '&amp;',
@@ -1133,7 +981,6 @@ function escapeHtml(str) {
     '"': '&quot;'
   }[m]));
 }
-
 function hashCode(str) {
   let h = 0;
   for (let i = 0; i < str.length; i++) {
@@ -1142,7 +989,6 @@ function hashCode(str) {
   }
   return Math.abs(h);
 }
-
 // Monochrome palette + selection accent.
 // All notes share one cream tone; folders a darker cream; unresolved keeps
 // its dashed-border tone. The only color in the graph comes from the current
@@ -1161,20 +1007,16 @@ const PALETTE = {
   neighborBorder:  '#3e3325',
   fadeOpacity:     0.35
 };
-
 function colorForGroup(group, kind) {
   if (kind === 'unresolved-wikilink') return PALETTE.unresolved;
   if (kind === 'folder') return PALETTE.folderRest;
   return PALETTE.noteRest;
 }
-
-
 function shortLabel(kind, id) {
   if (kind === 'folder') return id === '.' ? 'root' : id.split('/').pop();
   if (kind === 'unresolved-wikilink') return id;
   return id.split('/').pop();
 }
-
 function folderOf(kind, id) {
   if (kind === 'note') {
     return id.includes('/') ? id.slice(0, id.lastIndexOf('/')) : '.';
@@ -1182,26 +1024,21 @@ function folderOf(kind, id) {
   if (kind === 'folder') return id;
   return 'unresolved';
 }
-
 function internalId(kind, id) {
   if (kind === 'folder') return `folder:${id}`;
   if (kind === 'note') return `note:${id}`;
   return `unresolved:${id}`;
 }
-
 function normalizeVaultPath(rawPath) {
   return String(rawPath || '').replace(/\\/g, '/').replace(/\.(md|markdown|txt)$/i, '').replace(/^\.\//, '').replace(/^\//, '');
 }
-
 function encodeVaultPath(path) {
   return String(path || '').split('/').map(encodeURIComponent).join('/');
 }
-
 function publishedNoteUrlForMeta(meta) {
   if (!meta || meta.kind !== 'note') return null;
   return `./${encodeVaultPath(meta.fullLabel)}`;
 }
-
 function publishedNoteUrlForTarget(target) {
   const normalized = normalizeVaultPath(String(target || '').trim());
   if (!normalized) return null;
@@ -1215,18 +1052,15 @@ function publishedNoteUrlForTarget(target) {
   if (fallback) return publishedNoteUrlForMeta(fallback);
   return `./${encodeVaultPath(normalized)}`;
 }
-
 function replaceTextNodeWithWikilinks(textNode, container) {
   const text = textNode.nodeValue || '';
   if (!text.includes('[[')) return;
-
   const regex = /\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|([^\]]+))?\]\]/g;
   let lastIndex = 0;
   let match = null;
   const doc = textNode.ownerDocument;
   const frag = doc.createDocumentFragment();
   let changed = false;
-
   while ((match = regex.exec(text))) {
     changed = true;
     if (match.index > lastIndex) {
@@ -1255,14 +1089,12 @@ function replaceTextNodeWithWikilinks(textNode, container) {
     frag.appendChild(a);
     lastIndex = regex.lastIndex;
   }
-
   if (!changed) return;
   if (lastIndex < text.length) {
     frag.appendChild(doc.createTextNode(text.slice(lastIndex)));
   }
   textNode.parentNode.replaceChild(frag, textNode);
 }
-
 function enhanceContainerWikilinks(root) {
   if (!root) return;
   try {
@@ -1281,7 +1113,6 @@ function enhanceContainerWikilinks(root) {
         return NodeFilter.FILTER_ACCEPT;
       }
     });
-
     const nodes = [];
     let current;
     while ((current = walker.nextNode())) nodes.push(current);
@@ -1290,7 +1121,6 @@ function enhanceContainerWikilinks(root) {
     console.warn('Could not enhance note links:', err);
   }
 }
-
 function absolutizeContentUrls(root, baseUrl) {
   if (!root) return;
   root.querySelectorAll('a[href]').forEach(a => {
@@ -1323,7 +1153,6 @@ function absolutizeContentUrls(root, baseUrl) {
     try { el.setAttribute(attr, new URL(src, baseUrl).href); } catch (e) {}
   });
 }
-
 function findNoteIdFromPath(path) {
   if (!graphState) return null;
   const clean = normalizeVaultPath(path.replace(/\.html$/i, '').replace(/index$/i, '').replace(/\/$/, ''));
@@ -1332,7 +1161,6 @@ function findNoteIdFromPath(path) {
   const fallback = Array.from(graphState.nodeMeta.values()).find(n => n.kind === 'note' && normalizeVaultPath(n.fullLabel) === clean);
   return fallback ? fallback.iid : null;
 }
-
 function pickBestContentRoot(doc) {
   const selectors = [
     'main article',
@@ -1351,14 +1179,12 @@ function pickBestContentRoot(doc) {
   }
   return doc.body;
 }
-
 function sanitizeFetchedContent(root) {
   if (!root) return root;
   const clone = root.cloneNode(true);
   clone.querySelectorAll('script, style, header, footer, nav, .site-header, .site-footer, .page-header').forEach(el => el.remove());
   return clone;
 }
-
 let noteLoadToken = 0;
 function renderFrontmatterBlock(md) {
   const fm = parseSimpleFrontmatter(md);
@@ -1370,25 +1196,20 @@ function renderFrontmatterBlock(md) {
   }).join('');
   return `<div class="frontmatter">${rows}</div>`;
 }
-
 async function loadPublishedNoteIntoHost(meta, pageUrl) {
   const token = ++noteLoadToken;
   const host = notePanelEl.querySelector('.note-host');
   if (!host) return;
-
   if (meta && meta.content) {
     host.innerHTML = renderFrontmatterBlock(meta.content) + renderMarkdownLite(stripFrontmatter(meta.content));
     enhanceContainerWikilinks(host);
     return;
   }
-
   host.innerHTML = '<div class="muted">Loading note…</div>';
-
   const ctx = getGithubContext();
   const rawCandidates = meta && meta.repoPath
     ? markdownCandidateUrlsForRepoPath(ctx, meta.repoPath)
     : (rawMarkdownUrlForMeta(meta) ? [rawMarkdownUrlForMeta(meta)] : []);
-
   if (rawCandidates.length) {
     try {
       const md = await fetchTextFromCandidatesWithRetry(rawCandidates, meta && meta.repoPath ? meta.repoPath : 'selected note', { maxAttempts: 4 });
@@ -1401,7 +1222,6 @@ async function loadPublishedNoteIntoHost(meta, pageUrl) {
       console.warn('Raw Markdown fetch failed, falling back to published page:', err);
     }
   }
-
   try {
     const res = await fetch(pageUrl, { credentials: 'same-origin' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -1419,7 +1239,6 @@ async function loadPublishedNoteIntoHost(meta, pageUrl) {
     host.innerHTML = `<div class="muted">Could not load note inline: ${escapeHtml(String(err.message || err))}</div>`;
   }
 }
-
 function makeNodeTooltip(meta) {
   const el = document.createElement('div');
   el.style.maxWidth = '320px';
@@ -1429,7 +1248,6 @@ function makeNodeTooltip(meta) {
     `<span>${escapeHtml(meta.fullLabel)}</span>`;
   return el;
 }
-
 function readLayoutControls() {
   layoutSettings.gravitationalConstant = parseFloat(gravSlider.value);
   layoutSettings.centralGravity = parseFloat(centralSlider.value);
@@ -1444,7 +1262,6 @@ function readLayoutControls() {
   );
   layoutSettings.sizeExponent = parseFloat(expSlider.value);
 }
-
 function updateLayoutReadouts() {
   gravValue.value = layoutSettings.gravitationalConstant.toFixed(0);
   centralValue.value = layoutSettings.centralGravity.toFixed(3);
@@ -1456,7 +1273,6 @@ function updateLayoutReadouts() {
   maxSizeValue.value = layoutSettings.maxNoteSize.toFixed(0);
   expValue.value = layoutSettings.sizeExponent.toFixed(2);
 }
-
 function currentPhysicsOptions() {
   return {
     physics: {
@@ -1475,7 +1291,6 @@ function currentPhysicsOptions() {
   };
 }
 
-  
 function buildState(graph) {
   const nodeMeta = new Map();
   const adjacency = new Map();
@@ -1483,7 +1298,6 @@ function buildState(graph) {
   const degree = new Map();
   const SUMMARY_NOTE_ID = '_folder-index-master';
   const ROOT_FOLDER_ID = '.';
-
   for (const n of graph.nodes) {
     const iid = internalId(n.kind, n.id);
     nodeMeta.set(iid, {
@@ -1502,25 +1316,20 @@ function buildState(graph) {
     reverseAdjacency.set(iid, new Set());
     degree.set(iid, 0);
   }
-
   const isRootFolderMeta = meta => meta?.kind === 'folder' && meta.id === ROOT_FOLDER_ID;
   const isSummaryMeta = meta => meta?.kind === 'note' && meta.id === SUMMARY_NOTE_ID;
-
   const visNodes = [];
   for (const meta of nodeMeta.values()) {
     if (isRootFolderMeta(meta)) continue;
-
     const isSummary = isSummaryMeta(meta);
     const group = meta.kind === 'note'
       ? (meta.fullLabel.includes('/') ? meta.fullLabel.split('/')[0] : '.')
       : meta.folder;
-
     const nodeBackground = isSummary ? '#ece4cf' : colorForGroup(group, meta.kind);
     const nodeBorder = isSummary ? '#9f947f' : (meta.kind === 'unresolved-wikilink' ? '#b9ab95' : '#6b5b49');
     const nodeShape = isSummary
       ? 'database'
       : (meta.kind === 'folder' ? 'box' : (meta.kind === 'unresolved-wikilink' ? 'diamond' : 'dot'));
-
     visNodes.push({
       id: meta.iid,
       label: showLabelsEl.checked ? (isSummary ? SUMMARY_NOTE_ID : meta.label) : '',
@@ -1550,14 +1359,12 @@ function buildState(graph) {
       y: isSummary ? -260 : undefined
     });
   }
-
   const visEdges = [];
   for (const e of graph.edges) {
     let sourceKind = 'note';
     let targetKind = 'note';
     let s = e.source;
     let t = e.target;
-
     if (e.relation === 'child_of') {
       sourceKind = 'folder';
       targetKind = 'folder';
@@ -1574,14 +1381,12 @@ function buildState(graph) {
         t = e.target.slice('UNRESOLVED:'.length);
       }
     }
-
     const from = internalId(sourceKind, s);
     const to = internalId(targetKind, t);
     const fromMeta = nodeMeta.get(from);
     const toMeta = nodeMeta.get(to);
     if (!fromMeta || !toMeta) continue;
     if (isRootFolderMeta(fromMeta) || isRootFolderMeta(toMeta)) continue;
-
     const touchesSummary = isSummaryMeta(fromMeta) || isSummaryMeta(toMeta);
     if (!touchesSummary) {
       visEdges.push({
@@ -1598,42 +1403,34 @@ function buildState(graph) {
         hidden: false
       });
     }
-
     adjacency.get(from).add(to);
     reverseAdjacency.get(to).add(from);
     nodeMeta.get(from).neighbors.add(to);
     nodeMeta.get(to).reverseNeighbors.add(from);
     nodeMeta.get(from).outgoing.push({ target: to, relation: e.relation });
     nodeMeta.get(to).incoming.push({ source: from, relation: e.relation });
-
     if (e.relation === 'links_to' && !touchesSummary) {
       degree.set(from, (degree.get(from) || 0) + 1);
       degree.set(to, (degree.get(to) || 0) + 1);
     }
   }
-
   const MIN_NOTE_SIZE = layoutSettings.minNoteSize;
   const MAX_NOTE_SIZE = layoutSettings.maxNoteSize;
   const NOTE_SIZE_RANGE = Math.max(0, MAX_NOTE_SIZE - MIN_NOTE_SIZE);
-
   const noteNodes = visNodes.filter(node => {
     const meta = nodeMeta.get(node.id);
     return meta?.kind === 'note' && !isSummaryMeta(meta);
   });
-
   const maxDegree = Math.max(...noteNodes.map(node => degree.get(node.id) || 0), 1);
-
   for (const node of visNodes) {
     const meta = nodeMeta.get(node.id);
     const d = degree.get(node.id) || 0;
-
     if (isSummaryMeta(meta)) {
       node.size = 22;
       node.mass = 0.01;
       node.physics = false;
       continue;
     }
-
     if (meta?.kind === 'note') {
       const x = maxDegree > 0 ? (d / maxDegree) : 0;
       node.size = MIN_NOTE_SIZE + NOTE_SIZE_RANGE * Math.pow(x, layoutSettings.sizeExponent);
@@ -1646,29 +1443,23 @@ function buildState(graph) {
       node.mass = 1.3;
     }
   }
-
   return { graph, nodeMeta, adjacency, reverseAdjacency, degree, visNodes, visEdges };
 };
-
 function updateStats() {
-
   if (!graphState) return;
   const nodes = graphState.visNodes.map(node => graphState.nodeMeta.get(node.id)).filter(Boolean);
   const edges = graphState.visEdges || [];
   const noteCount = nodes.filter(node => node.kind === 'note').length;
   const folderCount = nodes.filter(node => node.kind === 'folder' && node.id !== '.').length;
-
   if (overviewSummaryEl) {
     overviewSummaryEl.textContent = `This mind garden includes: ${nodes.length.toLocaleString()} nodes, ${edges.length.toLocaleString()} edges, ${noteCount.toLocaleString()} notes and ${folderCount.toLocaleString()} folders.`;
   }
 }
-
 function applyVisibility() {
   if (!graphState || !nodesDS || !edgesDS) return;
   const showFolders = showFoldersEl.checked;
   const showUnresolved = showUnresolvedEl.checked;
   const SUMMARY_NOTE_ID = '_folder-index-master';
-
   const nodeUpdates = [];
   for (const meta of graphState.nodeMeta.values()) {
     const isRootFolder = meta.kind === 'folder' && meta.id === '.';
@@ -1685,7 +1476,6 @@ function applyVisibility() {
     });
   }
   nodesDS.update(nodeUpdates);
-
   const hiddenById = new Map(nodeUpdates.map(n => [n.id, n.hidden]));
   const edgeUpdates = graphState.visEdges.map(e => {
     const fromHidden = hiddenById.get(e.from);
@@ -1696,7 +1486,6 @@ function applyVisibility() {
   });
   edgesDS.update(edgeUpdates);
 }
-
 function stripFrontmatter(md) {
   if (!md) return '';
   if (md.startsWith('---')) {
@@ -1705,7 +1494,6 @@ function stripFrontmatter(md) {
   }
   return md;
 }
-
 function renderInlineMarkdown(text) {
   return escapeHtml(text || '')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
@@ -1722,7 +1510,6 @@ function renderInlineMarkdown(text) {
       return `<a class="fake-link" href="#" data-target="${safeTarget}" onclick="return jumpToNote(this.dataset.target)">${display}</a>`;
     });
 }
-
 function renderMarkdownLite(md) {
   const source = stripFrontmatter(md || '');
   const lines = source.split(/\r?\n/).slice(0, 400);
@@ -1730,22 +1517,18 @@ function renderMarkdownLite(md) {
   let inList = false;
   let inCode = false;
   let paragraph = [];
-
   const flushParagraph = () => {
     if (!paragraph.length) return;
     out.push(`<p>${renderInlineMarkdown(paragraph.join(' '))}</p>`);
     paragraph = [];
   };
-
   const closeList = () => {
     if (!inList) return;
     out.push('</ul>');
     inList = false;
   };
-
   for (const raw of lines) {
     const trimmed = raw.trim();
-
     if (trimmed.startsWith('```')) {
       flushParagraph();
       closeList();
@@ -1758,18 +1541,15 @@ function renderMarkdownLite(md) {
       }
       continue;
     }
-
     if (inCode) {
       out.push(escapeHtml(raw) + '\n');
       continue;
     }
-
     if (!trimmed) {
       flushParagraph();
       closeList();
       continue;
     }
-
     const headingMatch = raw.match(/^\s*(#{1,6})\s+(.*)$/);
     if (headingMatch) {
       flushParagraph();
@@ -1778,7 +1558,6 @@ function renderMarkdownLite(md) {
       out.push(`<h${level}>${renderInlineMarkdown(headingMatch[2].trim())}</h${level}>`);
       continue;
     }
-
     const listMatch = raw.match(/^\s*[-*+]\s+(.*)$/);
     if (listMatch) {
       flushParagraph();
@@ -1789,17 +1568,14 @@ function renderMarkdownLite(md) {
       out.push(`<li>${renderInlineMarkdown(listMatch[1].trim())}</li>`);
       continue;
     }
-
     closeList();
     paragraph.push(trimmed);
   }
-
   flushParagraph();
   closeList();
   if (inCode) out.push('</code></pre>');
   return out.join('');
 }
-
 function renderConnectionsOverlay(meta, outgoing, incoming, linkDegree, totalConnections) {
   const renderConnection = (entry) => `
     <button class="neighbor" data-nodeid="${escapeHtml(entry.node.iid)}" onclick="selectNodeById(this.dataset.nodeid); closeConnectionsPanel();">
@@ -1810,7 +1586,6 @@ function renderConnectionsOverlay(meta, outgoing, incoming, linkDegree, totalCon
       </span>
     </button>
   `;
-
   connectionsTitleEl.textContent = `${meta.label} — connections`;
   connectionsBodyEl.innerHTML = `
     <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
@@ -1835,19 +1610,15 @@ function renderConnectionsOverlay(meta, outgoing, incoming, linkDegree, totalCon
     </div>
   `;
 }
-
 function openConnectionsPanel() {
   connectionsOverlayEl.classList.remove('hidden');
 }
-
 function closeConnectionsPanel() {
   connectionsOverlayEl.classList.add('hidden');
 }
-
 function renderSelection(nodeId) {
   if (!graphState) return;
   const meta = graphState.nodeMeta.get(nodeId);
-
   if (!meta) {
     selectionSummaryEl.innerHTML = '<h3>Selection</h3><div class="empty">Nothing selected yet — start with the <a href="#" class="fake-link" data-noteid="_folder-index-master">master index</a>, or click any node in the graph.</div>';
     notePanelEl.innerHTML = `
@@ -1864,26 +1635,20 @@ function renderSelection(nodeId) {
     closeConnectionsPanel();
     return;
   }
-
   showNotePanel();
-
   const outgoing = (meta.outgoing || [])
     .map(entry => ({ ...entry, node: graphState.nodeMeta.get(entry.target) }))
     .filter(entry => entry.node)
     .sort((a, b) => a.node.label.localeCompare(b.node.label));
-
   const incoming = (meta.incoming || [])
     .map(entry => ({ ...entry, node: graphState.nodeMeta.get(entry.source) }))
     .filter(entry => entry.node)
     .sort((a, b) => a.node.label.localeCompare(b.node.label));
-
   const outgoingNoteLinks = outgoing.filter(entry => entry.relation === 'links_to');
   const incomingNoteLinks = incoming.filter(entry => entry.relation === 'links_to');
   const linkDegree = graphState.degree.get(nodeId) || 0;
   const totalConnections = outgoing.length + incoming.length;
-
   renderConnectionsOverlay(meta, outgoingNoteLinks, incomingNoteLinks, linkDegree, totalConnections);
-
   selectionSummaryEl.innerHTML = `
     <h3>Selection</h3>
     <div class="selection-compact">
@@ -1908,7 +1673,6 @@ function renderSelection(nodeId) {
       </div>
     </div>
   `;
-
   if (meta.kind === 'note') {
     const pageUrl = publishedNoteUrlForMeta(meta);
     notePanelEl.innerHTML = `
@@ -1923,65 +1687,50 @@ function renderSelection(nodeId) {
     `;
   }
 }
-
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') closeConnectionsPanel();
 });
-
 function jumpToNote(target) {
   const normalized = normalizeVaultPath(target);
   const exact = internalId('note', normalized);
-
   if (graphState.nodeMeta.has(exact)) {
     selectNodeById(exact);
     return false;
   }
-
   const maybe = Array.from(graphState.nodeMeta.values()).find(n =>
     n.kind === 'note' && n.label.toLowerCase() === normalized.split('/').pop().toLowerCase()
   );
-
   if (maybe) {
     selectNodeById(maybe.iid);
     return false;
   }
-
   return false;
 }
-
 function focusSelection() {
   if (!selectedNodeId || !network) return;
   network.selectNodes([selectedNodeId]);
   network.focus(selectedNodeId, { scale: 1.25, animation: true });
 }
-
 function focusNeighborhood() {
   if (!selectedNodeId || !graphState) return;
   const keep = new Set([selectedNodeId]);
-
   for (const n of (graphState.adjacency.get(selectedNodeId) || [])) keep.add(n);
   for (const n of (graphState.reverseAdjacency.get(selectedNodeId) || [])) keep.add(n);
-
   neighborhoodFilter = keep;
   applyVisibility();
-
   if (network) {
     network.fit({ nodes: Array.from(keep), animation: true });
   }
 }
-
 function clearFocus() {
   neighborhoodFilter = null;
   applyVisibility();
   if (network) network.fit({ animation: true });
 }
-
 function applySelectionPalette(nodeId) {
   if (!network || !nodesDS || !edgesDS || !graphState) return;
-
   const SUMMARY_NOTE_ID = '_folder-index-master';
   const isSummary = (meta) => meta?.kind === 'note' && meta.id === SUMMARY_NOTE_ID;
-
   // Build the highlighted set: selection + all 1-hop neighbors (both directions).
   const hot = new Set();
   if (nodeId) {
@@ -1989,12 +1738,10 @@ function applySelectionPalette(nodeId) {
     for (const n of (graphState.adjacency.get(nodeId) || [])) hot.add(n);
     for (const n of (graphState.reverseAdjacency.get(nodeId) || [])) hot.add(n);
   }
-
   const nodeUpdates = [];
   nodesDS.forEach((node) => {
     const meta = graphState.nodeMeta.get(node.id);
     if (!meta) return;
-
     let bg, br;
     if (nodeId && node.id === nodeId) {
       bg = PALETTE.selected; br = PALETTE.selectedBorder;
@@ -2009,7 +1756,6 @@ function applySelectionPalette(nodeId) {
     } else {
       bg = PALETTE.noteRest; br = PALETTE.noteRestBorder;
     }
-
     const faded = nodeId && !hot.has(node.id);
     nodeUpdates.push({
       id: node.id,
@@ -2023,7 +1769,6 @@ function applySelectionPalette(nodeId) {
     });
   });
   nodesDS.update(nodeUpdates);
-
   const edgeUpdates = [];
   edgesDS.forEach((edge) => {
     const touchesSelection = nodeId && (edge.from === nodeId || edge.to === nodeId);
@@ -2041,7 +1786,6 @@ function applySelectionPalette(nodeId) {
   });
   edgesDS.update(edgeUpdates);
 }
-
 function selectNodeById(nodeId) {
   selectedNodeId = nodeId;
   if (network) {
@@ -2051,17 +1795,14 @@ function selectNodeById(nodeId) {
   applySelectionPalette(nodeId);
   renderSelection(nodeId);
 }
-
 async function loadGraph(graph) {
   rawGraph = graph;
   rawGraphData = graph;
   graphState = buildState(graph);
   updateStats();
-
   const container = document.getElementById('graph');
   nodesDS = new vis.DataSet(graphState.visNodes);
   edgesDS = new vis.DataSet(graphState.visEdges);
-
   const data = { nodes: nodesDS, edges: edgesDS };
   const options = {
   autoResize: true,
@@ -2082,10 +1823,8 @@ async function loadGraph(graph) {
     hoverWidth: 1.2
   }
 };
-
   if (network) network.destroy();
   network = new vis.Network(container, data, options);
-
   network.on('click', (params) => {
     if (params.nodes.length) {
       selectedNodeId = params.nodes[0];
@@ -2096,7 +1835,6 @@ async function loadGraph(graph) {
       applySelectionPalette(null);
     }
   });
-
   network.on('doubleClick', (params) => {
     if (params.nodes.length) {
       selectedNodeId = params.nodes[0];
@@ -2105,22 +1843,18 @@ async function loadGraph(graph) {
       focusNeighborhood();
     }
   });
-
   network.once('stabilizationIterationsDone', () => {
     network.setOptions({ physics: false });
     network.fit({ animation: true });
   });
-
   applyVisibility();
   renderSelection(null);
   wireIntroIndexLinks();
   setStatus(`Loaded ${graph.source || 'embedded graph'} · ${graph.nodes.length} nodes · ${graph.edges.length} edges`);
 }
-
 function wireIntroIndexLinks() {
   // No-op now — handled by the global delegated handler in initIntroLinkDelegation()
 }
-
 function initIntroLinkDelegation() {
   if (window.__introDelegated) return;
   window.__introDelegated = true;
@@ -2132,7 +1866,6 @@ function initIntroLinkDelegation() {
     const wanted = String(a.dataset.noteid || '').toLowerCase();
     const wantedBasename = wanted.split('/').pop();
     if (!graphState) { console.warn('graphState not ready'); return; }
-
     const allMetas = [...graphState.nodeMeta.values()];
     // Try a series of progressively-looser matches
     let meta =
@@ -2146,7 +1879,6 @@ function initIntroLinkDelegation() {
         String(m.id || '').toLowerCase().includes(wantedBasename) ||
         String(m.fullLabel || '').toLowerCase().includes(wantedBasename)
       ));
-
     if (meta) {
       selectNodeById(meta.iid);
     } else {
@@ -2157,12 +1889,10 @@ function initIntroLinkDelegation() {
   });
 }
 initIntroLinkDelegation();
-
 function searchGraph() {
   if (!graphState || !network) return;
   const q = searchInput.value.trim().toLowerCase();
   if (!q) return;
-
   const matches = Array.from(graphState.nodeMeta.values())
     .filter(n => {
       const haystack = [
@@ -2176,25 +1906,20 @@ function searchGraph() {
       return haystack.includes(q);
     })
     .map(n => n.iid);
-
   if (!matches.length) {
     setStatus(`No matches for "${searchInput.value}"`);
     return;
   }
-
   selectedNodeId = matches[0];
   renderSelection(selectedNodeId);
   network.selectNodes(matches.slice(0, 100));
-
   if (matches.length === 1) {
     network.focus(matches[0], { scale: 1.25, animation: true });
   } else {
     network.fit({ nodes: matches.slice(0, 100), animation: true });
   }
-
   setStatus(`Found ${matches.length} match${matches.length === 1 ? '' : 'es'} for "${searchInput.value}"`);
 }
-
 async function boot() {
   try {
     const graph = await fetchGraphFromLocalIndex();
@@ -2215,19 +1940,16 @@ async function boot() {
     notePanelEl.innerHTML = '<h2>Note</h2><div class="empty">The note panel will work once notes-index.json is in the same published folder as this page.</div>';
   }
 }
-
 function refreshPhysicsOnly() {
   readLayoutControls();
   updateLayoutReadouts();
   if (network) network.setOptions(currentPhysicsOptions());
 }
-
 async function rebuildWithCurrentSizing() {
   readLayoutControls();
   updateLayoutReadouts();
   if (rawGraphData) await loadGraph(rawGraphData);
 }
-
 [
   gravSlider,
   centralSlider,
@@ -2238,7 +1960,6 @@ async function rebuildWithCurrentSizing() {
 ].forEach(el => {
   el.addEventListener('input', refreshPhysicsOnly);
 });
-
 [minSizeSlider, maxSizeSlider, expSlider].forEach(el => {
   el.addEventListener('input', () => {
     readLayoutControls();
@@ -2246,15 +1967,12 @@ async function rebuildWithCurrentSizing() {
   });
   el.addEventListener('change', rebuildWithCurrentSizing);
 });
-
 readLayoutControls();
 updateLayoutReadouts();
-
 if (noteTabBtn) noteTabBtn.addEventListener('click', showNotePanel);
 if (optionsTabBtn) optionsTabBtn.addEventListener('click', showOptionsPanel);
 if (openOptionsLinkEl) openOptionsLinkEl.addEventListener('click', showOptionsPanel);
 showNotePanel();
-
 document.getElementById('searchBtn').addEventListener('click', searchGraph);
 searchInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') searchGraph();
@@ -2270,12 +1988,34 @@ document.getElementById('stabilizeBtn').addEventListener('click', () => {
 showFoldersEl.addEventListener('change', applyVisibility);
 showUnresolvedEl.addEventListener('change', applyVisibility);
 showLabelsEl.addEventListener('change', applyVisibility);
-
 boot();
+/* ============================================================================
+   GARDEN NODE SKIN v2  —  drop-in for your Mind gardening graph
+   ----------------------------------------------------------------------------
+   Botanical-illustration style: tapered bezier petals & leaves with veins,
+   curved leaning stems, a muted herbarium palette, soft ground shadows, and a
+   stable per-note random seed so every plant is a little different.
+
+   This is the garden skin; it runs right after the main script above and
+   rewrites no existing code. Remove this whole block to revert to plain nodes.
+
+   ENCODING
+     notes            -> a plant, staged by word_count:
+                           < 120 words ... sprout  (tender leaves only)
+                           120–199 ...... bud
+                           >= 200 ....... bloom (open flower)
+                           high-degree hub ... a small flowering tree
+                         plant SIZE scales with link-degree (sliders still work).
+     unresolved links -> a seed in the soil (a thought not yet planted)
+     folders          -> a wooden bed-marker on a stake, tinted by bed colour
+     master index     -> a garden gate (the entrance)
+     flower/leaf/marker colour = the note's top-level folder ("bed")
+     select a node    -> it brightens, neighbours stay lit, the rest fades back
+   ========================================================================== */
 (function gardenSkin () {
   if (window.__gardenSkin) return;
   window.__gardenSkin = true;
- 
+
   const STEMC = '#6B8455', LEAFC = '#7E9466', WOODC = '#9E7B4F';
   const SOIL = '#806044', SOIL_DK = '#5C432C';
   const SEL = '#b85a2a';
@@ -2287,13 +2027,13 @@ boot();
   const BLOOMS = ['#C77B86', '#C2923F', '#6E9E84', '#8C6A9E', '#BD6B4A',
                   '#6E8CA8', '#B0974A', '#A87C93', '#CC8466', '#7E924B',
                   '#7B6E9E', '#A85C46'];
- 
+
   const WC = new Map();
   let maxDeg = 1, hubT = 6;
   let gardenSel = { id: null, hot: new Set() };
- 
+
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
- 
+
   function rng (seed) {
     let s = (seed >>> 0) || 1;
     return function () {
@@ -2312,7 +2052,7 @@ boot();
     const mix = c => f < 1 ? Math.round(c * f) : Math.round(c + (255 - c) * (f - 1));
     return 'rgb(' + mix(r) + ',' + mix(g) + ',' + mix(b) + ')';
   }
- 
+
   function topFolder (meta) {
     if (!meta) return null;
     if (meta.kind === 'folder') return String(meta.id || '').split('/')[0] || 'root';
@@ -2325,7 +2065,7 @@ boot();
   }
   function degOf (iid) { return (graphState && graphState.degree.get(iid)) || 0; }
   function wcOf (meta) { return WC.get(normalizeVaultPath(meta.fullLabel)) || 0; }
- 
+
   function radiusFor (iid) {
     const x = maxDeg > 0 ? degOf(iid) / maxDeg : 0;
     const minR = clamp(layoutSettings.minNoteSize, 3, 8);
@@ -2340,7 +2080,7 @@ boot();
     if (wc > 0) return 'sprout';
     return deg >= 2 ? 'bud' : 'sprout';
   }
- 
+
   /* ---- geometry helpers ---- */
   function qpoint (p0, p1, p2, t) {
     const u = 1 - t;
@@ -2559,7 +2299,7 @@ boot();
     ctx.fillStyle = '#1a1408'; ctx.fillText(text, x, y);
     ctx.restore();
   }
- 
+
   function makeRenderer (iid) {
     return function ({ ctx, x, y, state, label }) {
       const meta = (graphState && graphState.nodeMeta.get(iid)) || { kind: 'note', fullLabel: iid, id: iid, iid };
@@ -2567,11 +2307,11 @@ boot();
       const isSel = (state && state.selected) || iid === gardenSel.id;
       const isHot = gardenSel.hot.has(iid);
       const faded = !!gardenSel.id && !isHot && !isSel;
- 
+
       const kind = meta.kind;
       const isGate = kind === 'note' && meta.id === '_folder-index-master';
       let r = 0, w = 18, h = 18;
- 
+
       if (kind === 'unresolved-wikilink') { w = h = 16; }
       else if (kind === 'folder') {
         ctx.save(); ctx.font = "12px 'Courier New', monospace";
@@ -2579,8 +2319,13 @@ boot();
         ctx.restore();
         w = Math.max(46, tw + 26); h = 20;
       } else if (isGate) { w = 56; h = 48; }
-      else { r = radiusFor(iid); w = h = Math.max(18, r * 2.4); }
- 
+      else {
+        r = radiusFor(iid);
+        const st = stageFor(meta);
+        r *= ({ tree: 1.8, bloom: 1.6, bud: 1.4, sprout: 1.2 })[st] || 1;
+        w = h = Math.max(18, r * 2.4);
+      }
+
       function draw () {
         ctx.save();
         ctx.globalAlpha = faded ? 0.26 : 1;
@@ -2602,7 +2347,7 @@ boot();
       return { drawNode: draw, nodeDimensions: { width: w, height: h } };
     };
   }
- 
+
   function recomputeDegrees () {
     maxDeg = 1;
     if (!graphState) return;
@@ -2620,7 +2365,7 @@ boot();
     nodesDS.update(updates);
     if (network) network.redraw();
   }
- 
+
   applySelectionPalette = function (nodeId) {
     if (!graphState) return;
     const hot = new Set();
@@ -2648,7 +2393,7 @@ boot();
     }
     if (network) network.redraw();
   };
- 
+
   if (typeof loadGraph === 'function') {
     const _origLoadGraph = loadGraph;
     loadGraph = async function (g) {
@@ -2657,7 +2402,7 @@ boot();
       applySelectionPalette(typeof selectedNodeId !== 'undefined' ? selectedNodeId : null);
     };
   }
- 
+
   function injectLegend () {
     if (document.getElementById('gardenLegend')) return;
     const card = document.getElementById('overviewCard');
@@ -2672,22 +2417,32 @@ boot();
     const wrap = document.createElement('div');
     wrap.id = 'gardenLegend'; wrap.className = 'legend';
     wrap.style.cssText = 'margin-top:2px;gap:6px;';
+    const seq = document.createElement('span');
+    seq.className = 'legend-item';
+    seq.style.cssText = 'padding:3px 10px;gap:6px;';
     [['seed', 'unwritten link', G.seed], ['sprout', 'a stub', G.sprout], ['bud', 'a draft', G.bud],
-     ['bloom', 'developed note', G.bloom], ['tree', 'a hub', G.tree]].forEach(([t, d, g]) => {
-      const el = document.createElement('span');
-      el.className = 'legend-item';
-      el.style.cssText = 'padding:2px 8px;gap:5px;';
-      el.title = t ;
-      el.innerHTML = g + '<span>' + t + '</span>';
-      wrap.appendChild(el);
+     ['bloom', 'developed note', G.bloom], ['tree', 'a hub', G.tree]].forEach(([t, d, g], i) => {
+      if (i) {
+        const arr = document.createElement('span');
+        arr.textContent = '→';
+        arr.style.cssText = 'opacity:.45;';
+        seq.appendChild(arr);
+      }
+      const ic = document.createElement('span');
+      ic.title = t + ' — ' + d;
+      ic.style.cssText = 'display:inline-flex;align-items:center;';
+      ic.innerHTML = g;
+      seq.appendChild(ic);
     });
+    wrap.appendChild(seq);
     const note = document.createElement('span');
     note.className = 'legend-item';
+    note.style.cssText = 'padding:2px 8px;';
     note.innerHTML = '<span>color = folder</span>';
     wrap.appendChild(note);
     card.appendChild(wrap);
   }
- 
+
   function loadWordCounts () {
     return fetch('./notes-index.json', { cache: 'force-cache' })
       .then(r => r.json())
@@ -2699,7 +2454,7 @@ boot();
       })
       .catch(() => {});
   }
- 
+
   loadWordCounts().then(skinAllNodes);
   (function waitForNetwork () {
     if (typeof nodesDS !== 'undefined' && nodesDS && typeof network !== 'undefined' && network && graphState) {
@@ -2710,7 +2465,6 @@ boot();
     }
   })();
 })();
-  
 </script>
 </body>
 </html>
