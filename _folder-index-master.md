@@ -141,3 +141,8 @@
 ## `phenomenology/` 
 - [[diagnosis-clear-destination-unfamiliar]] — Husserl's bracket-drift diagnosis is compelling; the proposed exit through the epoché is so unfamiliar that even he seems to struggle, so I take the diagnosis and bracket the destination 
 - [[default-settings-have-history]] — Husserl's historical detective work as method: defaults become visible as choices only by walking back the multi-era trajectory that produced them
+## `nussbaum/`
+- [[the-cosmopolitan-tradition]] — Nussbaum's map of the Cynic–Stoic world-citizen ideal: noble (the root of equal human dignity), flawed (built on a self-sufficiency that files external goods as morally indifferent)
+- [[the-bifurcation-of-duties]] — Cicero's split between universal duties of justice (mostly "don't harm") and weaker, local duties of material aid — the load-bearing flaw that lets you affirm equal worth while owing strangers almost nothing
+- [[dignity-needs-external-goods]] — how grounding dignity in reason alone curdles it into macho self-command and lets us ignore the destitute; the capabilities-approach correction that dignity is the dignity of a needy, embodied animal
+- [[cosmopolitan-through-the-local]] — her surprising landing on the nation-state, and the open question of whether the universal can only be reached *through* a rooted, particular home

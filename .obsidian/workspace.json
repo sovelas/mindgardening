@@ -15,8 +15,8 @@
               "type": "juggl_view",
               "state": {},
               "pinned": true,
-              "icon": "lucide-file",
-              "title": "Juggl"
+              "icon": "lucide-ghost",
+              "title": "juggl_view"
             }
           },
           {
@@ -25,12 +25,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dostoevsky/obsessive-desire-as-self-destruction.md",
+                "file": "nussbaum/the-bifurcation-of-duties.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "obsessive-desire-as-self-destruction"
+              "title": "the-bifurcation-of-duties"
             }
           }
         ],
@@ -300,6 +300,12 @@
   },
   "active": "e9d30efaf27033b9",
   "lastOpenFiles": [
+    "nussbaum/the-cosmopolitan-tradition.md",
+    "nussbaum/the-bifurcation-of-duties.md",
+    "epistemics/iterating-particular-and-universal-as-method.md",
+    "phenomenology/default-settings-have-history.md",
+    "_folder-index-master.md",
+    "dostoevsky/obsessive-desire-as-self-destruction.md",
     "schelling/schelling-absolute-nothingness.md",
     "zizek/the-gap-between-symbols-and-the-real.md",
     "voltaire/will-to-live-as-irrational-compulsion.md",
@@ -315,17 +321,11 @@
     "religion/ideology-replaces-religion.md",
     "propaganda/rootedness-not-introspection-against-shaped-preference.md",
     "phenomenology/diagnosis-clear-destination-unfamiliar.md",
-    "phenomenology/default-settings-have-history.md",
     "nihilism/philosophical-responses-to-the-void.md",
     "macintyre/moores-principia-ethica.md",
     "macintyre/emotivism-reinterpreted-as-theory-of-use.md",
     "macintyre/characters-of-emotivist-culture.md",
     "love-and-desire/vulnerability-to-manipulation-through-crushes.md",
-    "love-and-desire/love-bombing-through-stendhals-lens.md",
-    "love-and-desire/emptiness-after-desire-passes.md",
-    "love-and-desire/desire-to-be-desired.md",
-    "housing-policy/vereveningsfonds-amsterdams-equalizing-fund.md",
-    "housing-policy/homelessness-is-a-housing-problem.md",
     "Untitled.canvas",
     "index.html.sb-17ce30f0-4VdmZA",
     "phenomenology",

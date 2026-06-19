@@ -1,8 +1,247 @@
 {
-  "generated_at": "2026-04-27T14:19:49.444437+00:00",
+  "generated_at": "2026-06-19T10:20:38.781616+00:00",
   "root": "/Users/anasilva/Library/Mobile Documents/iCloud~md~obsidian/Documents/MindGardening",
-  "count": 56,
+  "count": 60,
   "notes": [
+    {
+      "path": "nussbaum/the-bifurcation-of-duties",
+      "title": "the bifurcation of duties",
+      "modified": "2026-06-19T10:17:05.467011+00:00",
+      "size_bytes": 1468,
+      "word_count": 210,
+      "excerpt": "On Nussbaum's reading, Cicero (drawing on the Stoics) splits moral life in duties of justice and duties of beneficence. Duties of justice are universal, grounded in natural law and owed to every human everywhere. But they are mostly…",
+      "tags": [],
+      "headings": [],
+      "targets": [
+        "Martha Nussbaum",
+        "Cicero",
+        "the Stoics",
+        "maximizing-freedom-as-ethical-imperative"
+      ],
+      "reviewed": false,
+      "content": "---\nprompted by: Martha Nussbaum/The Cosmopolitan Tradition\ntype: argument\nreviewed?: false\nlast reviewd: 2026-06-19\n---\nOn [[Martha Nussbaum|Nussbaum]]'s reading, [[Cicero]] (drawing on the [[the Stoics|Stoics]]) splits moral life in duties of justice and duties of beneficence.\n\n**Duties of justice** are universal, grounded in natural law and owed to every human everywhere. But they are mostly *negative* shaped: don't harm, don't steal, keep your contracts, respect property.\n\n**Duties of material aid** (beneficence) are positive ones: feeding, sheltering, rescuing. And these Cicero treats as weaker, more discretionary, and owed mainly to your own: compatriots, kin, friends.\n\nThe bifurcation lets you affirm, sincerely, that every human has equal worth, while at the same time alowing you to  believe you don't own distant strangers anything that costs you. The hard duties stop at *harm*; the duties that would actually transfer resources stop at the *border*.\n\nIt's a tidy way to hold a universal ideal and a parochial practice at the same time, which is maybe why it's lasted so long.\n\nThis rhymes with [[maximizing-freedom-as-ethical-imperative|Beauvoir's]] point that my freedom is bound up with others' freedom: if that's true, a duty that reaches only as far as \"don't harm\" looks far too thin to carry it.\n\n> [my take — do I actually buy that the justice/aid line is a *flaw*, or is some triage by proximity unavoidable? say where I land, and why.]\n"
+    },
+    {
+      "path": "nussbaum/the-cosmopolitan-tradition",
+      "title": "Related:",
+      "modified": "2026-06-19T10:13:52.840941+00:00",
+      "size_bytes": 1325,
+      "word_count": 157,
+      "excerpt": "Martha Nussbaum traces the Cynic–Stoic idea of the kosmou politēs, the world-citizen. Diogenes says \"I am a citizen of the world\", and the Stoics turn it into a claim about equal worth, that every human has dignity independent of city,…",
+      "tags": [],
+      "headings": [
+        {
+          "level": 2,
+          "text": "Related:"
+        }
+      ],
+      "targets": [
+        "Martha Nussbaum",
+        "Diogenes",
+        "the Stoics",
+        "radical-self-sufficiency",
+        "Cicero",
+        "Hugo Grotius",
+        "Adam Smith",
+        "the capabilities approach",
+        "the-bifurcation-of-duties",
+        "dignity-needs-external-goods",
+        "cosmopolitan-through-the-local",
+        "iterating-particular-and-universal-as-method"
+      ],
+      "reviewed": true,
+      "content": "---\nprompted by: Martha Nussbaum/The Cosmopolitan Tradition\ntype: argument\nreviewed?: true\nlast reviewd: 2026-06-19\n---\n[[Martha Nussbaum]] traces the Cynic–Stoic idea of the *kosmou politēs*, the world-citizen. [[Diogenes]] says \"I am a citizen of the world\", and the [[the Stoics|Stoics]] turn it into a claim about equal worth, that every human has dignity independent of city, class, gender or status.\n\nThat's **noble**, and Nussbaum argues that it's the root of our whole idea of equal human dignity.\n\nBut the tradition grounds dignity in our *rational and moral capacity*, and then prizes a [[radical-self-sufficiency|radical self-sufficiency]]: virtue alone is good, and the sage's flourishing is untouched by misfortune, poverty, even slavery. So health, food, political freedom, family and all sorts of other external goods a real human needs are pushed aside as morally indifferent.\n\nShe follows the thread through [[Cicero]], [[Hugo Grotius]] and [[Adam Smith]], and argues it culminates (once corrected) in her own [[the capabilities approach]].\n\n## Related:\n- [[the-bifurcation-of-duties|split between duties of justice and duties of aid]]\n- [[dignity-needs-external-goods|dignity gets hollowed out by self-sufficiency]]\n- [[cosmopolitan-through-the-local]]\n- [[iterating-particular-and-universal-as-method]]\n"
+    },
+    {
+      "path": "_folder-index-master",
+      "title": "Overview of all notes",
+      "modified": "2026-06-19T10:07:18.798139+00:00",
+      "size_bytes": 9365,
+      "word_count": 1033,
+      "excerpt": "Overview of all notes --- jesus-kiss-as-pre-theoretical-response — Jesus's silent kiss as a response from a different experiential register than argument the-unsolvable-as-productive-only-from-outside — Every thinker claims the unsolvable…",
+      "tags": [],
+      "headings": [
+        {
+          "level": 1,
+          "text": "Overview of all notes"
+        },
+        {
+          "level": 2,
+          "text": "`dostoevsky/`"
+        },
+        {
+          "level": 2,
+          "text": "`nihilism/`"
+        },
+        {
+          "level": 2,
+          "text": "`ethics/`"
+        },
+        {
+          "level": 2,
+          "text": "`selfhood/`"
+        },
+        {
+          "level": 2,
+          "text": "`religion/`"
+        },
+        {
+          "level": 2,
+          "text": "`schelling/`"
+        },
+        {
+          "level": 2,
+          "text": "`macintyre/`"
+        },
+        {
+          "level": 2,
+          "text": "`beauvoir/`"
+        },
+        {
+          "level": 2,
+          "text": "`cioran/`"
+        },
+        {
+          "level": 2,
+          "text": "`byung-chul-han/`"
+        },
+        {
+          "level": 2,
+          "text": "`simone-weil/`"
+        },
+        {
+          "level": 2,
+          "text": "`anarchism/`"
+        },
+        {
+          "level": 2,
+          "text": "`zizek/`"
+        },
+        {
+          "level": 2,
+          "text": "`housing-policy/`"
+        },
+        {
+          "level": 2,
+          "text": "`abundance/`"
+        },
+        {
+          "level": 2,
+          "text": "`techno-politics/`"
+        },
+        {
+          "level": 2,
+          "text": "`violence-and-aesthetics/`"
+        },
+        {
+          "level": 2,
+          "text": "`love-and-desire/`"
+        },
+        {
+          "level": 2,
+          "text": "`voltaire/`"
+        }
+      ],
+      "targets": [
+        "jesus-kiss-as-pre-theoretical-response",
+        "the-unsolvable-as-productive-only-from-outside",
+        "obsessive-desire-as-self-destruction",
+        "happiness-as-attention",
+        "shame-internalized-as-identity",
+        "rescue-refused-by-the-rescued",
+        "philosophical-responses-to-the-void",
+        "camus-critique-of-philosophical-systems",
+        "individuality-within-culture",
+        "sacred-and-profane-duality",
+        "ideology-replaces-religion",
+        "schelling-absolute-nothingness",
+        "characters-of-emotivist-culture",
+        "emotivism-reinterpreted-as-theory-of-use",
+        "moores-principia-ethica",
+        "ambiguity-of-human-existence",
+        "maximizing-freedom-as-ethical-imperative",
+        "why-the-adventurer-fails",
+        "the-aesthetic-attitude",
+        "situated-perception",
+        "the-aesthetic-attitude-and-scientific-inquiry",
+        "how-to-live-in-ambiguity",
+        "ciorans-critique-of-acceptance",
+        "nothingness-as-ciorans-central-premise",
+        "cioran-on-suicide",
+        "positive-power-vs-negative-power",
+        "affliction",
+        "empathy-as-exploit-inverts-attention-as-sacrament",
+        "free-association-and-voluntary-community",
+        "government-as-domination",
+        "futurism-and-the-techno-savior-critique",
+        "the-gap-between-symbols-and-the-real",
+        "amsterdam-housing-crisis-overview",
+        "vereveningsfonds-amsterdams-equalizing-fund",
+        "homelessness-is-a-housing-problem",
+        "raj-chetty-on-mobility-as-product-of-place",
+        "lawn-sign-liberalism",
+        "naders-raiders-and-environmental-law",
+        "we-just-burned-it",
+        "governance-by-ai-doges-endpoint",
+        "jigsaw-as-strict-patriarch",
+        "emptiness-after-desire-passes",
+        "love-bombing-through-stendhals-lens",
+        "desire-to-be-desired",
+        "vulnerability-to-manipulation-through-crushes",
+        "will-to-live-as-irrational-compulsion",
+        "auto-da-fe-as-governance-by-superstition",
+        "freedom-as-commodity-in-candide",
+        "optimism-and-pessimism-as-twin-inadequacies",
+        "rootedness-not-introspection-against-shaped-preference",
+        "iterating-particular-and-universal-as-method",
+        "diagnosis-clear-destination-unfamiliar",
+        "default-settings-have-history",
+        "the-cosmopolitan-tradition",
+        "the-bifurcation-of-duties",
+        "dignity-needs-external-goods",
+        "cosmopolitan-through-the-local"
+      ],
+      "reviewed": false,
+      "content": "\n# Overview of all notes\n\n---\n\n## `dostoevsky/` \n- [[jesus-kiss-as-pre-theoretical-response]] — Jesus's silent kiss as a response from a different experiential register than argument\n- [[the-unsolvable-as-productive-only-from-outside]] — Every thinker claims the unsolvable condition is generative, but the crush and Cioran's bind suggest this productivity is visible mainly in retrospect and from outside the condition itself\n- [[obsessive-desire-as-self-destruction]] — Rogojin's passion as involuntary, bodily, potentially fatal force\n- [[happiness-as-attention]] — Myshkin's Swiss happiness as a skill of perception, not a product of circumstance\n- [[shame-internalized-as-identity]] — How social punishment produces internal collapse in the victim\n- [[rescue-refused-by-the-rescued]] — Why Nastasia rejects the prince's genuine offer of salvation\n\n---\n\n## `nihilism/` \n- [[philosophical-responses-to-the-void]] — Existential thinkers differ less in whether they confront the void than in how they respond to it: through endurance, revolt, freedom, ethical reciprocity, or faith and active love.\n\n---\n\n## `ethics/` \n- [[camus-critique-of-philosophical-systems]] — Camus' argument that philosophical system-building is rooted in avoidance of suffering and proved helpless against fascism\n\n---\n\n## `selfhood/` \n- [[individuality-within-culture]] — True individuality as inhabiting and owning one's place in a culture\n\n---\n\n## `religion/` \n- [[sacred-and-profane-duality]] — The dualistic split between the divine and the worldly in Christian experience\n- [[ideology-replaces-religion]] — How nationalism, Marxism, and other isms filled the structural role religion once played\n\n---\n\n## `schelling/`\n- [[schelling-absolute-nothingness]] — Schelling's Unground as the groundless ground enabling existence to unfold\n\n---\n\n## `macintyre/`\n- [[characters-of-emotivist-culture]] — The manager, therapist, and protester as dominant characters in a world without moral consensus\n- [[emotivism-reinterpreted-as-theory-of-use]] — MacIntyre's reinterpretation: emotivism is false about meaning but accurate about how moral language functions in modern culture\n- [[moores-principia-ethica]] — G.E. Moore's three claims: good as non-natural property, utilitarian ethics, and friendship/beauty as sole goods\n\n---\n\n## `beauvoir/` \n- [[ambiguity-of-human-existence]] — Human existence is fundamentally ambiguous: we live between multiple unresolvable dualities simultaneously\n- [[maximizing-freedom-as-ethical-imperative]] — The ethical conclusion: orient actions toward expanding freedom rather than fleeing it\n- [[why-the-adventurer-fails]] — The adventurer denies the individual/collective duality and ignores the web of freedom sustaining them\n- [[the-aesthetic-attitude]] — The ideal of encountering art through detached, disinterested perception, as if one could suspend bias and see the work “as it is”\n- [[situated-perception]] — Perception is always shaped by perspective, history, and embodiment, so claims to a neutral “view from nowhere” are deceptive\n- [[the-aesthetic-attitude-and-scientific-inquiry]] — The aesthetic attitude resembles scientific inquiry in its attempt to suspend bias, but becomes dangerous when detachment hardens into false objectivity and evasion of responsibility\n- [[how-to-live-in-ambiguity]] — A good human life and a valid ethics can be grounded in ambiguity through responsibility, shared freedom, and resistance to oppression.\n\n---\n\n## `cioran/`\n- [[ciorans-critique-of-acceptance]] — Why Stoic-style acceptance is either performed rather than real, or insufficient to sustain a life\n- [[nothingness-as-ciorans-central-premise]] — Nothingness as the starting point: loving absolute uselessness as a reason to go on\n- [[cioran-on-suicide]] — Why Cioran rejected suicide despite his preoccupation with darkness and meaninglessness\n\n---\n\n## `byung-chul-han/`\n- [[positive-power-vs-negative-power]] — Han's framework: negative power controls through prohibition; positive power controls through the rhetoric of limitless possibility\n\n---\n\n## `simone-weil/`\n- [[affliction]] — Weil's term for the spiritual malaise and learned helplessness produced by dehumanizing conditions\n- [[empathy-as-exploit-inverts-attention-as-sacrament]] — Synthesis of Weil's attention and Musk's \"empathy as software exploit\" as structurally antithetical responses to the same phenomenon, with Han's achievement society as the intermediary that made the inversion culturally plausible\n\n---\n\n## `anarchism/`\n- [[free-association-and-voluntary-community]] — The principle that communities should be voluntary, not coerced\n- [[government-as-domination]] — The argument that the state dominates rather than mediates between citizens\n- [[futurism-and-the-techno-savior-critique]] — Bookchin's critique of those who defer ecological responsibility to hypothetical future technology\n\n---\n\n## `zizek/`\n- [[the-gap-between-symbols-and-the-real]] — The permanent, irreducible gap between what symbols can explain and the full complexity of the Real\n\n---\n\n## `housing-policy/`\n- [[amsterdam-housing-crisis-overview]] — Overview of Amsterdam's crisis: long waiting lists, sky-high prices, and a system that rewards insiders while locking out newcomers\n- [[vereveningsfonds-amsterdams-equalizing-fund]] — Amsterdam's land-rent redistribution fund: how it worked, why it's empty, and what that means for affordable housing\n- [[homelessness-is-a-housing-problem]] — Colburn and Aldern's systematic demolition of standard explanations: it's housing cost and vacancy, not poverty or drugs\n\n---\n\n## `abundance/`\n- [[raj-chetty-on-mobility-as-product-of-place]] — Upward mobility declined from 92% to 50% across generations; place determines life outcomes\n- [[lawn-sign-liberalism]] — Symbolically liberal, operationally conservative: the blue-state housing hypocrisy\n- [[naders-raiders-and-environmental-law]] — How liberal reformers built an apparatus to sue the government — and its unintended consequences\n- [[we-just-burned-it]] — The barbarism of combustion-based civilization from the future's perspective\n\n---\n\n## `techno-politics/`\n- [[governance-by-ai-doges-endpoint]] — DOGE's logical terminus: replacing democratic deliberation with executable code\n\n---\n\n## `violence-and-aesthetics/`\n- [[jigsaw-as-strict-patriarch]] — Jigsaw as tyrannical father figure who believes suffering is love and pain teaches\n\n---\n\n## `love-and-desire/`\n- [[emptiness-after-desire-passes]] — The vacuum left behind when a powerful desire is finally relinquished\n- [[love-bombing-through-stendhals-lens]] — How Stendhal's framework illuminates the cruelty of love bombing and withdrawal\n- [[desire-to-be-desired]] — Lacan's observation that the primary aim in love is often to be desired rather than to desire\n- [[vulnerability-to-manipulation-through-crushes]] — How the emotional dynamics of crushes create exploitable psychological vulnerabilities\n\n---\n\n## `voltaire/`\n- [[will-to-live-as-irrational-compulsion]] — The old woman's observation that humans cling to existence without justification\n- [[auto-da-fe-as-governance-by-superstition]] — Credentialed ceremonial killing as bureaucratic policy response to disaster\n- [[freedom-as-commodity-in-candide]] — The ransom economy where liberation operates through market exchange\n- [[optimism-and-pessimism-as-twin-inadequacies]] — Both philosophical systems unfalsifiable, both useless for action\n\n---\n\n## `propaganda/` \n- [[rootedness-not-introspection-against-shaped-preference]] — Against the propaganda model, introspection is recursive; thickening the rootedness the apparatus erodes is the partial counter available\n\n---\n\n## `epistemics/` \n- [[iterating-particular-and-universal-as-method]] — Against picking either pole, the trustworthy picture of the world emerges from the oscillation between myself/other, particular/universal, inside/outside, is/ought\n\n---\n\n## `phenomenology/` \n- [[diagnosis-clear-destination-unfamiliar]] — Husserl's bracket-drift diagnosis is compelling; the proposed exit through the epoché is so unfamiliar that even he seems to struggle, so I take the diagnosis and bracket the destination \n- [[default-settings-have-history]] — Husserl's historical detective work as method: defaults become visible as choices only by walking back the multi-era trajectory that produced them\n## `nussbaum/`\n- [[the-cosmopolitan-tradition]] — Nussbaum's map of the Cynic–Stoic world-citizen ideal: noble (the root of equal human dignity), flawed (built on a self-sufficiency that files external goods as morally indifferent)\n- [[the-bifurcation-of-duties]] — Cicero's split between universal duties of justice (mostly \"don't harm\") and weaker, local duties of material aid — the load-bearing flaw that lets you affirm equal worth while owing strangers almost nothing\n- [[dignity-needs-external-goods]] — how grounding dignity in reason alone curdles it into macho self-command and lets us ignore the destitute; the capabilities-approach correction that dignity is the dignity of a needy, embodied animal\n- [[cosmopolitan-through-the-local]] — her surprising landing on the nation-state, and the open question of whether the universal can only be reached *through* a rooted, particular home"
+    },
+    {
+      "path": "nussbaum/cosmopolitan-through-the-local",
+      "title": "cosmopolitan through the local",
+      "modified": "2026-06-19T09:44:45.894129+00:00",
+      "size_bytes": 1630,
+      "word_count": 220,
+      "excerpt": "If every human has an equal claim on our concern, what's the political unit that delivers it? Nussbaum's answer is the surprise of the book — surprising because her 1994 essay \"Patriotism and Cosmopolitanism\" leaned the other way. She…",
+      "tags": [],
+      "headings": [],
+      "targets": [
+        "Martha Nussbaum",
+        "Hugo Grotius",
+        "Cicero",
+        "iterating-particular-and-universal-as-method",
+        "freedom-as-commodity-in-candide"
+      ],
+      "reviewed": false,
+      "content": "---\nprompted by: Martha Nussbaum/The Cosmopolitan Tradition\ntype: synthesis\nreviewed?: false\nlast reviewd: 2026-06-19\n---\nIf every human has an equal claim on our concern, what's the political *unit* that delivers it? [[Martha Nussbaum|Nussbaum]]'s answer is the surprise of the book — surprising because her 1994 essay \"Patriotism and Cosmopolitanism\" leaned the other way.\n\nShe lands on the **nation-state**. Following [[Hugo Grotius]], she treats it as the largest unit that can actually be an effective home of human autonomy and stay accountable to people's voices. Cosmopolitan *ends*, liberal-nationalist *means*.\n\nCritics pounce (e.g. the LSE review): [[Cicero]] privileged the Republic, and Grotius *founded* the philosophical defence of the nation-state — so is this a *cosmopolitan* tradition at all, or nationalism in cosmopolitan dress? And a nation-state offers, at best, the *possibility* of dignity, never a guarantee.\n\n> [my take — is the nation-state the right \"rooted home\" for the universal, or a retreat dressed up as realism?]\n\nFor me this is the same refusal I make in [[iterating-particular-and-universal-as-method]]: the universal human, conceived only in the abstract, hollows out the particular life — so maybe the universal can only be reached *through* a rooted, particular home, not around it.\n\nAnd the garden's own motto is the tempting opposite error: Voltaire's \"we must cultivate our garden\" ([[freedom-as-commodity-in-candide|Candide]]) — tending your own plot and forgetting the world. The live question is the narrow path between Candide's retreat and pure cosmopolitan abstraction.\n"
+    },
+    {
+      "path": "nussbaum/dignity-needs-external-goods",
+      "title": "dignity needs external goods",
+      "modified": "2026-06-19T09:44:34.983019+00:00",
+      "size_bytes": 1568,
+      "word_count": 232,
+      "excerpt": "The Stoic move that grounds equal dignity is also the one that guts it. Ground dignity in our rational and moral capacity — not in health, wealth or luck — and you get a beautiful equality: the enslaved person and the emperor have exactly…",
+      "tags": [],
+      "headings": [],
+      "targets": [
+        "the Stoics",
+        "Martha Nussbaum",
+        "Adam Smith",
+        "the capabilities approach",
+        "affliction"
+      ],
+      "reviewed": false,
+      "content": "---\nprompted by: Martha Nussbaum/The Cosmopolitan Tradition\ntype: argument\nreviewed?: false\nlast reviewd: 2026-06-19\n---\nThe [[the Stoics|Stoic]] move that *grounds* equal dignity is also the one that *guts* it.\n\nGround dignity in our rational and moral capacity — not in health, wealth or luck — and you get a beautiful equality: the enslaved person and the emperor have exactly the same worth. But push it to the Stoic limit and external goods become mere \"indifferents\": if the sage's flourishing survives poverty, illness, even slavery, then nobody's dignity actually *needs* anything.\n\n[[Martha Nussbaum|Nussbaum]]'s charge is that this curdles dignity into a *macho* ideal — self-command, indifference to misfortune — which she finds still lingering in [[Adam Smith]]. And it has an ugly downstream: if dignity needs nothing external, the destitute have no material claim on us, and you are a short step from blaming them for not rising above their conditions.\n\nHer correction: dignity is the dignity of a *needy, embodied animal*. A capacity is worth nothing unless the material and social conditions let you actually exercise it — which is the whole point of [[the capabilities approach]].\n\nThis sits very close to [[affliction|Weil on affliction]]: real deprivation can crush the soul, you cannot simply will your way above it, and the ethical demand is to *attend to the needy person*, not to admire the self-sufficient one.\n\n> [my take — where I think dignity actually lives: in the capacity, in the exercising of it, or in the needing itself.]\n"
+    },
     {
       "path": "zizek/the-gap-between-symbols-and-the-real",
       "title": "Related",
@@ -1584,154 +1823,6 @@
       ],
       "reviewed": true,
       "content": "---\nwhere'd I hear about this?: Ezra Klein & Derek Thompson/Abundance\ntype: concept\nreviewed?: true\nlast reviewd: 2026-04-27\n---\nIn [[political science]] it is known that some people are \"symbolically conservative but operationally liberal”. Meaning they talk like conservatives but want to be governed like liberals. \n\nBut reverse can also be true: voters can be symbolically liberal but operationally conservative.\n\nIn practice we know that Black Lives Matter, Kindness Is Everything, and No Human Being Is Illegal. But at home we sit in yards zoned exclusively for single-family homes and in communities that organize against adding the new housing that would bring those stated values closer to reality. \n\nIn conventional political typologies, liberals embrace change and conservatives cling to stasis. But red-state and blue-state [[housing policy]] inverts this completely. In their book they mention [[Texas]] and [[California]] as examples.\n## Related \n\n- [[california-as-liberal-governance-failure]] \n- [[nimbyism-and-building-resistance]] \n- [[anti-growth-movement-goes-national]] \n- [[ideology-is-inescapable]] \n- [[a-liberalism-that-builds]]\n- [[lawn-sign-liberalism-as-identity-fusion]]"
-    },
-    {
-      "path": "_folder-index-master",
-      "title": "`dostoevsky/`",
-      "modified": "2026-04-27T07:42:37.469138+00:00",
-      "size_bytes": 10781,
-      "word_count": 893,
-      "excerpt": "Overview of all notes --- jesus-kiss-as-pre-theoretical-response — Jesus's silent kiss as a response from a different experiential register than argument the-unsolvable-as-productive-only-from-outside — Every thinker claims the unsolvable…",
-      "tags": [],
-      "headings": [
-        {
-          "level": 2,
-          "text": "`dostoevsky/`"
-        },
-        {
-          "level": 2,
-          "text": "`nihilism/`"
-        },
-        {
-          "level": 2,
-          "text": "`ethics/`"
-        },
-        {
-          "level": 2,
-          "text": "`selfhood/`"
-        },
-        {
-          "level": 2,
-          "text": "`religion/`"
-        },
-        {
-          "level": 2,
-          "text": "`schelling/`"
-        },
-        {
-          "level": 2,
-          "text": "`macintyre/`"
-        },
-        {
-          "level": 2,
-          "text": "`beauvoir/`"
-        },
-        {
-          "level": 2,
-          "text": "`cioran/`"
-        },
-        {
-          "level": 2,
-          "text": "`byung-chul-han/`"
-        },
-        {
-          "level": 2,
-          "text": "`simone-weil/`"
-        },
-        {
-          "level": 2,
-          "text": "`anarchism/`"
-        },
-        {
-          "level": 2,
-          "text": "`zizek/`"
-        },
-        {
-          "level": 2,
-          "text": "`housing-policy/`"
-        },
-        {
-          "level": 2,
-          "text": "`abundance/`"
-        },
-        {
-          "level": 2,
-          "text": "`techno-politics/`"
-        },
-        {
-          "level": 2,
-          "text": "`violence-and-aesthetics/`"
-        },
-        {
-          "level": 2,
-          "text": "`love-and-desire/`"
-        },
-        {
-          "level": 2,
-          "text": "`voltaire/`"
-        },
-        {
-          "level": 2,
-          "text": "`propaganda/`"
-        }
-      ],
-      "targets": [
-        "jesus-kiss-as-pre-theoretical-response",
-        "the-unsolvable-as-productive-only-from-outside",
-        "obsessive-desire-as-self-destruction",
-        "happiness-as-attention",
-        "shame-internalized-as-identity",
-        "rescue-refused-by-the-rescued",
-        "philosophical-responses-to-the-void",
-        "camus-critique-of-philosophical-systems",
-        "individuality-within-culture",
-        "sacred-and-profane-duality",
-        "ideology-replaces-religion",
-        "schelling-absolute-nothingness",
-        "characters-of-emotivist-culture",
-        "emotivism-reinterpreted-as-theory-of-use",
-        "moores-principia-ethica",
-        "ambiguity-of-human-existence",
-        "maximizing-freedom-as-ethical-imperative",
-        "why-the-adventurer-fails",
-        "the-aesthetic-attitude",
-        "situated-perception",
-        "the-aesthetic-attitude-and-scientific-inquiry",
-        "how-to-live-in-ambiguity",
-        "ciorans-critique-of-acceptance",
-        "nothingness-as-ciorans-central-premise",
-        "cioran-on-suicide",
-        "positive-power-vs-negative-power",
-        "affliction",
-        "empathy-as-exploit-inverts-attention-as-sacrament",
-        "free-association-and-voluntary-community",
-        "government-as-domination",
-        "futurism-and-the-techno-savior-critique",
-        "the-gap-between-symbols-and-the-real",
-        "amsterdam-housing-crisis-overview",
-        "vereveningsfonds-amsterdams-equalizing-fund",
-        "homelessness-is-a-housing-problem",
-        "raj-chetty-on-mobility-as-product-of-place",
-        "lawn-sign-liberalism",
-        "naders-raiders-and-environmental-law",
-        "we-just-burned-it",
-        "governance-by-ai-doges-endpoint",
-        "jigsaw-as-strict-patriarch",
-        "emptiness-after-desire-passes",
-        "love-bombing-through-stendhals-lens",
-        "desire-to-be-desired",
-        "vulnerability-to-manipulation-through-crushes",
-        "will-to-live-as-irrational-compulsion",
-        "auto-da-fe-as-governance-by-superstition",
-        "freedom-as-commodity-in-candide",
-        "optimism-and-pessimism-as-twin-inadequacies",
-        "rootedness-not-introspection-against-shaped-preference",
-        "iterating-particular-and-universal-as-method",
-        "diagnosis-clear-destination-unfamiliar",
-        "default-settings-have-history"
-      ],
-      "reviewed": false,
-      "content": "\nOverview of all notes\n\n```dataviewjs\nconst reviewedKey = \"reviewed?\";\nconst typeKey = \"type\";\nconst typeValue = \"synthesis\";\n\nconst current = dv.current();\nconst baseFolder = current.file.folder ?? \"\";\nconst prefix = baseFolder ? `${baseFolder}/` : \"\";\n\n// All immediate child folders under the current note's folder\nconst childFolders = [...new Set(\n  app.vault.getMarkdownFiles()\n    .map(f => f.path)\n    .filter(path => path.startsWith(prefix))\n    .map(path => path.slice(prefix.length))\n    .filter(rest => rest.includes(\"/\"))\n    .map(rest => `${prefix}${rest.split(\"/\")[0]}`)\n)].sort((a, b) => a.localeCompare(b));\n\nconst rows = childFolders.map(folder => {\n  const pages = dv.pages(`\"${folder}\"`).array();\n\n  const total = pages.length;\n  const reviewedTrue = pages.filter(p => p[reviewedKey] === true).length;\n  const synthesis = pages.filter(p => p[typeKey] === typeValue).length;\n  const both = pages.filter(\n    p => p[reviewedKey] === true && p[typeKey] === typeValue\n  ).length;\n\n  return [\n    folder.replace(prefix, \"\"),\n    total,\n    reviewedTrue,\n    synthesis,\n    both,\n    total ? `${Math.round((both / total) * 100)}%` : \"0%\"\n  ];\n});\n\n// Unique pages across all child folders\nconst allPages = childFolders.flatMap(folder => dv.pages(`\"${folder}\"`).array());\nconst uniquePages = Array.from(new Map(allPages.map(p => [p.file.path, p])).values());\n\nconst grandTotal = uniquePages.length;\nconst grandReviewed = uniquePages.filter(p => p[reviewedKey] === true).length;\nconst grandSynthesis = uniquePages.filter(p => p[typeKey] === typeValue).length;\nconst grandBoth = uniquePages.filter(\n  p => p[reviewedKey] === true && p[typeKey] === typeValue\n).length;\n\ndv.header(2, `Folder list`);\n\nif (rows.length === 0) {\n  dv.paragraph(\"No child folders with notes found.\");\n} else {\n  dv.table(\n    [\"Folder\", \"Notes\", \"reviewed? = true\", 'type = \"synthesis\"', \"Both\", \"% both\"],\n    rows\n  );\n\nconst reviewedPct = grandTotal ? `${Math.round((grandReviewed / grandTotal) * 100)}%` : \"0%\";\nconst synthesisPct = grandTotal ? `${Math.round((grandSynthesis / grandTotal) * 100)}%` : \"0%\";\nconst bothPct = grandTotal ? `${Math.round((grandBoth / grandTotal) * 100)}%` : \"0%\";\n\ndv.paragraph(\n  `**Overall:** ${grandBoth} / ${grandTotal} notes are both reviewed and synthesis (${bothPct})` +\n  ` · reviewed: ${grandReviewed} / ${grandTotal} (${reviewedPct})` +\n  ` · synthesis: ${grandSynthesis} / ${grandTotal} (${synthesisPct})`\n);\n}\n```\n\n---\n## `dostoevsky/` \n- [[jesus-kiss-as-pre-theoretical-response]] — Jesus's silent kiss as a response from a different experiential register than argument\n- [[the-unsolvable-as-productive-only-from-outside]] — Every thinker claims the unsolvable condition is generative, but the crush and Cioran's bind suggest this productivity is visible mainly in retrospect and from outside the condition itself\n- [[obsessive-desire-as-self-destruction]] — Rogojin's passion as involuntary, bodily, potentially fatal force\n- [[happiness-as-attention]] — Myshkin's Swiss happiness as a skill of perception, not a product of circumstance\n- [[shame-internalized-as-identity]] — How social punishment produces internal collapse in the victim\n- [[rescue-refused-by-the-rescued]] — Why Nastasia rejects the prince's genuine offer of salvation\n## `nihilism/` \n\n- [[philosophical-responses-to-the-void]] — Existential thinkers differ less in whether they confront the void than in how they respond to it: through endurance, revolt, freedom, ethical reciprocity, or faith and active love.\n## `ethics/` \n\n- [[camus-critique-of-philosophical-systems]] — Camus' argument that philosophical system-building is rooted in avoidance of suffering and proved helpless against fascism\n\n## `selfhood/` \n\n- [[individuality-within-culture]] — True individuality as inhabiting and owning one's place in a culture\n## `religion/` \n\n- [[sacred-and-profane-duality]] — The dualistic split between the divine and the worldly in Christian experience\n- [[ideology-replaces-religion]] — How nationalism, Marxism, and other isms filled the structural role religion once played\n## `schelling/`\n\n- [[schelling-absolute-nothingness]] — Schelling's Unground as the groundless ground enabling existence to unfold\n## `macintyre/`\n\n- [[characters-of-emotivist-culture]] — The manager, therapist, and protester as dominant characters in a world without moral consensus\n- [[emotivism-reinterpreted-as-theory-of-use]] — MacIntyre's reinterpretation: emotivism is false about meaning but accurate about how moral language functions in modern culture\n- [[moores-principia-ethica]] — G.E. Moore's three claims: good as non-natural property, utilitarian ethics, and friendship/beauty as sole goods\n\n## `beauvoir/` \n\n- [[ambiguity-of-human-existence]] — Human existence is fundamentally ambiguous: we live between multiple unresolvable dualities simultaneously\n- [[maximizing-freedom-as-ethical-imperative]] — The ethical conclusion: orient actions toward expanding freedom rather than fleeing it\n- [[why-the-adventurer-fails]] — The adventurer denies the individual/collective duality and ignores the web of freedom sustaining them\n- [[the-aesthetic-attitude]] — The ideal of encountering art through detached, disinterested perception, as if one could suspend bias and see the work “as it is”\n- [[situated-perception]] — Perception is always shaped by perspective, history, and embodiment, so claims to a neutral “view from nowhere” are deceptive\n- [[the-aesthetic-attitude-and-scientific-inquiry]] — The aesthetic attitude resembles scientific inquiry in its attempt to suspend bias, but becomes dangerous when detachment hardens into false objectivity and evasion of responsibility\n- [[how-to-live-in-ambiguity]] — A good human life and a valid ethics can be grounded in ambiguity through responsibility, shared freedom, and resistance to oppression.\n\n## `cioran/`\n\n- [[ciorans-critique-of-acceptance]] — Why Stoic-style acceptance is either performed rather than real, or insufficient to sustain a life\n- [[nothingness-as-ciorans-central-premise]] — Nothingness as the starting point: loving absolute uselessness as a reason to go on\n- [[cioran-on-suicide]] — Why Cioran rejected suicide despite his preoccupation with darkness and meaninglessness\n\n## `byung-chul-han/`\n\n- [[positive-power-vs-negative-power]] — Han's framework: negative power controls through prohibition; positive power controls through the rhetoric of limitless possibility\n## `simone-weil/`\n\n- [[affliction]] — Weil's term for the spiritual malaise and learned helplessness produced by dehumanizing conditions\n- [[empathy-as-exploit-inverts-attention-as-sacrament]] — Synthesis of Weil's attention and Musk's \"empathy as software exploit\" as structurally antithetical responses to the same phenomenon, with Han's achievement society as the intermediary that made the inversion culturally plausible\n\n## `anarchism/`\n\n- [[free-association-and-voluntary-community]] — The principle that communities should be voluntary, not coerced\n- [[government-as-domination]] — The argument that the state dominates rather than mediates between citizens\n- [[futurism-and-the-techno-savior-critique]] — Bookchin's critique of those who defer ecological responsibility to hypothetical future technology\n\n## `zizek/`\n\n- [[the-gap-between-symbols-and-the-real]] — The permanent, irreducible gap between what symbols can explain and the full complexity of the Real\n## `housing-policy/`\n\n- [[amsterdam-housing-crisis-overview]] — Overview of Amsterdam's crisis: long waiting lists, sky-high prices, and a system that rewards insiders while locking out newcomers\n- [[vereveningsfonds-amsterdams-equalizing-fund]] — Amsterdam's land-rent redistribution fund: how it worked, why it's empty, and what that means for affordable housing\n- [[homelessness-is-a-housing-problem]] — Colburn and Aldern's systematic demolition of standard explanations: it's housing cost and vacancy, not poverty or drugs\n## `abundance/`\n\n- [[raj-chetty-on-mobility-as-product-of-place]] — Upward mobility declined from 92% to 50% across generations; place determines life outcomes\n- [[lawn-sign-liberalism]] — Symbolically liberal, operationally conservative: the blue-state housing hypocrisy\n- [[naders-raiders-and-environmental-law]] — How liberal reformers built an apparatus to sue the government — and its unintended consequences\n- [[we-just-burned-it]] — The barbarism of combustion-based civilization from the future's perspective\n\n## `techno-politics/`\n\n- [[governance-by-ai-doges-endpoint]] — DOGE's logical terminus: replacing democratic deliberation with executable code\n\n## `violence-and-aesthetics/`\n- [[jigsaw-as-strict-patriarch]] — Jigsaw as tyrannical father figure who believes suffering is love and pain teaches\n\n## `love-and-desire/`\n\n- [[emptiness-after-desire-passes]] — The vacuum left behind when a powerful desire is finally relinquished\n- [[love-bombing-through-stendhals-lens]] — How Stendhal's framework illuminates the cruelty of love bombing and withdrawal\n- [[desire-to-be-desired]] — Lacan's observation that the primary aim in love is often to be desired rather than to desire\n- [[vulnerability-to-manipulation-through-crushes]] — How the emotional dynamics of crushes create exploitable psychological vulnerabilities\n\n## `voltaire/`\n\n- [[will-to-live-as-irrational-compulsion]] — The old woman's observation that humans cling to existence without justification\n- [[auto-da-fe-as-governance-by-superstition]] — Credentialed ceremonial killing as bureaucratic policy response to disaster\n- [[freedom-as-commodity-in-candide]] — The ransom economy where liberation operates through market exchange\n- [[optimism-and-pessimism-as-twin-inadequacies]] — Both philosophical systems unfalsifiable, both useless for action\n## `propaganda/` \n- [[rootedness-not-introspection-against-shaped-preference]] — Against the propaganda model, introspection is recursive; thickening the rootedness the apparatus erodes is the partial counter available\n\n## `epistemics/` \n- [[iterating-particular-and-universal-as-method]] — Against picking either pole, the trustworthy picture of the world emerges from the oscillation between myself/other, particular/universal, inside/outside, is/ought\n## `phenomenology/` \n- [[diagnosis-clear-destination-unfamiliar]] — Husserl's bracket-drift diagnosis is compelling; the proposed exit through the epoché is so unfamiliar that even he seems to struggle, so I take the diagnosis and bracket the destination \n- [[default-settings-have-history]] — Husserl's historical detective work as method: defaults become visible as choices only by walking back the multi-era trajectory that produced them"
     },
     {
       "path": "vault_graph",

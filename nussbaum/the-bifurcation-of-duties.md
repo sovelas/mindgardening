@@ -4,13 +4,13 @@ type: argument
 reviewed?: false
 last reviewd: 2026-06-19
 ---
-On [[Martha Nussbaum|Nussbaum]]'s reading, [[Cicero]] (drawing on the [[the Stoics|Stoics]]) splits moral life in two, and the split never heals.
+On [[Martha Nussbaum|Nussbaum]]'s reading, [[Cicero]] (drawing on the [[the Stoics|Stoics]]) splits moral life in duties of justice and duties of beneficence.
 
-**Duties of justice** are universal: grounded in natural law, owed to every human everywhere, and stringent. But they are mostly *negative* — don't harm, don't steal, keep your contracts, respect property.
+**Duties of justice** are universal, grounded in natural law and owed to every human everywhere. But they are mostly *negative* shaped: don't harm, don't steal, keep your contracts, respect property.
 
-**Duties of material aid** (beneficence) are the positive ones — actually feeding, sheltering, rescuing. And these Cicero treats as weaker, more discretionary, and owed mainly to your own: compatriots, kin, friends.
+**Duties of material aid** (beneficence) are positive ones: feeding, sheltering, rescuing. And these Cicero treats as weaker, more discretionary, and owed mainly to your own: compatriots, kin, friends.
 
-Nussbaum calls this the **bifurcation of duties**, and thinks it is the tradition's load-bearing flaw. It lets you affirm, sincerely, that every human has equal worth — while owing distant strangers almost nothing that costs you. The hard duties stop at *harm*; the duties that would actually transfer resources stop at the *border*.
+The bifurcation lets you affirm, sincerely, that every human has equal worth, while at the same time alowing you to  believe you don't own distant strangers anything that costs you. The hard duties stop at *harm*; the duties that would actually transfer resources stop at the *border*.
 
 It's a tidy way to hold a universal ideal and a parochial practice at the same time, which is maybe why it's lasted so long.
 
