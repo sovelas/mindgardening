@@ -445,6 +445,8 @@
     .panel-tab { padding: 6px 10px; font-size: 11.5px; }
     .overview-card { gap: 5px; }
     .overview-card h1 { margin: 0; }
+    .selection-actions { justify-content: flex-start; }
+    .selection-actions button { padding: 5px 9px; font-size: 11px; }
     /* mobile: keep search + buttons on one line */
     @media (max-width: 980px) {
       .controlbar { flex-wrap: nowrap; gap: 5px; }
@@ -503,7 +505,7 @@
           <h3>Graph</h3>
           <div class="toggle-row">
             <label class="toggle"><input id="showFolders" type="checkbox" checked /> folders</label>
-            <label class="toggle"><input id="showUnresolved" type="checkbox" checked /> unresolved</label>
+            <label class="toggle"><input id="showUnresolved" type="checkbox" /> unresolved</label>
             <label class="toggle"><input id="showLabels" type="checkbox" checked /> labels</label>
           </div>
         </div>
@@ -1262,9 +1264,10 @@ function makeNodeTooltip(meta) {
   const el = document.createElement('div');
   el.style.maxWidth = '320px';
   el.innerHTML =
-    `<b>${escapeHtml(meta.label)}</b><br>` +
-    `<span>${escapeHtml(meta.kind)}</span><br>` +
-    `<span>${escapeHtml(meta.fullLabel)}</span>`;
+    `<b>${escapeHtml(meta.label)}</b>` +
+    (meta.kind === 'note' && meta.folder && meta.folder !== '.'
+      ? `<br><span>${escapeHtml(meta.folder)}</span>`
+      : '');
   return el;
 }
 function readLayoutControls() {
@@ -1635,6 +1638,25 @@ function openConnectionsPanel() {
 function closeConnectionsPanel() {
   connectionsOverlayEl.classList.add('hidden');
 }
+let _glossMap = null;
+function buildGlossMap() {
+  const m = new Map();
+  const idx = graphState && graphState.nodeMeta.get(internalId('note', '_folder-index-master'));
+  const c = idx && idx.content ? idx.content : '';
+  const re = /^\s*[-*]\s*\[\[([^\]|#]+)(?:\|[^\]]+)?\]\]\s*[—–-]\s*(.+?)\s*$/gm;
+  let mt;
+  while ((mt = re.exec(c))) {
+    const key = normalizeVaultPath(mt[1]).split('/').pop().toLowerCase();
+    if (key && !m.has(key)) m.set(key, mt[2].trim());
+  }
+  return m;
+}
+function noteSummary(meta) {
+  if (!_glossMap) _glossMap = buildGlossMap();
+  const k1 = String(meta.label || '').toLowerCase();
+  const k2 = normalizeVaultPath(meta.fullLabel || '').split('/').pop().toLowerCase();
+  return _glossMap.get(k1) || _glossMap.get(k2) || meta.excerpt || '';
+}
 function renderSelection(nodeId) {
   if (!graphState) return;
   const meta = graphState.nodeMeta.get(nodeId);
@@ -1668,28 +1690,15 @@ function renderSelection(nodeId) {
   const linkDegree = graphState.degree.get(nodeId) || 0;
   const totalConnections = outgoing.length + incoming.length;
   renderConnectionsOverlay(meta, outgoingNoteLinks, incomingNoteLinks, linkDegree, totalConnections);
+  const summary = noteSummary(meta);
   selectionSummaryEl.innerHTML = `
     <h3>Selection</h3>
-    <div class="selection-compact">
-      <div class="title-wrap">
-        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
-          <span class="badge">${escapeHtml(meta.kind)}</span>
-          <span class="badge">${escapeHtml(meta.folder)}</span>
-          <span class="badge">${linkDegree} note-links</span>
-        </div>
-        <h2 style="margin:0 0 6px">${escapeHtml(meta.label)}</h2>
-        <div class="mono muted">${escapeHtml(meta.fullLabel)}</div>
-        <div class="inline-stats">
-          <span class="mini-stat">${outgoingNoteLinks.length} outgoing</span>
-          <span class="mini-stat">${incomingNoteLinks.length} incoming</span>
-          <span class="mini-stat">${totalConnections} total connections</span>
-        </div>
-      </div>
-      <div class="selection-actions">
-        <button onclick="focusSelection()">Focus node</button>
-        <button onclick="focusNeighborhood()">1-hop</button>
-        <button onclick="openConnectionsPanel()">Connections</button>
-      </div>
+    <h2 style="margin:0 0 4px;font-size:16px">${escapeHtml(meta.label)}</h2>
+    ${summary ? `<div style="font-size:12px;line-height:1.55;color:var(--text);margin:0 0 10px">${escapeHtml(summary)}</div>` : ''}
+    <div class="selection-actions">
+      <button onclick="focusSelection()">Focus</button>
+      <button onclick="focusNeighborhood()">1-hop</button>
+      <button onclick="openConnectionsPanel()">Connections</button>
     </div>
   `;
   if (meta.kind === 'note') {
@@ -2448,9 +2457,23 @@ boot();
         seq.appendChild(arr);
       }
       const ic = document.createElement('span');
-      ic.title = t + ' — ' + d;
       ic.style.cssText = 'display:inline-flex;align-items:center;';
       ic.innerHTML = g;
+      if (t === 'seed') {
+        ic.style.cursor = 'pointer';
+        const sync = () => {
+          ic.style.opacity = showUnresolvedEl.checked ? '1' : '0.4';
+          ic.title = (showUnresolvedEl.checked ? 'hide' : 'show') + ' seeds (unwritten links)';
+        };
+        sync();
+        ic.addEventListener('click', () => {
+          showUnresolvedEl.checked = !showUnresolvedEl.checked;
+          applyVisibility();
+          sync();
+        });
+      } else {
+        ic.title = t + ' — ' + d;
+      }
       seq.appendChild(ic);
     });
     wrap.appendChild(seq);
