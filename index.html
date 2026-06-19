@@ -423,7 +423,7 @@
         grid-template-rows: auto auto;
       }
       #graph {
-        height: 55vh;
+        height: 46vh;
         border-top: 1px solid var(--border);
       }
       .sidebar {
@@ -463,10 +463,10 @@
   </section>
   <section class="controlbar-wrap">
     <div class="controlbar">
-      <input id="searchInput" type="search" placeholder="Search notes, folders, or unresolved links…" />
-      <button id="searchBtn">Find</button>
+      <input id="searchInput" type="search" placeholder="Search" />
+      <button id="searchBtn" aria-label="Search" title="Search"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="20" y1="20" x2="15.4" y2="15.4"/></svg></button>
       <button id="fitBtn">Fit</button>
-      <button id="stabilizeBtn">Re-layout</button>
+      <button id="stabilizeBtn" aria-label="Re-layout" title="Re-layout"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></button>
       <button id="clearBtn">Clear</button>
       <!-- <span id="status" class="status">Ready.</span> -->
     </div>
