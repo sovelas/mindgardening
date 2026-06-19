@@ -516,7 +516,7 @@
       <button id="fitBtn">Fit</button>
       <button id="stabilizeBtn">Re-layout</button>
       <button id="clearBtn">Clear</button>
-      <span id="status" class="status">Ready.</span>
+      <!-- <span id="status" class="status">Ready.</span> -->
     </div>
   </section>
 
@@ -2675,12 +2675,12 @@ boot();
      ['bloom', 'developed note', G.bloom], ['tree', 'a hub', G.tree]].forEach(([t, d, g]) => {
       const el = document.createElement('span');
       el.className = 'legend-item';
-      el.innerHTML = g + '<span>' + t + ' — ' + d + '</span>';
+      el.innerHTML = g + '<span>' + t  + '</span>';
       wrap.appendChild(el);
     });
     const note = document.createElement('span');
     note.className = 'legend-item';
-    note.innerHTML = '<span>colour = its folder (bed)</span>';
+    note.innerHTML = '<span>color = folder</span>';
     wrap.appendChild(note);
     card.appendChild(wrap);
   }
