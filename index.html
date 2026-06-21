@@ -447,18 +447,21 @@
     .overview-card h1 { margin: 0; }
     .selection-actions { justify-content: flex-start; }
     .selection-actions button { padding: 5px 9px; font-size: 11px; }
-    /* corner gates */
+    /* corner gates — hand-drawn garden objects that blend into the canvas */
     #graph { position: relative; }
     .gates { position: absolute; inset: 0; pointer-events: none; z-index: 5; font-family: 'Courier New', monospace; }
-    .gate { position: absolute; pointer-events: auto; display: inline-flex; align-items: center; gap: 6px; padding: 5px 9px; border: 1px solid var(--border); border-radius: 10px; background: var(--panel); color: var(--text); font-size: 11px; cursor: pointer; box-shadow: 0 4px 12px rgba(92,77,55,0.10); }
-    .gate:hover { background: var(--panel-3); }
-    .gate.tl { top: 12px; left: 12px; } .gate.tr { top: 12px; right: 12px; } .gate.bl { bottom: 12px; left: 12px; } .gate.br { bottom: 12px; right: 12px; }
-    .gate-pop { position: absolute; pointer-events: auto; z-index: 6; min-width: 168px; max-width: 240px; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 10px 28px rgba(92,77,55,0.18); padding: 5px; display: none; }
+    .gate { position: absolute; pointer-events: auto; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 1px; opacity: 0.6; transition: opacity .18s ease, transform .18s ease; -webkit-tap-highlight-color: transparent; }
+    .gate:hover { opacity: 1; transform: translateY(-1px); }
+    .gate svg { display: block; }
+    .gate .gate-label { font-size: 9.5px; color: var(--muted); opacity: 0; transition: opacity .18s ease; letter-spacing: .02em; }
+    .gate:hover .gate-label { opacity: 1; }
+    .gate.tl { top: 8px; left: 10px; } .gate.tr { top: 8px; right: 10px; } .gate.bl { bottom: 8px; left: 10px; } .gate.br { bottom: 8px; right: 10px; }
+    .gate-pop { position: absolute; pointer-events: auto; z-index: 6; min-width: 168px; max-width: 240px; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 6px 18px rgba(92,77,55,0.12); padding: 6px; display: none; }
     .gate-pop.open { display: block; }
-    .gate-pop .gate-pop-h { font-size: 9.5px; color: var(--muted); padding: 3px 8px 5px; }
-    .gate-pop button { display: block; width: 100%; text-align: left; border: 0; background: none; padding: 6px 8px; border-radius: 6px; font-size: 11px; color: var(--text); cursor: pointer; line-height: 1.35; }
-    .gate-pop button:hover { background: var(--panel-2); }
-    .gate-pop.tr { top: 46px; right: 12px; } .gate-pop.br { bottom: 46px; right: 12px; } .gate-pop.bl { bottom: 46px; left: 12px; }
+    .gate-pop .gate-pop-h { font-size: 9px; color: var(--muted); padding: 2px 8px 6px; letter-spacing: .05em; text-transform: uppercase; }
+    .gate-pop .gate-item { display: block; width: 100%; text-align: left; padding: 5px 8px; border-radius: 8px; font-size: 11px; color: var(--text); cursor: pointer; line-height: 1.35; }
+    .gate-pop .gate-item:hover { background: var(--panel-2); }
+    .gate-pop.tr { top: 60px; right: 8px; } .gate-pop.br { bottom: 60px; right: 8px; } .gate-pop.bl { bottom: 60px; left: 8px; }
     /* mobile: keep search + buttons on one line */
     @media (max-width: 980px) {
       .controlbar { flex-wrap: nowrap; gap: 5px; }
@@ -2538,10 +2541,10 @@ boot();
   if (window.__gardenGates) return;
   window.__gardenGates = true;
   const ICON = {
-    index: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V10a8 8 0 0 1 16 0v11"/><path d="M3 21h18"/></svg>',
-    tree:  '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5"/><path d="M7 17l5-7 5 7z"/><path d="M8.5 12l3.5-5 3.5 5z"/></svg>',
-    clock: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>',
-    compass: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>'
+    index: '<svg width="42" height="42" viewBox="0 0 44 44" fill="none"><path d="M8 18 Q22 4 36 18" stroke="#7E5C36" stroke-width="3" stroke-linecap="round"/><rect x="9" y="17" width="3.4" height="23" rx="1.3" fill="#9E7B4F" stroke="#7E5C36" stroke-width="0.9"/><rect x="31.6" y="17" width="3.4" height="23" rx="1.3" fill="#9E7B4F" stroke="#7E5C36" stroke-width="0.9"/><path d="M11 35 q-3.5 -2.5 -1 -6 q3.5 -2 1 -5.5" stroke="#6B8455" stroke-width="1.2" stroke-linecap="round" fill="none"/><ellipse cx="8" cy="29" rx="2.3" ry="1.1" fill="#7E9466" transform="rotate(-35 8 29)"/><ellipse cx="9" cy="24" rx="2.3" ry="1.1" fill="#7E9466" transform="rotate(-35 9 24)"/></svg>',
+    tree:  '<svg width="42" height="42" viewBox="0 0 44 44" fill="none"><rect x="20.4" y="24" width="3.2" height="16" rx="1.3" fill="#9E7B4F" stroke="#7E5C36" stroke-width="0.8"/><circle cx="22" cy="16" r="9" fill="#7E9466" stroke="#566640" stroke-width="1"/><circle cx="14" cy="21" r="6" fill="#7E9466" stroke="#566640" stroke-width="1"/><circle cx="30" cy="21" r="6" fill="#7E9466" stroke="#566640" stroke-width="1"/><circle cx="24.5" cy="13" r="1.5" fill="#C77B86"/><circle cx="18" cy="18" r="1.5" fill="#C77B86"/></svg>',
+    clock: '<svg width="42" height="42" viewBox="0 0 44 44" fill="none"><path d="M15 21 h14 l-1.6 16 h-10.8 z" fill="#8FA7A0" stroke="#566B66" stroke-width="1.1" stroke-linejoin="round"/><path d="M15 24 L6 18 L5.2 14.5" stroke="#566B66" stroke-width="2.2" stroke-linecap="round" fill="none"/><ellipse cx="5" cy="13.5" rx="3.2" ry="1.5" fill="#8FA7A0" stroke="#566B66" stroke-width="0.9" transform="rotate(-38 5 13.5)"/><path d="M18.5 21 Q22 12.5 27.5 21" stroke="#566B66" stroke-width="1.7" stroke-linecap="round" fill="none"/><path d="M4 18 q1 1.8 0 3 q-1 -1.2 0 -3" fill="#6E8CA8"/><path d="M7.5 20 q1 1.8 0 3 q-1 -1.2 0 -3" fill="#6E8CA8"/></svg>',
+    compass: '<svg width="42" height="42" viewBox="0 0 44 44" fill="none"><path d="M22 23 Q10 9 7 17 Q5 25 22 25 Z" fill="#C77B86" stroke="#8A5560" stroke-width="0.9"/><path d="M22 23 Q34 9 37 17 Q39 25 22 25 Z" fill="#C77B86" stroke="#8A5560" stroke-width="0.9"/><path d="M22 25 Q13 30 13 35 Q15 39 22 28 Z" fill="#C2923F" stroke="#8A6B2F" stroke-width="0.9"/><path d="M22 25 Q31 30 31 35 Q29 39 22 28 Z" fill="#C2923F" stroke="#8A6B2F" stroke-width="0.9"/><ellipse cx="22" cy="24.5" rx="1.5" ry="7" fill="#4A3A2A"/><path d="M22 18 q-2.5 -4 -5.5 -4.5" stroke="#4A3A2A" stroke-width="0.9" stroke-linecap="round" fill="none"/><path d="M22 18 q2.5 -4 5.5 -4.5" stroke="#4A3A2A" stroke-width="0.9" stroke-linecap="round" fill="none"/></svg>'
   };
   function noteMetas () {
     if (!graphState) return [];
@@ -2577,8 +2580,10 @@ boot();
       p.el.innerHTML = '<div class="gate-pop-h">' + p.heading + '</div>';
       if (!metas.length) { p.el.innerHTML += '<div class="gate-pop-h">nothing yet</div>'; return; }
       metas.forEach(m => {
-        const b = document.createElement('button');
-        b.type = 'button';
+        const b = document.createElement('div');
+        b.className = 'gate-item';
+        b.setAttribute('role', 'button');
+        b.tabIndex = 0;
         b.textContent = pretty(m);
         b.addEventListener('click', function (e) { e.stopPropagation(); closeAll(); selectNodeById(m.iid); });
         p.el.appendChild(b);
@@ -2590,12 +2595,16 @@ boot();
       if (!wasOpen) { fill(corner, getMetas()); pops[corner].el.classList.add('open'); }
     }
     function makeGate (corner, icon, label, onClick) {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'gate ' + corner;
-      b.innerHTML = icon + '<span>' + label + '</span>';
-      b.addEventListener('click', function (e) { e.stopPropagation(); onClick(); });
-      layer.appendChild(b);
+      const g = document.createElement('div');
+      g.className = 'gate ' + corner;
+      g.setAttribute('role', 'button');
+      g.setAttribute('tabindex', '0');
+      g.setAttribute('aria-label', label);
+      g.title = label;
+      g.innerHTML = icon + '<span class="gate-label">' + label + '</span>';
+      g.addEventListener('click', function (e) { e.stopPropagation(); onClick(); });
+      g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } });
+      layer.appendChild(g);
     }
     makePop('tr', '5 tallest trees');
     makePop('br', '5 most recent');
