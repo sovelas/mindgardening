@@ -447,6 +447,18 @@
     .overview-card h1 { margin: 0; }
     .selection-actions { justify-content: flex-start; }
     .selection-actions button { padding: 5px 9px; font-size: 11px; }
+    /* corner gates */
+    #graph { position: relative; }
+    .gates { position: absolute; inset: 0; pointer-events: none; z-index: 5; font-family: 'Courier New', monospace; }
+    .gate { position: absolute; pointer-events: auto; display: inline-flex; align-items: center; gap: 6px; padding: 5px 9px; border: 1px solid var(--border); border-radius: 10px; background: var(--panel); color: var(--text); font-size: 11px; cursor: pointer; box-shadow: 0 4px 12px rgba(92,77,55,0.10); }
+    .gate:hover { background: var(--panel-3); }
+    .gate.tl { top: 12px; left: 12px; } .gate.tr { top: 12px; right: 12px; } .gate.bl { bottom: 12px; left: 12px; } .gate.br { bottom: 12px; right: 12px; }
+    .gate-pop { position: absolute; pointer-events: auto; z-index: 6; min-width: 168px; max-width: 240px; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 10px 28px rgba(92,77,55,0.18); padding: 5px; display: none; }
+    .gate-pop.open { display: block; }
+    .gate-pop .gate-pop-h { font-size: 9.5px; color: var(--muted); padding: 3px 8px 5px; }
+    .gate-pop button { display: block; width: 100%; text-align: left; border: 0; background: none; padding: 6px 8px; border-radius: 6px; font-size: 11px; color: var(--text); cursor: pointer; line-height: 1.35; }
+    .gate-pop button:hover { background: var(--panel-2); }
+    .gate-pop.tr { top: 46px; right: 12px; } .gate-pop.br { bottom: 46px; right: 12px; } .gate-pop.bl { bottom: 46px; left: 12px; }
     /* mobile: keep search + buttons on one line */
     @media (max-width: 980px) {
       .controlbar { flex-wrap: nowrap; gap: 5px; }
@@ -2519,6 +2531,89 @@ boot();
     } else {
       setTimeout(waitForNetwork, 150);
     }
+  })();
+})();
+/* ===================== CORNER GATES ===================== */
+(function gardenGates () {
+  if (window.__gardenGates) return;
+  window.__gardenGates = true;
+  const ICON = {
+    index: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V10a8 8 0 0 1 16 0v11"/><path d="M3 21h18"/></svg>',
+    tree:  '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5"/><path d="M7 17l5-7 5 7z"/><path d="M8.5 12l3.5-5 3.5 5z"/></svg>',
+    clock: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>',
+    compass: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>'
+  };
+  function noteMetas () {
+    if (!window.graphState) return [];
+    return [...graphState.nodeMeta.values()].filter(m => m.kind === 'note' && m.id !== '_folder-index-master');
+  }
+  function topConnected (n) {
+    return noteMetas().sort((a, b) => (graphState.degree.get(b.iid) || 0) - (graphState.degree.get(a.iid) || 0)).slice(0, n);
+  }
+  function mostRecent (n) {
+    return noteMetas().filter(m => m.modified).sort((a, b) => new Date(b.modified) - new Date(a.modified)).slice(0, n);
+  }
+  function randomN (n) {
+    const a = noteMetas();
+    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a.slice(0, n);
+  }
+  function pretty (m) { return String(m.label || '').replace(/-/g, ' '); }
+  function build () {
+    const graph = document.getElementById('graph');
+    if (!graph || graph.querySelector('.gates')) return;
+    const layer = document.createElement('div');
+    layer.className = 'gates';
+    const pops = {};
+    function makePop (corner, heading) {
+      const p = document.createElement('div');
+      p.className = 'gate-pop ' + corner;
+      pops[corner] = { el: p, heading: heading };
+      layer.appendChild(p);
+    }
+    function closeAll () { Object.keys(pops).forEach(k => pops[k].el.classList.remove('open')); }
+    function fill (corner, metas) {
+      const p = pops[corner];
+      p.el.innerHTML = '<div class="gate-pop-h">' + p.heading + '</div>';
+      if (!metas.length) { p.el.innerHTML += '<div class="gate-pop-h">nothing yet</div>'; return; }
+      metas.forEach(m => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = pretty(m);
+        b.addEventListener('click', function (e) { e.stopPropagation(); closeAll(); selectNodeById(m.iid); });
+        p.el.appendChild(b);
+      });
+    }
+    function toggle (corner, getMetas) {
+      const wasOpen = pops[corner].el.classList.contains('open');
+      closeAll();
+      if (!wasOpen) { fill(corner, getMetas()); pops[corner].el.classList.add('open'); }
+    }
+    function makeGate (corner, icon, label, onClick) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'gate ' + corner;
+      b.innerHTML = icon + '<span>' + label + '</span>';
+      b.addEventListener('click', function (e) { e.stopPropagation(); onClick(); });
+      layer.appendChild(b);
+    }
+    makePop('tr', '5 tallest trees');
+    makePop('br', '5 most recent');
+    makePop('bl', '5 to wander');
+    makeGate('tl', ICON.index, 'index', function () {
+      closeAll();
+      const m = graphState.nodeMeta.get(internalId('note', '_folder-index-master'));
+      if (m) selectNodeById(m.iid);
+    });
+    makeGate('tr', ICON.tree, 'tallest trees', function () { toggle('tr', function () { return topConnected(5); }); });
+    makeGate('br', ICON.clock, 'lately', function () { toggle('br', function () { return mostRecent(5); }); });
+    makeGate('bl', ICON.compass, 'wander', function () { toggle('bl', function () { return randomN(5); }); });
+    graph.appendChild(layer);
+    document.addEventListener('click', function (e) { if (!e.target.closest('.gates')) closeAll(); });
+  }
+  (function wait () {
+    if (window.graphState && document.getElementById('graph')) build();
+    else setTimeout(wait, 150);
   })();
 })();
 </script>
