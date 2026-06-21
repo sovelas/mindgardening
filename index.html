@@ -2544,7 +2544,7 @@ boot();
     compass: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>'
   };
   function noteMetas () {
-    if (!window.graphState) return [];
+    if (!graphState) return [];
     return [...graphState.nodeMeta.values()].filter(m => m.kind === 'note' && m.id !== '_folder-index-master');
   }
   function topConnected (n) {
@@ -2611,8 +2611,12 @@ boot();
     graph.appendChild(layer);
     document.addEventListener('click', function (e) { if (!e.target.closest('.gates')) closeAll(); });
   }
+  if (typeof loadGraph === 'function') {
+    const _origLoadGraphForGates = loadGraph;
+    loadGraph = async function (g) { await _origLoadGraphForGates(g); build(); };
+  }
   (function wait () {
-    if (window.graphState && document.getElementById('graph')) build();
+    if (graphState && document.getElementById('graph')) build();
     else setTimeout(wait, 150);
   })();
 })();
