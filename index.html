@@ -462,6 +462,8 @@
     .gate-pop .gate-item { display: block; width: 100%; text-align: left; padding: 5px 8px; border-radius: 8px; font-size: 11px; color: var(--text); cursor: pointer; line-height: 1.35; }
     .gate-pop .gate-item:hover { background: var(--panel-2); }
     .gate-pop.tr { top: 60px; right: 8px; } .gate-pop.br { bottom: 60px; right: 8px; } .gate-pop.bl { bottom: 60px; left: 8px; }
+    .gate-item { padding: 5px 8px; border-radius: 8px; cursor: pointer; font-size: 12px; color: var(--text); line-height: 1.4; }
+    .gate-item:hover { background: var(--panel-2); }
     /* mobile: keep search + buttons on one line */
     @media (max-width: 980px) {
       .controlbar { flex-wrap: nowrap; gap: 5px; }
@@ -1684,6 +1686,23 @@ function noteSummary(meta) {
   const k2 = normalizeVaultPath(meta.fullLabel || '').split('/').pop().toLowerCase();
   return _glossMap.get(k1) || _glossMap.get(k2) || meta.excerpt || '';
 }
+function gateNotes(kind) {
+  const notes = [...graphState.nodeMeta.values()].filter(m => m.kind === 'note' && m.id !== '_folder-index-master');
+  if (kind === 'trees') return notes.sort((a, b) => (graphState.degree.get(b.iid) || 0) - (graphState.degree.get(a.iid) || 0)).slice(0, 5);
+  if (kind === 'lately') return notes.filter(m => m.modified).sort((a, b) => new Date(b.modified) - new Date(a.modified)).slice(0, 5);
+  const a = notes.slice();
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = a[i]; a[i] = a[j]; a[j] = t; }
+  return a.slice(0, 5);
+}
+function openGate(kind) {
+  if (!graphState) return;
+  showNotePanel();
+  const titles = { trees: '5 tallest trees', lately: '5 most recent', wander: '5 to wander' };
+  const heading = titles[kind] || 'paths in';
+  const rows = gateNotes(kind).map(m => '<div class="gate-item" role="button" tabindex="0" onclick="selectNodeById(\'' + m.iid + '\')">' + escapeHtml(String(m.label || '').replace(/-/g, ' ')) + '</div>').join('');
+  selectionSummaryEl.innerHTML = '<h3>' + escapeHtml(heading) + '</h3>' + (rows || '<div class="empty">nothing yet</div>');
+  notePanelEl.innerHTML = '<h2 style="margin-top:0">' + escapeHtml(heading) + '</h2><div class="empty">Pick one of the five to step in.</div>';
+}
 function renderSelection(nodeId) {
   if (!graphState) return;
   const meta = graphState.nodeMeta.get(nodeId);
@@ -1882,9 +1901,11 @@ async function loadGraph(graph) {
   network = new vis.Network(container, data, options);
   network.on('click', (params) => {
     if (params.nodes.length) {
-      selectedNodeId = params.nodes[0];
-      renderSelection(selectedNodeId);
-      applySelectionPalette(selectedNodeId);
+      const cid = params.nodes[0];
+      if (typeof cid === 'string' && cid.indexOf('gate:') === 0) { openGate(cid.slice(5)); if (network) network.unselectAll(); return; }
+      selectedNodeId = cid;
+      renderSelection(cid);
+      applySelectionPalette(cid);
     } else {
       selectedNodeId = null;
       applySelectionPalette(null);
@@ -2413,11 +2434,55 @@ boot();
     });
     hubT = Math.max(5, Math.round(maxDeg * 0.65));
   }
+  function drawButterfly (ctx, x, y, s) {
+    petal(ctx, x, y, s * 1.25, s * 0.62, -0.65, '#C77B86', true);
+    petal(ctx, x, y, s * 1.25, s * 0.62, 0.65, '#C77B86', true);
+    petal(ctx, x, y, s * 0.95, s * 0.5, Math.PI - 0.55, '#C2923F', true);
+    petal(ctx, x, y, s * 0.95, s * 0.5, Math.PI + 0.55, '#C2923F', true);
+    ctx.fillStyle = '#4A3A2A';
+    ctx.beginPath(); ctx.ellipse(x, y, Math.max(0.9, s * 0.08), s * 0.55, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#4A3A2A'; ctx.lineWidth = Math.max(0.6, s * 0.045); ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(x, y - s * 0.5); ctx.quadraticCurveTo(x - s * 0.3, y - s * 0.85, x - s * 0.52, y - s * 0.85); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x, y - s * 0.5); ctx.quadraticCurveTo(x + s * 0.3, y - s * 0.85, x + s * 0.52, y - s * 0.85); ctx.stroke();
+  }
+  function makeGateRenderer (kind, label) {
+    const R = 22;
+    return function (args) {
+      const ctx = args.ctx, x = args.x, y = args.y;
+      function draw () {
+        ctx.save();
+        ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+        const rnd = rng(hashCode('gate:' + kind));
+        if (kind === 'trees') drawPlant(ctx, x, y, R, '#C77B86', 'tree', false, false, rnd);
+        else if (kind === 'lately') drawPlant(ctx, x, y, R * 0.95, '#C2923F', 'sprout', false, false, rnd);
+        else if (kind === 'wander') drawButterfly(ctx, x, y, R);
+        drawLabel(ctx, x, y + R * 2.6 + 4, label, 13);
+        ctx.restore();
+      }
+      return { drawNode: draw, nodeDimensions: { width: R * 2.8, height: R * 2.8 } };
+    };
+  }
+  function addGates () {
+    if (!nodesDS) return;
+    const X = 560, Y = 380;
+    const defs = [
+      { id: 'gate:trees', x: X, y: -Y, label: 'tallest trees' },
+      { id: 'gate:lately', x: X, y: Y, label: 'lately' },
+      { id: 'gate:wander', x: -X, y: Y, label: 'wander' }
+    ];
+    const add = [];
+    defs.forEach(d => { if (!nodesDS.get(d.id)) add.push({ id: d.id, shape: 'custom', ctxRenderer: makeGateRenderer(d.id.slice(5), d.label), fixed: { x: true, y: true }, x: d.x, y: d.y, physics: false }); });
+    if (add.length) nodesDS.add(add);
+    if (nodesDS.get('note:_folder-index-master')) {
+      nodesDS.update({ id: 'note:_folder-index-master', x: -X, y: -Y, fixed: { x: true, y: true }, physics: false });
+    }
+    if (network) network.redraw();
+  }
   function skinAllNodes () {
     if (!nodesDS || !graphState) return;
     recomputeDegrees();
     const updates = [];
-    nodesDS.forEach(n => updates.push({ id: n.id, shape: 'custom', ctxRenderer: makeRenderer(n.id) }));
+    nodesDS.forEach(n => { if (typeof n.id === 'string' && n.id.indexOf('gate:') === 0) return; updates.push({ id: n.id, shape: 'custom', ctxRenderer: makeRenderer(n.id) }); });
     nodesDS.update(updates);
     if (network) network.redraw();
   }
@@ -2455,6 +2520,7 @@ boot();
     loadGraph = async function (g) {
       await _origLoadGraph(g);
       skinAllNodes();
+      addGates();
       applySelectionPalette(typeof selectedNodeId !== 'undefined' ? selectedNodeId : null);
     };
   }
@@ -2531,6 +2597,7 @@ boot();
     if (typeof nodesDS !== 'undefined' && nodesDS && typeof network !== 'undefined' && network && graphState) {
       skinAllNodes();
       injectLegend();
+      addGates();
     } else {
       setTimeout(waitForNetwork, 150);
     }
@@ -2538,6 +2605,7 @@ boot();
 })();
 /* ===================== CORNER GATES ===================== */
 (function gardenGates () {
+  return; /* retired: gates are now drawn on the graph canvas (see addGates in the garden skin) */
   if (window.__gardenGates) return;
   window.__gardenGates = true;
   const ICON = {
