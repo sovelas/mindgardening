@@ -2462,6 +2462,31 @@ boot();
       return { drawNode: draw, nodeDimensions: { width: R * 2.8, height: R * 2.8 } };
     };
   }
+  function repositionGates () {
+    if (!nodesDS || !network) return;
+    const P = network.getPositions();
+    let minX = 1e9, maxX = -1e9, minY = 1e9, maxY = -1e9, any = false;
+    for (const k in P) {
+      if (k.indexOf('gate:') === 0 || k === 'note:_folder-index-master') continue;
+      const meta = graphState && graphState.nodeMeta.get(k);
+      if (meta && meta.kind === 'unresolved-wikilink') continue;
+      const p = P[k]; any = true;
+      if (p.x < minX) minX = p.x;
+      if (p.x > maxX) maxX = p.x;
+      if (p.y < minY) minY = p.y;
+      if (p.y > maxY) maxY = p.y;
+    }
+    if (!any) return;
+    const m = 70;
+    const L = minX - m, R = maxX + m, T = minY - m, B = maxY + m;
+    nodesDS.update([
+      { id: 'gate:trees', x: R, y: T },
+      { id: 'gate:lately', x: R, y: B },
+      { id: 'gate:wander', x: L, y: B },
+      { id: 'note:_folder-index-master', x: L, y: T }
+    ]);
+    network.fit({ animation: false });
+  }
   function addGates () {
     if (!nodesDS) return;
     const X = 560, Y = 380;
@@ -2476,7 +2501,12 @@ boot();
     if (nodesDS.get('note:_folder-index-master')) {
       nodesDS.update({ id: 'note:_folder-index-master', x: -X, y: -Y, fixed: { x: true, y: true }, physics: false });
     }
-    if (network) network.redraw();
+    if (network) {
+      network.redraw();
+      network.once('stabilizationIterationsDone', repositionGates);
+      clearTimeout(window.__gateReposT);
+      window.__gateReposT = setTimeout(repositionGates, 2500);
+    }
   }
   function skinAllNodes () {
     if (!nodesDS || !graphState) return;
