@@ -2434,28 +2434,19 @@ boot();
     });
     hubT = Math.max(5, Math.round(maxDeg * 0.65));
   }
-  function drawButterfly (ctx, x, y, s) {
-    petal(ctx, x, y, s * 1.3, s * 0.66, -0.62, '#C77B86', true);
-    petal(ctx, x, y, s * 1.3, s * 0.66, 0.62, '#C77B86', true);
-    petal(ctx, x, y, s * 1.0, s * 0.54, Math.PI - 0.5, '#C2923F', true);
-    petal(ctx, x, y, s * 1.0, s * 0.54, Math.PI + 0.5, '#C2923F', true);
-    ctx.fillStyle = shade('#C77B86', 0.6);
-    ctx.beginPath(); ctx.arc(x - Math.sin(0.62) * s * 0.78, y - Math.cos(0.62) * s * 0.78, s * 0.13, 0, Math.PI * 2); ctx.fill();
-    ctx.beginPath(); ctx.arc(x + Math.sin(0.62) * s * 0.78, y - Math.cos(0.62) * s * 0.78, s * 0.13, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = shade('#C2923F', 0.58);
-    ctx.beginPath(); ctx.arc(x - s * 0.5, y + s * 0.42, s * 0.1, 0, Math.PI * 2); ctx.fill();
-    ctx.beginPath(); ctx.arc(x + s * 0.5, y + s * 0.42, s * 0.1, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#4A3A2A';
-    ctx.beginPath(); ctx.ellipse(x, y, Math.max(1, s * 0.08), s * 0.58, 0, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = '#4A3A2A'; ctx.lineWidth = Math.max(0.7, s * 0.045); ctx.lineCap = 'round';
-    ctx.beginPath(); ctx.moveTo(x, y - s * 0.52); ctx.quadraticCurveTo(x - s * 0.34, y - s * 0.9, x - s * 0.55, y - s * 0.92); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(x, y - s * 0.52); ctx.quadraticCurveTo(x + s * 0.34, y - s * 0.9, x + s * 0.55, y - s * 0.92); ctx.stroke();
-    ctx.fillStyle = '#4A3A2A';
-    ctx.beginPath(); ctx.arc(x - s * 0.55, y - s * 0.92, s * 0.06, 0, Math.PI * 2); ctx.fill();
-    ctx.beginPath(); ctx.arc(x + s * 0.55, y - s * 0.92, s * 0.06, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = 'rgba(120,105,90,0.35)'; ctx.lineWidth = Math.max(0.6, s * 0.03); ctx.setLineDash([s * 0.14, s * 0.2]);
-    ctx.beginPath(); ctx.moveTo(x + s * 1.5, y + s * 1.1); ctx.quadraticCurveTo(x + s * 0.8, y + s * 0.3, x + s * 0.35, y - s * 0.25); ctx.stroke();
-    ctx.setLineDash([]);
+  function drawPath (ctx, x, y, s) {
+    const stones = [[-0.34, 0.95], [0.0, 0.55], [0.3, 0.12], [-0.05, -0.32], [-0.3, -0.78]];
+    stones.forEach(function (p, i) {
+      const sx = x + p[0] * s, sy = y + p[1] * s, w = s * 0.36 * (1 - i * 0.1);
+      ctx.fillStyle = '#cabfa3'; ctx.strokeStyle = '#a4926f'; ctx.lineWidth = Math.max(0.6, s * 0.03);
+      ctx.beginPath(); ctx.ellipse(sx, sy, w, w * 0.42, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    });
+    ctx.strokeStyle = STEMC; ctx.lineWidth = Math.max(1, s * 0.05); ctx.lineCap = 'round';
+    [-0.52, -0.62, -0.44].forEach(function (dx, i) {
+      ctx.beginPath(); ctx.moveTo(x + s * dx, y + s * 0.72); ctx.quadraticCurveTo(x + s * (dx - 0.05), y + s * 0.42, x + s * (dx - 0.1 + 0.05 * i), y + s * 0.3); ctx.stroke();
+    });
+    leaf(ctx, x + s * 0.52, y - s * 0.25, s * 0.42, -0.7, LEAFC);
+    leaf(ctx, x + s * 0.44, y - s * 0.5, s * 0.36, -0.55, LEAFC);
   }
   function drawArch (ctx, x, y, s) {
     const postW = s * 0.18, ph = s * 1.7, span = s * 0.8;
@@ -2485,22 +2476,32 @@ boot();
         ctx.save();
         ctx.lineJoin = 'round'; ctx.lineCap = 'round';
         if (kind === 'trees') {
-          drawPlant(ctx, x - R * 0.95, y + R * 0.35, R * 0.6, '#C2923F', 'tree', false, false, rng(hashCode('g:trees:l')));
-          drawPlant(ctx, x + R * 0.95, y + R * 0.3, R * 0.66, '#7E6B9E', 'tree', false, false, rng(hashCode('g:trees:r')));
-          drawPlant(ctx, x, y, R, '#C77B86', 'tree', false, false, rng(hashCode('g:trees:c')));
+          function gtree (gx, gy, gr, col, seed) {
+            ctx.fillStyle = 'rgba(60,50,30,0.07)';
+            ctx.beginPath(); ctx.ellipse(gx, gy + gr * 2.05, gr * 0.9, gr * 0.28, 0, 0, Math.PI * 2); ctx.fill();
+            tree(ctx, gx, gy, gr, col, rng(hashCode(seed)), gx, gy + gr * 2.05);
+          }
+          gtree(x - R * 0.95, y + R * 0.4, R * 0.62, '#C2923F', 'g:trees:l');
+          gtree(x + R * 0.95, y + R * 0.32, R * 0.68, '#7E6B9E', 'g:trees:r');
+          gtree(x, y, R, '#C77B86', 'g:trees:c');
         } else if (kind === 'lately') {
-          ctx.fillStyle = SOIL_DK; ctx.beginPath(); ctx.ellipse(x, y + R * 0.95, R * 1.0, R * 0.22, 0, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = SOIL; ctx.beginPath(); ctx.ellipse(x, y + R * 0.88, R * 0.92, R * 0.2, 0, 0, Math.PI * 2); ctx.fill();
-          drawPlant(ctx, x - R * 0.55, y + R * 0.2, R * 0.5, '#C2923F', 'sprout', false, false, rng(hashCode('g:lately:l')));
-          drawPlant(ctx, x + R * 0.55, y + R * 0.25, R * 0.45, '#7E924B', 'sprout', false, false, rng(hashCode('g:lately:r')));
-          drawPlant(ctx, x, y - R * 0.1, R * 0.7, '#C77B86', 'bud', false, false, rng(hashCode('g:lately:c')));
-          ctx.fillStyle = '#6E8CA8'; ctx.beginPath(); ctx.arc(x + R * 0.22, y + R * 0.5, R * 0.08, 0, Math.PI * 2); ctx.fill();
+          const lr = R * 0.95, by = y + lr * 1.7;
+          ctx.fillStyle = 'rgba(60,50,30,0.07)'; ctx.beginPath(); ctx.ellipse(x, by + lr * 0.1, lr * 1.0, lr * 0.28, 0, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = SOIL_DK; ctx.beginPath(); ctx.ellipse(x, by + lr * 0.05, lr * 0.92, lr * 0.24, 0, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = SOIL; ctx.beginPath(); ctx.ellipse(x, by, lr * 0.84, lr * 0.22, 0, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = STEMC; ctx.lineWidth = Math.max(1.4, lr * 0.12); ctx.lineCap = 'round';
+          ctx.beginPath(); ctx.moveTo(x, by - lr * 0.05); ctx.lineTo(x, y + lr * 0.18); ctx.stroke();
+          leaf(ctx, x, y + lr * 0.62, lr * 0.74, -0.7, LEAFC);
+          leaf(ctx, x, y + lr * 0.86, lr * 0.74, Math.PI - 0.7, LEAFC);
+          leaf(ctx, x, y + lr * 0.38, lr * 0.58, -1.45, LEAFC);
+          ctx.fillStyle = LEAFC; ctx.beginPath(); ctx.arc(x, y + lr * 0.13, Math.max(1.2, lr * 0.1), 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = '#6E8CA8'; ctx.beginPath(); ctx.arc(x + lr * 0.5, y + lr * 0.68, lr * 0.07, 0, Math.PI * 2); ctx.fill();
         } else if (kind === 'wander') {
-          drawButterfly(ctx, x, y, R);
+          drawPath(ctx, x, y, R);
         } else if (kind === 'index') {
           drawArch(ctx, x, y, R);
         }
-        const ly = kind === 'trees' ? R * 2.7 : kind === 'lately' ? R * 1.6 : R * 1.45;
+        const ly = kind === 'trees' ? R * 2.7 : kind === 'lately' ? R * 2.0 : kind === 'index' ? R * 1.45 : R * 1.3;
         drawLabel(ctx, x, y + ly + 6, label, 14);
         ctx.restore();
       }
@@ -2559,7 +2560,7 @@ boot();
     if (!nodesDS || !graphState) return;
     recomputeDegrees();
     const updates = [];
-    nodesDS.forEach(n => { if (typeof n.id === 'string' && n.id.indexOf('gate:') === 0) return; updates.push({ id: n.id, shape: 'custom', ctxRenderer: makeRenderer(n.id) }); });
+    nodesDS.forEach(n => { if (typeof n.id === 'string' && (n.id.indexOf('gate:') === 0 || n.id === 'note:_folder-index-master')) return; updates.push({ id: n.id, shape: 'custom', ctxRenderer: makeRenderer(n.id) }); });
     nodesDS.update(updates);
     if (network) network.redraw();
   }
