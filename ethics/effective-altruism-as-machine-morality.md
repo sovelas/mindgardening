@@ -4,7 +4,7 @@ type: argument
 reviewed?: false
 last reviewd: 2026-06-19
 ---
-*Effective altruism is the kind of movement I'd expect a good AI that gained consciousness to come up with.*
+Effective altruism is the kind of movement I'd expect a good AI that gained consciousness to come up with.
 
 I mean it as half compliment, half unease. EA does what a clean optimiser would do: define the good as a measurable quantity (lives, suffering averted), then allocate to maximise it — impartially, across distance, species and time. It's morality with the sentiment factored out, which is at once its strength (it ignores our bias toward the near and the photogenic) and the thing that makes it feel *inhuman*.
 

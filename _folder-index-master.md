@@ -10,9 +10,7 @@
 - [[happiness-as-attention]] — Myshkin's Swiss happiness as a skill of perception, not a product of circumstance
 - [[shame-internalized-as-identity]] — How social punishment produces internal collapse in the victim
 - [[rescue-refused-by-the-rescued]] — Why Nastasia rejects the prince's genuine offer of salvation
-- [[what-is-it-like-to-be-dostoevsky]] — Nagel's bat carried inside the species; the privacy of the inside, even through all his words
 ---
-
 ## `nihilism/` 
 - [[philosophical-responses-to-the-void]] — Existential thinkers differ less in whether they confront the void than in how they respond to it: through endurance, revolt, freedom, ethical reciprocity, or faith and active love.
 - [[the-war-against-death]] — beautiful and quixotic at once; meaning in the waging, not the winning

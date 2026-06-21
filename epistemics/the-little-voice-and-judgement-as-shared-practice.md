@@ -1,11 +1,11 @@
 ---
 prompted by: my notebook
 type: principle
-reviewed?: false
+reviewed?: true
 last reviewd: 2026-06-19
 ---
-What infuriates me is the attitude people take face to face with their own mistakes — the shrug, the *it had to be like that*, the way we expect and normalise it. Every excuse is a small theft: it deprives us of the learning the mistake was offering, and we lean on it like a crutch instead of standing on what just happened.
+It can infuriate me some attitudes people take face to face with their own mistakes — the shrug being a good example, the *it had to be like that*, the way we expect and normalise it. Every excuse a punch to what we could learn. We lean on it like a crutch instead of standing on what just happened.
 
-I go back and forth on the limit — how do you know when you're *learning too much* (endlessly revising, never acting) versus *fighting too much* (defending a self that should already have updated)? I don't think there's a rule for it. The only guide I've got is the little voice in my head and the duty I owe it: to keep its picture of the world as accurate as I can make it. Ignoring that voice — not listening, or worse, not *nurturing* it — is the real failure. The mistake itself isn't.
+And surely you can be "*learning too much*" – endlessly revising, banging your head against the wall, it's not that deep and all that. I don't think there's a rule to figure out which mistakes are worth making and learning from. The only guide I've got is the little voice in my head that tells me I better keep my picture of the world as accurate as I can make it. Ignoring that voice is so much worse than any mistake, I believe. Can't do more than listen; can't do less than listen.
 
-Which is why I distrust morality-as-rulebook and morality-as-blind-belief about equally. Good judgement seems to grow instead from a *shared practice* — [[characters-of-emotivist-culture|a community doing the thing and holding each other to its standards]], roughly [[emotivism-reinterpreted-as-theory-of-use|MacIntyre's]] point. Practices teach judgement in a way rules and dogmas can't. Can't do more than that; can't do less than that.
+And good judgement seems to grow from internal but also *shared practices* — [[characters-of-emotivist-culture|a community doing the thing and holding each other to its standards]]. 
