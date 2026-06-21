@@ -2330,11 +2330,12 @@ boot();
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillStyle = INK; ctx.fillText('index', x, y + 3.5);
   }
-  function drawLabel (ctx, x, y, text) {
+  function drawLabel (ctx, x, y, text, size) {
+    const fs = size || 11;
     ctx.save();
-    ctx.font = "11px 'Courier New', monospace";
+    ctx.font = fs + "px 'Courier New', monospace";
     ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-    ctx.lineJoin = 'round'; ctx.lineWidth = 3.5; ctx.strokeStyle = CREAM;
+    ctx.lineJoin = 'round'; ctx.lineWidth = Math.max(3, fs * 0.32); ctx.strokeStyle = CREAM;
     ctx.strokeText(text, x, y);
     ctx.fillStyle = '#1a1408'; ctx.fillText(text, x, y);
     ctx.restore();
@@ -2380,7 +2381,7 @@ boot();
           drawLabel(ctx, x, y + 28, 'master index');
         } else {
           drawPlant(ctx, x, y, r, bedColor(meta) || '#C77B86', stageFor(meta), isSel, hover, rng(hashCode(iid)));
-          if (label) drawLabel(ctx, x, y + r * 2.4 + 4, label);
+          if (label) drawLabel(ctx, x, y + r * 2.4 + 4, label, Math.max(10, Math.min(22, 6 + r * 0.55)));
         }
         ctx.restore();
       }
