@@ -25,12 +25,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "illich/counterproductivity.md",
+                "file": "_folder-index-master.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "counterproductivity"
+              "title": "_folder-index-master"
             }
           }
         ],
@@ -91,7 +91,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 247.5
   },
   "right": {
     "id": "4ca58be9a4d7d9ec",
@@ -283,7 +283,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -300,32 +301,32 @@
   },
   "active": "e9d30efaf27033b9",
   "lastOpenFiles": [
-    "beauvoir/ambiguity-of-human-existence.md",
-    "housing-policy/vereveningsfonds-amsterdams-equalizing-fund.md",
-    "housing-policy/homelessness-is-a-housing-problem.md",
-    "selfhood/narrowing-vocabulary-into-adulthood.md",
-    "nihilism/the-war-against-death.md",
-    "epistemics/iterating-particular-and-universal-as-method.md",
-    "beauvoir/the-aesthetic-attitude.md",
-    "phenomenology/default-settings-have-history.md",
-    "nussbaum/the-cosmopolitan-tradition.md",
-    "attention/the-illusion-of-control-over-attention.md",
-    "ethics/camus-critique-of-philosophical-systems.md",
-    "epistemics/the-little-voice-and-judgement-as-shared-practice.md",
-    "ethics/keeping-your-values-in-a-game-that-punishes-them.md",
-    "macintyre/emotivism-reinterpreted-as-theory-of-use.md",
-    "love-and-desire/love-as-the-highest-goal.md",
+    "zizek/symbols-and-the-real.md",
+    "voltaire/will-to-live-as-compulsion.md",
+    "voltaire/optimism-and-pessimism.md",
+    "voltaire/freedom-as-commodity.md",
+    "voltaire/auto-da-fe.md",
+    "violence-and-aesthetics/jigsaw-as-strict-patriarch.md",
+    "techno-politics/just-because-we-can.md",
+    "techno-politics/a-special-tag-for-humans.md",
+    "techno-politics/scared-of-the-future.md",
+    "techno-politics/governance-by-ai.md",
+    "simone-weil/empathy-inverts-attention.md",
+    "simone-weil/affliction.md",
+    "selfhood/resistance-to-being-read.md",
+    "selfhood/individuality-in-culture.md",
+    "selfhood/adults-narrowing-vocabulary.md",
+    "religion/sacred-vs-profane.md",
+    "selfhood/who-says-what-i-care-about.md",
     "selfhood/from-feeling-to-synthesis.md",
-    "propaganda/rootedness-not-introspection-against-shaped-preference.md",
-    "cioran/cioran-on-suicide.md",
-    "abundance/cuttings-are-free.md",
-    "voltaire/auto-da-fe-as-governance-by-superstition.md",
-    "dostoevsky/obsessive-desire-as-self-destruction.md",
-    "voltaire/will-to-live-as-irrational-compulsion.md",
-    "voltaire/freedom-as-commodity-in-candide.md",
-    "abundance/raj-chetty-on-mobility-as-product-of-place.md",
-    "phenomenology/diagnosis-clear-destination-unfamiliar.md",
-    "anarchism/futurism-and-the-techno-savior-critique.md",
+    "schelling/schelling-nothingness.md",
+    "religion/ideology-as-religion.md",
+    "propaganda/shaped-preference-of-roots.md",
+    "phenomenology/diagnosis-not-destination.md",
+    "phenomenology/history-of-default-settings.md",
+    "nussbaum/dignity-needs-externals.md",
+    "nussbaum/cosmopolitan-tradition.md",
+    "nussbaum/the-rooted-cosmopolitan.md",
     "illich",
     "attention",
     "Untitled.canvas",

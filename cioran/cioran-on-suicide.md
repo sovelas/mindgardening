@@ -15,4 +15,4 @@ Cioran, regardless of how much winney and doomy he reads, is not a brooding nihi
 - [[ciorans-optimism-beneath-pessimism]]
 - [[the-absurd-in-camus]]
 - [[revolt-against-the-absurd]]
-- [[nothingness-as-ciorans-central-premise]]
+- [[ciorans-and-nothingness]]

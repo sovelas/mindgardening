@@ -13,7 +13,7 @@ This ideal treats aesthetic judgment as something that becomes purer the more on
 ## Related  
   
 - [[situated-perception]]  
-- [[the-aesthetic-attitude-and-scientific-inquiry]]  
+- [[aesthetic-in-science]]  
 - [[spectator-illusion-in-history]]  
 - [[philosophy-as-escape-from-ambiguity]]  
 - [[critique-of-kant]] 

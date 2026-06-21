@@ -13,7 +13,7 @@ The real danger is not having biases, but believing one has transcended them. Cl
 ## Related
 
 - [[the-aesthetic-attitude]]
-- [[the-aesthetic-attitude-and-scientific-inquiry]]
-- [[ambiguity-of-human-existence]]
+- [[aesthetic-in-science]]
+- [[ambiguity-of-existence]]
 - [[rationalization-vs-self-awareness]]
 - [[philosophy-as-escape-from-ambiguity]]
