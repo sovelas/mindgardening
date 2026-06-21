@@ -2477,13 +2477,15 @@ boot();
       if (p.y > maxY) maxY = p.y;
     }
     if (!any) return;
-    const m = 70;
-    const L = minX - m, R = maxX + m, T = minY - m, B = maxY + m;
+    const cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
+    const t = 0.06;
+    const lerp = (px, py) => ({ x: px + (cx - px) * t, y: py + (cy - py) * t });
+    const TR = lerp(maxX, minY), BR = lerp(maxX, maxY), BL = lerp(minX, maxY), TL = lerp(minX, minY);
     nodesDS.update([
-      { id: 'gate:trees', x: R, y: T },
-      { id: 'gate:lately', x: R, y: B },
-      { id: 'gate:wander', x: L, y: B },
-      { id: 'note:_folder-index-master', x: L, y: T }
+      { id: 'gate:trees', x: TR.x, y: TR.y },
+      { id: 'gate:lately', x: BR.x, y: BR.y },
+      { id: 'gate:wander', x: BL.x, y: BL.y },
+      { id: 'note:_folder-index-master', x: TL.x, y: TL.y }
     ]);
     network.fit({ animation: false });
   }
