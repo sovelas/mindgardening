@@ -66,7 +66,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "conversatio",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -87,7 +87,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -301,6 +302,8 @@
   },
   "active": "e9d30efaf27033b9",
   "lastOpenFiles": [
+    "epistemics/conversation-as-exhibitionism.md",
+    "_folder-index-master.md",
     "index.html.sb-78ece73c-RzGGhr",
     "zizek/symbols-and-the-real.md",
     "voltaire/will-to-live-as-compulsion.md",
@@ -326,7 +329,6 @@
     "phenomenology/diagnosis-not-destination.md",
     "phenomenology/history-of-default-settings.md",
     "nussbaum/dignity-needs-externals.md",
-    "nussbaum/cosmopolitan-tradition.md",
     "illich",
     "attention",
     "Untitled.canvas",
@@ -336,7 +338,6 @@
     "_deleted_unreviewed_20260426_082514/simone-weil",
     "_deleted_unreviewed_20260426_082514/community",
     "_deleted_unreviewed_20260426_082514/zizek",
-    "_deleted_unreviewed_20260426_082514/schelling",
-    "_deleted_unreviewed_20260426_082514/violence-and-aesthetics"
+    "_deleted_unreviewed_20260426_082514/schelling"
   ]
 }

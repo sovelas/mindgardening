@@ -145,7 +145,7 @@
 
 ## `epistemics/` 
 - [[particular<->universal]] — Against picking either pole, the trustworthy picture of the world emerges from the oscillation between myself/other, particular/universal, inside/outside, is/ought
-- [[conversation-as-exhibitionism]] — talking with Marina isn't agree/disagree, it's the aesthetic attitude turned on ideas
+- [[conversation-as-exhibitionism]] — talking with my husband isn't agree/disagree, it's the aesthetic attitude turned on ideas
 - [[the-little-voice]] — the duty to keep the inner voice's worldview accurate; judgement grows from practice, not rules or dogma
 - [[nuance]] — the push to drop nuance; flattening as amputation, the way minds and organisations narrow
 

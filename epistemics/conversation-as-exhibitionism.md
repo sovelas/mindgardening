@@ -1,11 +1,11 @@
 ---
-prompted by: my notebook
+prompted by: personal
 type: principle
-reviewed?: false
+reviewed?: true
 last reviewd: 2026-06-19
 ---
-Talking with Marina doesn't run on agreement. It feels less like a debate and more like walking through an art exhibition together — we're not establishing who's right, we're standing in front of each thought and looking at it. "We agree" / "we disagree" barely applies; the question is what the thing *is*, and what it does when you move around it.
+Talking with my husband doesn't run on agreement. It feels less like a debate and more like walking through an art exhibition together. We're not establishing who's right, we're standing in front of each thought and looking at it. "We agree" / "we disagree" barely applies; the question is what the thing *is*, and what it does when you move around it.
 
-This is the [[the-aesthetic-attitude|aesthetic attitude]] turned on ideas instead of objects: suspending the usual will to grasp, classify and win, and just letting the thing be perceived. [[aesthetic-in-science|Beauvoir thought even inquiry needs this]] — you have to be able to *look* before you're entitled to judge.
+I guess it feels like the [[the-aesthetic-attitude|aesthetic attitude]] turned on ideas instead of objects. We suspend the usual will to grasp, classify and win, and just letting the idea be watched. [[aesthetic-in-science|Beauvoir thought even inquiry needs this]], you have to be able to *look* before you're entitled to judge.
 
-It's also why the conversations that change me least are the ones organised around verdicts. A verdict closes the loop too early. Exploration keeps it open long enough for something to actually show up — the same reason I'd rather [[particular<->universal|iterate between the particular and the universal]] than settle on either. Not everything should be an exhibition; sometimes you genuinely need a verdict. But the exhibition mode is the one where thinking actually happens.
+It's also why the conversations that change me least are the ones organised around verdicts. A verdict closes the loop too early. Exploration keeps it open long enough for something to actually show up and grow. The same reason I'd rather [[particular<->universal|iterate between the particular and the universal]] than settle on either. And sure, not everything should be an exhibition, sometimes you genuinely need a verdict. But the exhibition mode is the one where thinking and reflection can happen.
