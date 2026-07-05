@@ -8,7 +8,7 @@ last reviewd: 2026-04-27
 
 Just as we should not deny one side of the [[ambiguity-of-existence|dualities we exist between]] in order to flee from ambiguity, we should not deny our [[condemned-to-be-free|condemnation to freedom]]. Instead, we can recognize freedom as the foundational for being, embrace it, and then **orient our actions toward expanding it**. 
 
-Beauvoir also extends this imperative beyond the individual. To truly maximize your own freedom requires maximizing the freedom of others as well. This social dimension puts her ethics apaart from a purely individualistic [[existentialism]] and connects it to other realms like [[justice]] and [[political philosophy]].
+Beauvoir also extends this imperative beyond the individual. To truly maximize your own freedom requires maximizing the freedom of others as well. This social dimension puts her ethics apart from a purely individualistic [[existentialism]] and connects it to other realms like [[justice]] and [[political philosophy]].
 ## Related
 - [[freedom-as-foundation-of-ethics]]
 - [[freedom-requires-freedom-of-others]]

@@ -9,7 +9,7 @@
 - [[desire-as-self-destruction]] — Rogojin's passion as involuntary, bodily, potentially fatal force
 - [[happiness-as-attention]] — Myshkin's Swiss happiness as a skill of perception, not a product of circumstance
 - [[internalized-shame]] — How social punishment produces internal collapse in the victim
-- [[refused-resque]] — Why Nastasia rejects the prince's genuine offer of salvation
+- [[refused-rescue]] — Why Nastasia rejects the prince's genuine offer of salvation
 ---
 ## `nihilism/` 
 - [[responses-to-the-void]] — Existential thinkers differ less in whether they confront the void than in how they respond to it: through endurance, revolt, freedom, ethical reciprocity, or faith and active love.

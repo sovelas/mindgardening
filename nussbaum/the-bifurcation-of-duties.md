@@ -12,6 +12,6 @@ On [[Martha Nussbaum|Nussbaum]]'s reading, [[Cicero]] (drawing on the [[the Stoi
 
 The bifurcation lets the stoic affirm, sincerely, that every human has equal worth, while at the same time allowing them to believe they don't own distant strangers anything that costs them. The hard duties stop at *harm*; the duties that would actually transfer resources stop at the *border*.
 
-It's a tidy way to hold a universal ideal and a parochial practice at the same time, which is maybe why it's lasted so long... Obviously it was not construed to be a naive stance, arguing that distance matters is practical, relational and politcal. But this distance argument while ok to use as a practical way of organizing and prioritizing your duties, is not ok to be used as distribution rule or exemption of what you owe others.
+It's a tidy way to hold a universal ideal and a parochial practice at the same time, which is maybe why it's lasted so long... Obviously it was not construed to be a naive stance, arguing that distance matters is practical, relational and political. But this distance argument while ok to use as a practical way of organizing and prioritizing your duties, is not ok to be used as distribution rule or exemption of what you owe others.
 
 This rhymes with [[freedom-as-imperative|Beauvoir's]] point that my freedom is bound up with others' freedom: if that's true, a duty that reaches only as far as "don't harm" looks far too thin to carry it.

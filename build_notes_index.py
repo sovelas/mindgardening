@@ -239,6 +239,13 @@ def build_index(root: Path) -> Dict:
         if reviewed is None:
             reviewed = False
 
+        # Privacy: never publish unreviewed notes. Their full raw content would
+        # otherwise ship to every visitor inside notes-index.json even though
+        # the graph UI hides them. The master index is the one exception
+        # (no frontmatter, but the site's intro links to it).
+        if not reviewed and rel_path != '_folder-index-master':
+            continue
+
         notes.append({
             'path': rel_path,
             'title': title,
@@ -257,7 +264,9 @@ def build_index(root: Path) -> Dict:
 
     return {
         'generated_at': datetime.now(timezone.utc).isoformat(),
-        'root': str(root.resolve()),
+        # Only the folder name — never the absolute local path (it would leak
+        # the author's username/home directory in the published JSON).
+        'root': root.name,
         'count': len(notes),
         'notes': notes,
     }
